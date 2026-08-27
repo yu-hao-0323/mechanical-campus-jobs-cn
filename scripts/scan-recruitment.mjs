@@ -4,7 +4,6 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 const sourcePath = new URL('../app/page.tsx', import.meta.url);
 const reportPath = new URL('../reports/latest-recruitment-scan.json', import.meta.url);
 const summaryPath = new URL('../reports/latest-recruitment-scan.md', import.meta.url);
-const publicReportPath = new URL('../public/scan/latest-recruitment-scan.json', import.meta.url);
 const timeoutMs = 15_000;
 const concurrency = 6;
 
@@ -117,8 +116,6 @@ const rows = results.map((item) => `| ${item.name} | ${item.area} | ${item.resul
 const markdown = `# 每日招聘扫描报告\n\n- 扫描时间：${report.generatedAt}\n- 范围：${report.scope}\n- 原则：${report.policy}\n\n| 企业 | 地区 | 扫描结果 | HTTP | 页面标题 |\n| --- | --- | --- | --- | --- |\n${rows}\n`;
 
 await mkdir(new URL('../reports/', import.meta.url), { recursive: true });
-await mkdir(new URL('../public/scan/', import.meta.url), { recursive: true });
 await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 await writeFile(summaryPath, markdown, 'utf8');
-await writeFile(publicReportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
 console.log(`已扫描 ${results.length} 家企业；疑似在招校招信号：${counts['疑似在招校招信号']?.length ?? 0}。`);

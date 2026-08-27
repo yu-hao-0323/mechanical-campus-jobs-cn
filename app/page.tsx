@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 type Job = {
   id: string;
@@ -30,9 +30,6 @@ type Company = {
   sourceOrigin?: '企业官网发布';
   jobs: Job[];
 };
-
-type ScanCompany = { name: string; area: string; result: string; url: string };
-type ScanReport = { generatedAt: string; companies: ScanCompany[] };
 
 const catOps = 'https://careers.caterpillar.com/zh/%E8%81%8C%E4%BD%8D/r0000388302/2027%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98-%E5%88%B6%E9%80%A0%E8%BF%90%E8%90%A5%E7%B1%BB/';
 const catMfg = 'https://careers.caterpillar.com/zh/%E8%81%8C%E4%BD%8D/r0000387385/2027%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98-%E5%88%B6%E9%80%A0%E8%BF%90%E8%90%A5%E7%B1%BB-%E5%88%B6%E9%80%A0%E5%B7%A5%E7%A8%8B%E5%B8%88-%E6%9C%BA%E6%A2%B0%E8%87%AA%E5%8A%A8%E5%8C%96%E6%99%BA%E8%83%BD%E5%8C%96%E4%BB%BF%E7%9C%9F/';
@@ -325,14 +322,6 @@ export default function Home() {
   const [companyType, setCompanyType] = useState('全部企业');
   const [openCompanies, setOpenCompanies] = useState<Set<string>>(new Set());
   const [openJob, setOpenJob] = useState<string | null>(null);
-  const [scanReport, setScanReport] = useState<ScanReport | null>(null);
-
-  useEffect(() => {
-    fetch('./scan/latest-recruitment-scan.json')
-      .then((response) => response.ok ? response.json() : null)
-      .then((report) => setScanReport(report as ScanReport | null))
-      .catch(() => setScanReport(null));
-  }, []);
 
   const isUnlisted = (label: string) => !/(上市|央企|国企)/.test(label);
   const isUnlistedCompany = (company: Company) => !listedOrStateOwned.has(company.name);
@@ -350,7 +339,6 @@ export default function Home() {
   }).filter((company) => company.jobs.length > 0), [query, area, direction, companyType]);
 
   const totalJobs = filtered.reduce((sum, company) => sum + company.jobs.length, 0);
-  const campusSignals = scanReport?.companies.filter((company) => company.result === '疑似在招校招信号') ?? [];
   const radarFiltered = useMemo(() => watchlist.filter((company) => companyType === '全部企业' || (companyType === '未上市大型企业' ? isUnlisted(company.tag) : !isUnlisted(company.tag))), [companyType]);
   const reset = () => { setQuery(''); setArea('全部地区'); setDirection('全部方向'); setCompanyType('全部企业'); };
   const toggleCompany = (id: string) => setOpenCompanies((current) => {
@@ -432,8 +420,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {campusSignals.length > 0 && <section className="border-y border-[#dce1da] bg-[#f4f8f3]"><div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8"><div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">中国官网校招动态</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">{campusSignals.length} 家出现校招信号</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#66736a]">每日扫描中国官网或中国区校招站。这里是待核验线索，不等同于已收录的完整岗位 JD。</p></div><a href="https://github.com/yu-hao-0323/mechanical-campus-jobs-cn/blob/main/reports/latest-recruitment-scan.md" target="_blank" rel="noreferrer" className="text-sm font-semibold text-[#1c6741] hover:underline">查看完整扫描报告 ↗</a></div><div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{campusSignals.map((company) => <a key={`${company.name}-${company.url}`} href={company.url} target="_blank" rel="noreferrer" className="rounded-xl border border-[#d9e3d8] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#95b39b]"><strong className="text-[15px] text-[#1d3325]">{company.name}</strong><p className="mt-1 text-xs text-[#66736a]">{company.area}</p><p className="mt-3 text-xs font-semibold text-[#1c6741]">查看中国官网招聘入口 ↗</p></a>)}</div></div></section>}
 
       <section className="border-t border-[#dce1da] bg-white">
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
