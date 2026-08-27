@@ -192,6 +192,30 @@ const companies: Company[] = [
       { id: 'lead-lean', title: '精益工程师 / 智能制造方向', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '本科及以上', direction: '制造工程', majors: '机械、工业工程、自动化、物流等相关专业', deadline: '校招申请开放', responsibilities: ['参与智能装备制造现场的精益改善、产线效率和制造运营提升'], requirements: ['面向2027届毕业生', '机械、工业工程、自动化、物流等相关专业', '具体岗位职责和学历要求以先导智能招聘系统为准'], note: '公告级信息：无锡2027届精益工程师职位已公开，独立JD随招聘系统更新。', url: 'https://www.leadintelligent.com/' },
     ],
   },
+  {
+    id: 'firstack', name: '飞仕得科技', short: 'FIRSTACK', industry: '未上市大型企业 · 功率半导体检测装备', batch: '2027届校园招聘', verified: '2026-08-28 12:10', source: '飞仕得科技2027校招公告', website: 'http://www.firstack.com/',
+    jobs: [
+      { id: 'firstack-structure', title: '机械结构工程师', location: '浙江 · 杭州', areas: ['杭州'], degree: '硕士及以上', direction: '研发设计', majors: '机械工程、机电、自动化等相关专业', deadline: '截止 2026-11-23', responsibilities: ['负责半导体检测设备结构、非标自动化结构设计并跟进加工落地', '开展安规、散热和屏蔽结构设计，协同硬件优化产品性能', '输出研发文档，参与项目调试部署', '参与新材料、新结构的预研工作'], requirements: ['2027届硕士及以上，机械、机电、自动化等相关专业', '熟练使用机械结构设计绘图软件', '学业基础扎实，自驱力强', '具备团队协作和抗压能力'], url: 'https://myjob.dlmu.edu.cn/campus/view/id/868480' },
+    ],
+  },
+  {
+    id: 'uaes', name: '联合汽车电子', short: 'UAES', industry: '未上市合资企业 · 汽车电子与电驱', batch: '2027届秋季校园招聘', verified: '2026-08-28 12:05', source: '联合汽车电子2027校招公告', website: 'https://www.uaes.com/', status: 'announcement',
+    jobs: [
+      { id: 'uaes-smart', title: '智能制造 / 质量 / 项目管理方向', location: '江苏 · 无锡 / 苏州 / 太仓', areas: ['江苏全域'], degree: '本科及以上', direction: '制造工程', majors: '机械、自动化、车辆、电子、工业工程等相关专业', deadline: '截止 2026-10-14', responsibilities: ['公告列出智能制造、质量管理、项目管理、产品研发和BMS硬件测试等校招方向', '覆盖发动机管理、变速箱控制、先进网联、电驱、热管理和智能传感器等业务'], requirements: ['面向2027届本科及以上毕业生', '机械、自动化、车辆、电子和工业工程等相关专业', '具体岗位和技术要求以联合电子校招官网实时职位为准'], note: '公告级信息：无锡、苏州、太仓为企业公布的生产基地或技术中心城市。', url: 'https://www.wondercv.com/xiaozhao/uaes-2027-campus-recruitment-12526-1ace75/' },
+    ],
+  },
+  {
+    id: 'boschbcsc', name: '博世中国创新与软件开发中心', short: 'BCSC', industry: '未上市外资企业 · 汽车软件与智能装备', batch: '2027届校园招聘', verified: '2026-08-28 12:00', source: '博世中国BCSC 2027校招公告', website: 'https://www.bosch.com.cn/careers/', status: 'announcement',
+    jobs: [
+      { id: 'boschbcsc-auto', title: '汽车软件 / 硬件 / 自动驾驶研发方向', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '本科 / 硕士', direction: '自动化', majors: '机械、自动化、电子、电气、计算机等相关专业', deadline: '截止 2026-09-09', responsibilities: ['公告列出硬件工程师、底盘域软件、悬架软件、BMS软件、动力域控制和自动驾驶研发方向'], requirements: ['面向2027届校园招聘候选人', '机械、自动化、电子、电气或计算机等相关背景', '各方向学历与技术栈要求以博世校招职位为准'], note: '公告级信息：无锡为当前公开校招城市，具体职位JD由博世招聘系统维护。', url: 'https://campus.niuqizp.com/schedulenew-Banking-wuxi-0/' },
+    ],
+  },
+  {
+    id: 'neolix', name: '九识智能', short: 'NEOLIX', industry: '未上市独角兽 · 无人配送与自动驾驶', batch: '2027届校园招聘', verified: '2026-08-28 11:55', source: '九识智能2027校招公开信息', website: 'https://www.neolix.cn/', status: 'announcement',
+    jobs: [
+      { id: 'neolix-robotics', title: '机器人开发 / 机械设计 / 运动控制方向', location: '浙江 · 杭州 / 江苏 · 苏州', areas: ['杭州', '江苏全域'], degree: '本科及以上', direction: '研发设计', majors: '机械、机器人、自动化、车辆、控制等相关专业', deadline: '校招通道开放', responsibilities: ['公告列出机器人开发、机械设计、运动控制和现场实施工程师等方向', '参与L4级自动驾驶城配物流场景的研发与产品落地'], requirements: ['面向2027届本科及以上毕业生', '机械、机器人、自动化、车辆或控制等相关专业', '具体岗位职责和项目经历要求以企业招聘平台为准'], note: '公告级信息：杭州和苏州为企业公布的校招研发城市。', url: 'https://www.nowcoder.com/feed/main/detail/1d3d393509054eb7bb4c37d768bd83f2?urlSource=home-api' },
+    ],
+  },
 ];
 
 const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
@@ -214,6 +238,7 @@ const publicationDates: Record<string, string> = {
   'cetc8-mechanical': '2026-08-20', 'iflytek-structure': '2026-08-24',
   'cctech-mechanical': '2026-08-21', 'cctech-fea': '2026-08-21', 'cctech-production': '2026-08-21', 'cetc38-mechanical': '2026-08-21', 'shuanghuan-project': '2026-08-22', 'jingce-mechanical': '2026-08-10',
   'donghua-process': '2026-08-28', 'cecii-power': '2026-08-27', 'huaqin-engineering': '2026-08-18', 'sugon-structure': '2026-08-21', 'asml-install': '2026-08-01', 'lead-lean': '2026-08-25',
+  'firstack-structure': '2026-08-21', 'uaes-smart': '2026-08-16', 'boschbcsc-auto': '2026-08-12', 'neolix-robotics': '2026-08-23',
 };
 
 const watchlist = [
