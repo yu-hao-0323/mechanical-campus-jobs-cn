@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-27T16:10:49.971Z",
+  "generatedAt": "2026-08-27T16:23:37.673Z",
   "scope": "合肥、江苏全域、杭州、宁波；机械/装备及相关工程技术校招监测",
-  "policy": "扫描结果仅作为待核验线索。不会自动发布岗位；发布前必须人工核对官网、岗位JD和投递状态。",
+  "policy": "仅监测中国官网或中国区官方招聘入口。扫描结果仅作为待核验线索；发布前必须人工核对官网、岗位JD和投递状态。",
   "totals": {
-    "访问异常，待人工复核": 24,
-    "未发现明确招聘信号": 13,
-    "疑似在招校招信号": 9,
-    "发现招聘入口，待人工确认校招": 10
+    "访问异常，待人工复核": 36,
+    "疑似在招校招信号": 15,
+    "发现招聘入口，待人工确认校招": 12,
+    "未发现明确招聘信号": 15
   },
   "companies": [
     {
@@ -20,8 +20,8 @@
       "finalUrl": "https://www.estun.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:34.580Z",
-      "durationMs": 3724,
+      "checkedAt": "2026-08-27T16:23:10.249Z",
+      "durationMs": 3040,
       "error": "TypeError"
     },
     {
@@ -30,14 +30,13 @@
       "tag": "上市国企",
       "focus": "工业车辆、智能物流",
       "url": "https://www.helichina.com/contact/job/",
-      "result": "访问异常，待人工复核",
-      "httpStatus": null,
+      "result": "疑似在招校招信号",
+      "httpStatus": 200,
       "finalUrl": "https://www.helichina.com/contact/job/",
-      "title": "",
-      "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:21.835Z",
-      "durationMs": 400,
-      "error": "TypeError"
+      "title": "人才招聘 - 安徽合力股份有限公司",
+      "fingerprint": "234cbd7761f9b872",
+      "checkedAt": "2026-08-27T16:22:57.663Z",
+      "durationMs": 1495
     },
     {
       "name": "安凯汽车",
@@ -45,14 +44,13 @@
       "tag": "上市国企",
       "focus": "新能源客车、整车研发",
       "url": "https://www.ankai.com/",
-      "result": "访问异常，待人工复核",
-      "httpStatus": null,
+      "result": "发现招聘入口，待人工确认校招",
+      "httpStatus": 200,
       "finalUrl": "https://www.ankai.com/",
-      "title": "",
-      "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:22.422Z",
-      "durationMs": 941,
-      "error": "TypeError"
+      "title": "安凯客车｜安心车 凯旋路",
+      "fingerprint": "b9cb2b7da78855a5",
+      "checkedAt": "2026-08-27T16:23:01.848Z",
+      "durationMs": 5635
     },
     {
       "name": "博世中国",
@@ -60,14 +58,13 @@
       "tag": "外资制造",
       "focus": "汽车零部件、智能制造",
       "url": "https://www.bosch.com.cn/careers/",
-      "result": "访问异常，待人工复核",
-      "httpStatus": null,
+      "result": "疑似在招校招信号",
+      "httpStatus": 200,
       "finalUrl": "https://www.bosch.com.cn/careers/",
-      "title": "",
-      "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:26.401Z",
-      "durationMs": 2791,
-      "error": "TypeError"
+      "title": "加入博世 | 博世在中国",
+      "fingerprint": "0d3705cde69d885a",
+      "checkedAt": "2026-08-27T16:23:02.445Z",
+      "durationMs": 3434
     },
     {
       "name": "常青股份",
@@ -80,8 +77,8 @@
       "finalUrl": "https://www.hfchangqing.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:28.690Z",
-      "durationMs": 599,
+      "checkedAt": "2026-08-27T16:23:02.732Z",
+      "durationMs": 287,
       "error": "TypeError"
     },
     {
@@ -95,8 +92,8 @@
       "finalUrl": "https://job.byd.com/",
       "title": "比亚迪人力资源服务平台",
       "fingerprint": "3b6ac1944af7bb01",
-      "checkedAt": "2026-08-27T16:10:39.448Z",
-      "durationMs": 3699
+      "checkedAt": "2026-08-27T16:23:14.222Z",
+      "durationMs": 4330
     },
     {
       "name": "大众安徽",
@@ -109,8 +106,8 @@
       "finalUrl": "https://www.volkswagen-anhui.com/",
       "title": "VW Anhui Official WebSite",
       "fingerprint": "348774e9c8f15d1b",
-      "checkedAt": "2026-08-27T16:10:23.304Z",
-      "durationMs": 1822
+      "checkedAt": "2026-08-27T16:22:59.011Z",
+      "durationMs": 2797
     },
     {
       "name": "大众汽车零部件（安徽）",
@@ -123,8 +120,23 @@
       "finalUrl": "https://volkswagenac.com/zh-hans/careers/",
       "title": "职业机会 - Volkswagen Group Components Anhui",
       "fingerprint": "0f18644e849cd7ae",
-      "checkedAt": "2026-08-27T16:10:30.856Z",
-      "durationMs": 2774
+      "checkedAt": "2026-08-27T16:23:05.103Z",
+      "durationMs": 2951
+    },
+    {
+      "id": "donghua",
+      "name": "东华科技",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.chinaecec.com/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": 403,
+      "finalUrl": "https://www.chinaecec.com/",
+      "title": "403 Forbidden",
+      "fingerprint": "513932a8dcdf5f5f",
+      "checkedAt": "2026-08-27T16:23:27.460Z",
+      "durationMs": 1203
     },
     {
       "name": "飞仕得科技",
@@ -137,8 +149,23 @@
       "finalUrl": "https://www.fasstech.com/",
       "title": "Fasstech.com | Functional Assessment Technologies - Medical Technology Manufacturers",
       "fingerprint": "a1b3cb3d98cdc8f2",
-      "checkedAt": "2026-08-27T16:10:39.815Z",
-      "durationMs": 367
+      "checkedAt": "2026-08-27T16:23:17.329Z",
+      "durationMs": 250
+    },
+    {
+      "id": "firstack",
+      "name": "飞仕得科技",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "http://www.firstack.com/",
+      "result": "未发现明确招聘信号",
+      "httpStatus": 200,
+      "finalUrl": "https://www.firstack.com/",
+      "title": "Home | Firstack",
+      "fingerprint": "0245d7a0b7c117ef",
+      "checkedAt": "2026-08-27T16:23:29.004Z",
+      "durationMs": 1233
     },
     {
       "name": "格力凌达压缩机",
@@ -151,8 +178,8 @@
       "finalUrl": "https://zp.gree.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:30.114Z",
-      "durationMs": 102,
+      "checkedAt": "2026-08-27T16:23:04.714Z",
+      "durationMs": 17,
       "error": "TypeError"
     },
     {
@@ -166,8 +193,8 @@
       "finalUrl": "https://www.gongniu.cn/",
       "title": "公牛集团股份有限公司",
       "fingerprint": "953a06a1d7acc63f",
-      "checkedAt": "2026-08-27T16:10:43.018Z",
-      "durationMs": 2599
+      "checkedAt": "2026-08-27T16:23:20.940Z",
+      "durationMs": 3311
     },
     {
       "name": "国轩高科",
@@ -180,8 +207,8 @@
       "finalUrl": "https://www.gotion.com.cn/join",
       "title": "国轩高科",
       "fingerprint": "28009eb201a0ff67",
-      "checkedAt": "2026-08-27T16:10:23.846Z",
-      "durationMs": 2366
+      "checkedAt": "2026-08-27T16:22:57.631Z",
+      "durationMs": 1419
     },
     {
       "name": "海康机器人",
@@ -194,8 +221,8 @@
       "finalUrl": "https://www.hikrobotics.com/cn/",
       "title": "海康机器人-让机器更智能，让智能更普惠",
       "fingerprint": "97a72dcccb652d0f",
-      "checkedAt": "2026-08-27T16:10:27.686Z",
-      "durationMs": 1285
+      "checkedAt": "2026-08-27T16:23:01.703Z",
+      "durationMs": 1108
     },
     {
       "name": "海亮股份",
@@ -207,9 +234,24 @@
       "httpStatus": 403,
       "finalUrl": "https://www.hailiangstock.com/career.html",
       "title": "403 Forbidden",
-      "fingerprint": "8a2dd6c8b2d98b8c",
-      "checkedAt": "2026-08-27T16:10:39.401Z",
-      "durationMs": 438
+      "fingerprint": "9df64ed20f080e5f",
+      "checkedAt": "2026-08-27T16:23:17.079Z",
+      "durationMs": 585
+    },
+    {
+      "id": "haitian",
+      "name": "海天集团",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.haitian.com/cn/career/",
+      "result": "发现招聘入口，待人工确认校招",
+      "httpStatus": 200,
+      "finalUrl": "https://www.haitian.com/cn/career/",
+      "title": "加入我们 - Haitian Group",
+      "fingerprint": "9ae098b894d982f7",
+      "checkedAt": "2026-08-27T16:23:23.254Z",
+      "durationMs": 1435
     },
     {
       "name": "杭叉集团",
@@ -222,8 +264,8 @@
       "finalUrl": "https://www.zjhc.cn/aboutHumanResources.html",
       "title": "杭叉集团-联系我们",
       "fingerprint": "6699f780d35358ad",
-      "checkedAt": "2026-08-27T16:10:27.076Z",
-      "durationMs": 2711
+      "checkedAt": "2026-08-27T16:23:00.955Z",
+      "durationMs": 1164
     },
     {
       "name": "杭氧股份",
@@ -236,8 +278,8 @@
       "finalUrl": "https://www.hangyang.com/",
       "title": "杭氧",
       "fingerprint": "8e07257d081ae32a",
-      "checkedAt": "2026-08-27T16:10:40.369Z",
-      "durationMs": 2406
+      "checkedAt": "2026-08-27T16:23:17.512Z",
+      "durationMs": 3826
     },
     {
       "name": "合肥高科",
@@ -250,8 +292,8 @@
       "finalUrl": "https://www.hfgk.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:38.963Z",
-      "durationMs": 10273,
+      "checkedAt": "2026-08-27T16:23:13.686Z",
+      "durationMs": 10014,
       "error": "TypeError"
     },
     {
@@ -265,8 +307,8 @@
       "finalUrl": "https://career.midea.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:34.275Z",
-      "durationMs": 4854,
+      "checkedAt": "2026-08-27T16:23:14.685Z",
+      "durationMs": 10203,
       "error": "TypeError"
     },
     {
@@ -280,8 +322,54 @@
       "finalUrl": "https://campus.51job.com/wxsz/job.html",
       "title": "万向集团公司",
       "fingerprint": "85ac5bc40aa04f02",
-      "checkedAt": "2026-08-27T16:10:31.102Z",
-      "durationMs": 988
+      "checkedAt": "2026-08-27T16:23:08.129Z",
+      "durationMs": 3415
+    },
+    {
+      "id": "hengli",
+      "name": "恒立液压",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.henglihydraulics.com/col47/list",
+      "result": "疑似在招校招信号",
+      "httpStatus": 200,
+      "finalUrl": "https://www.henglihydraulics.com/col47/list",
+      "title": "恒立液压-校园招聘",
+      "fingerprint": "6c34f2f12e7be06d",
+      "checkedAt": "2026-08-27T16:23:23.035Z",
+      "durationMs": 1240
+    },
+    {
+      "id": "huaqin",
+      "name": "华勤技术",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.huaqin.com/",
+      "result": "发现招聘入口，待人工确认校招",
+      "httpStatus": 200,
+      "finalUrl": "https://www.huaqin.com/",
+      "title": "华勤技术-智能产品_ODM_消费电子",
+      "fingerprint": "8fa27a60662df712",
+      "checkedAt": "2026-08-27T16:23:27.771Z",
+      "durationMs": 311
+    },
+    {
+      "id": "geely",
+      "name": "吉利控股",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://campus.geely.com/campus-recruitment/geely/78436?locale=zh-CN#/jobs?commitment%5B0%5D=%E5%85%A8%E8%81%8C",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "https://campus.geely.com/campus-recruitment/geely/78436?locale=zh-CN#/jobs?commitment%5B0%5D=%E5%85%A8%E8%81%8C",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:20.828Z",
+      "durationMs": 402,
+      "error": "TypeError"
     },
     {
       "name": "江淮汽车",
@@ -294,8 +382,8 @@
       "finalUrl": "https://www.jac.com.cn/rczp/",
       "title": "人才招聘—JAC GROUP江汽集团官方网站",
       "fingerprint": "df663a5235b1377c",
-      "checkedAt": "2026-08-27T16:10:23.355Z",
-      "durationMs": 1876
+      "checkedAt": "2026-08-27T16:22:57.600Z",
+      "durationMs": 1389
     },
     {
       "name": "江苏鱼跃医疗",
@@ -308,8 +396,8 @@
       "finalUrl": "https://www.yuwell.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:44.957Z",
-      "durationMs": 10377,
+      "checkedAt": "2026-08-27T16:23:19.179Z",
+      "durationMs": 10346,
       "error": "TypeError"
     },
     {
@@ -323,8 +411,8 @@
       "finalUrl": "https://www.jintian.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:49.954Z",
-      "durationMs": 10097,
+      "checkedAt": "2026-08-27T16:23:27.667Z",
+      "durationMs": 10308,
       "error": "TypeError"
     },
     {
@@ -338,9 +426,40 @@
       "finalUrl": "https://talent.boe.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:30.894Z",
-      "durationMs": 559,
+      "checkedAt": "2026-08-27T16:23:07.518Z",
+      "durationMs": 2415,
       "error": "TypeError"
+    },
+    {
+      "id": "jingce",
+      "name": "精测电子",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.jingce.com/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "https://www.jingce.com/",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:36.156Z",
+      "durationMs": 10349,
+      "error": "TypeError"
+    },
+    {
+      "id": "neolix",
+      "name": "九识智能",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.neolix.cn/",
+      "result": "未发现明确招聘信号",
+      "httpStatus": 200,
+      "finalUrl": "https://www.neolix.cn/",
+      "title": "新石器无人车",
+      "fingerprint": "87f2ad11ad5b14a4",
+      "checkedAt": "2026-08-27T16:23:32.041Z",
+      "durationMs": 2578
     },
     {
       "name": "均普智能",
@@ -353,8 +472,8 @@
       "finalUrl": "https://cn.piagroup.com/careers/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:28.082Z",
-      "durationMs": 670,
+      "checkedAt": "2026-08-27T16:23:02.028Z",
+      "durationMs": 376,
       "error": "TypeError"
     },
     {
@@ -368,8 +487,38 @@
       "finalUrl": "https://www.joyson.com/",
       "title": "宁波均胜电子股份有限公司",
       "fingerprint": "292bf3dc72e5b875",
-      "checkedAt": "2026-08-27T16:10:30.335Z",
-      "durationMs": 2969
+      "checkedAt": "2026-08-27T16:23:03.672Z",
+      "durationMs": 2407
+    },
+    {
+      "id": "caterpillar",
+      "name": "卡特彼勒",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://careers.caterpillar.com/zh/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": 403,
+      "finalUrl": "https://careers.caterpillar.com/zh/",
+      "title": "Just a moment...",
+      "fingerprint": "3a3538b1c138960c",
+      "checkedAt": "2026-08-27T16:23:20.426Z",
+      "durationMs": 50
+    },
+    {
+      "id": "iflytek",
+      "name": "科大讯飞",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.iflytek.com/",
+      "result": "未发现明确招聘信号",
+      "httpStatus": 200,
+      "finalUrl": "https://www.iflytek.com/en/",
+      "title": "World-leading AI Solution Provider of Language Exchange & Machine Learning-iFLYTEK",
+      "fingerprint": "abda4e4cff449f5b",
+      "checkedAt": "2026-08-27T16:23:25.200Z",
+      "durationMs": 1436
     },
     {
       "name": "乐惠国际",
@@ -382,8 +531,8 @@
       "finalUrl": "https://www.lehui.com/",
       "title": "乐惠国际_工业啤酒设备_精酿啤酒设备",
       "fingerprint": "36d295d310499288",
-      "checkedAt": "2026-08-27T16:10:41.642Z",
-      "durationMs": 833
+      "checkedAt": "2026-08-27T16:23:20.376Z",
+      "durationMs": 1583
     },
     {
       "name": "理想汽车常州",
@@ -396,8 +545,39 @@
       "finalUrl": "https://www.lixiang.com/careers",
       "title": "",
       "fingerprint": "bfec0f6b9e3ea739",
-      "checkedAt": "2026-08-27T16:10:38.904Z",
-      "durationMs": 2909
+      "checkedAt": "2026-08-27T16:23:16.858Z",
+      "durationMs": 6609
+    },
+    {
+      "id": "leoch",
+      "name": "利欧集团",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.leogroup.cn/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": 418,
+      "finalUrl": "https://leoglobal.com/",
+      "title": "访问被拦截！",
+      "fingerprint": "2996e1d6dbdf8a91",
+      "checkedAt": "2026-08-27T16:23:24.501Z",
+      "durationMs": 2547
+    },
+    {
+      "id": "uaes",
+      "name": "联合汽车电子",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.uaes.com/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "https://www.uaes.com/",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:31.565Z",
+      "durationMs": 2561,
+      "error": "TypeError"
     },
     {
       "name": "隆达超合金",
@@ -410,8 +590,8 @@
       "finalUrl": "https://www.wxlongda.com/joinus.html",
       "title": "人员招聘-江苏隆达超合金股份有限公司",
       "fingerprint": "1f606542fd423cb0",
-      "checkedAt": "2026-08-27T16:10:35.475Z",
-      "durationMs": 4373
+      "checkedAt": "2026-08-27T16:23:09.301Z",
+      "durationMs": 1172
     },
     {
       "name": "宁波钢铁",
@@ -419,13 +599,14 @@
       "tag": "国企",
       "focus": "冶金装备、设备工程",
       "url": "https://www.nbsteel.com/",
-      "result": "未发现明确招聘信号",
-      "httpStatus": 200,
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
       "finalUrl": "https://www.nbsteel.com/",
       "title": "",
-      "fingerprint": "0037ea83da3bac83",
-      "checkedAt": "2026-08-27T16:10:28.499Z",
-      "durationMs": 484
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:07.209Z",
+      "durationMs": 5181,
+      "error": "TypeError"
     },
     {
       "name": "宁波港",
@@ -433,13 +614,14 @@
       "tag": "上市国企",
       "focus": "港口装备、机械设备",
       "url": "https://www.nbport.com.cn/",
-      "result": "未发现明确招聘信号",
-      "httpStatus": 200,
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
       "finalUrl": "https://www.nbport.com.cn/",
-      "title": "Jumping",
-      "fingerprint": "106298dece22f548",
-      "checkedAt": "2026-08-27T16:10:43.124Z",
-      "durationMs": 1230
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:32.915Z",
+      "durationMs": 13224,
+      "error": "TypeError"
     },
     {
       "name": "宁波华翔",
@@ -452,8 +634,8 @@
       "finalUrl": "https://www.nbhx.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:37.963Z",
-      "durationMs": 10277,
+      "checkedAt": "2026-08-27T16:23:12.188Z",
+      "durationMs": 10530,
       "error": "TypeError"
     },
     {
@@ -467,8 +649,8 @@
       "finalUrl": "https://www.neway.com.cn/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:36.100Z",
-      "durationMs": 709,
+      "checkedAt": "2026-08-27T16:23:09.784Z",
+      "durationMs": 483,
       "error": "TypeError"
     },
     {
@@ -482,8 +664,8 @@
       "finalUrl": "https://www.riyuehi.com/",
       "title": "日月",
       "fingerprint": "feb835c096f756e3",
-      "checkedAt": "2026-08-27T16:10:41.894Z",
-      "durationMs": 2079
+      "checkedAt": "2026-08-27T16:23:18.793Z",
+      "durationMs": 1464
     },
     {
       "name": "三一重机",
@@ -496,8 +678,8 @@
       "finalUrl": "https://sany.zhiye.com/campus/jobs",
       "title": "三一集团有限公司",
       "fingerprint": "b0dc7a5fe947fb6f",
-      "checkedAt": "2026-08-27T16:10:27.412Z",
-      "durationMs": 3566
+      "checkedAt": "2026-08-27T16:23:00.105Z",
+      "durationMs": 1074
     },
     {
       "name": "帅特龙汽车系统",
@@ -510,8 +692,24 @@
       "finalUrl": "https://www.nbstl.cn/Index/join2",
       "title": "宁波帅特龙集团有限公司",
       "fingerprint": "d1ec03c3865b0548",
-      "checkedAt": "2026-08-27T16:10:43.323Z",
-      "durationMs": 1681
+      "checkedAt": "2026-08-27T16:23:21.954Z",
+      "durationMs": 2775
+    },
+    {
+      "id": "shuanghuan",
+      "name": "双环传动",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.gearbox.com.cn/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "https://www.gearbox.com.cn/",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:25.807Z",
+      "durationMs": 354,
+      "error": "TypeError"
     },
     {
       "name": "双林股份",
@@ -524,8 +722,8 @@
       "finalUrl": "https://www.slcorp.com.cn/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:28.091Z",
-      "durationMs": 182,
+      "checkedAt": "2026-08-27T16:23:04.697Z",
+      "durationMs": 2849,
       "error": "TypeError"
     },
     {
@@ -539,8 +737,8 @@
       "finalUrl": "https://www.sunnyoptical.com/",
       "title": "舜宇光学科技 （集团）有限公司 -是中国领先的光学产品制造企业，具备全面的设计实力及专业生产技术,公司立足光电行业，以光学、机械、电子三大核心技术的组合为基础，大力发展光学、仪器、光电三大事业",
       "fingerprint": "e5c933e04fc6b5f1",
-      "checkedAt": "2026-08-27T16:10:42.907Z",
-      "durationMs": 2538
+      "checkedAt": "2026-08-27T16:23:19.691Z",
+      "durationMs": 2179
     },
     {
       "name": "拓普集团",
@@ -553,8 +751,8 @@
       "finalUrl": "https://www.tuopu.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:27.758Z",
-      "durationMs": 682,
+      "checkedAt": "2026-08-27T16:23:01.658Z",
+      "durationMs": 614,
       "error": "TypeError"
     },
     {
@@ -568,8 +766,8 @@
       "finalUrl": "https://www.chinaconveyor.com/",
       "title": "天奇自动化工程股份有限公司_致力于服务汽车全生命周期",
       "fingerprint": "3222b69e18eda0e2",
-      "checkedAt": "2026-08-27T16:10:35.391Z",
-      "durationMs": 4497
+      "checkedAt": "2026-08-27T16:23:08.833Z",
+      "durationMs": 1315
     },
     {
       "name": "万向钱潮",
@@ -582,36 +780,22 @@
       "finalUrl": "https://www.wanxiang.com.cn/",
       "title": "联系我们-腾龙公司客服",
       "fingerprint": "5aeaf87e17e97641",
-      "checkedAt": "2026-08-27T16:10:40.419Z",
-      "durationMs": 1515
+      "checkedAt": "2026-08-27T16:23:17.629Z",
+      "durationMs": 2944
     },
     {
       "name": "蔚来合肥",
       "area": "合肥",
       "tag": "新能源车企",
       "focus": "整车、智能制造、质量",
-      "url": "https://www.nio.com/careers",
-      "result": "发现招聘入口，待人工确认校招",
+      "url": "https://campus.nio.com/",
+      "result": "疑似在招校招信号",
       "httpStatus": 200,
-      "finalUrl": "https://www.nio.com/careers",
-      "title": "Careers Let&#x27;s Create the Future Together | NIO",
-      "fingerprint": "c7c71180adee548a",
-      "checkedAt": "2026-08-27T16:10:23.610Z",
-      "durationMs": 2127
-    },
-    {
-      "name": "无锡先导智能",
-      "area": "江苏 · 无锡",
-      "tag": "上市公司",
-      "focus": "锂电智能装备、自动化",
-      "url": "https://www.leadintelligent.com/",
-      "result": "发现招聘入口，待人工确认校招",
-      "httpStatus": 200,
-      "finalUrl": "https://www.leadintelligent.com/",
-      "title": "先导智能-致力于成为全球智能装备领军企业",
-      "fingerprint": "3106d920ed863df0",
-      "checkedAt": "2026-08-27T16:10:35.995Z",
-      "durationMs": 1720
+      "finalUrl": "https://campus.nio.com/",
+      "title": "校园招聘-NIO蔚来",
+      "fingerprint": "381b28eede8d0c4b",
+      "checkedAt": "2026-08-27T16:22:58.159Z",
+      "durationMs": 1944
     },
     {
       "name": "西子洁能",
@@ -624,8 +808,8 @@
       "finalUrl": "https://www.xizice.com/",
       "title": "西子洁能—成为全球领先的清洁能源装备及解决方案供应商",
       "fingerprint": "60ad0f9fbb1e3c1d",
-      "checkedAt": "2026-08-27T16:10:39.857Z",
-      "durationMs": 1174
+      "checkedAt": "2026-08-27T16:23:17.359Z",
+      "durationMs": 3137
     },
     {
       "name": "西子联合",
@@ -638,8 +822,8 @@
       "finalUrl": "https://www.xizigroup.com/",
       "title": "XIZI UHC",
       "fingerprint": "54bfec8fa64b0dd5",
-      "checkedAt": "2026-08-27T16:10:28.015Z",
-      "durationMs": 1965
+      "checkedAt": "2026-08-27T16:23:01.265Z",
+      "durationMs": 1369
     },
     {
       "name": "先导智能",
@@ -652,8 +836,8 @@
       "finalUrl": "https://www.leadintelligent.com/",
       "title": "先导智能-致力于成为全球智能装备领军企业",
       "fingerprint": "3106d920ed863df0",
-      "checkedAt": "2026-08-27T16:10:27.051Z",
-      "durationMs": 3696
+      "checkedAt": "2026-08-27T16:23:00.595Z",
+      "durationMs": 2436
     },
     {
       "name": "芯碁微装",
@@ -666,8 +850,8 @@
       "finalUrl": "https://www.xinchip.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:29.421Z",
-      "durationMs": 922,
+      "checkedAt": "2026-08-27T16:23:03.297Z",
+      "durationMs": 565,
       "error": "TypeError"
     },
     {
@@ -681,9 +865,24 @@
       "finalUrl": "https://www.xzbco.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:40.809Z",
-      "durationMs": 1408,
+      "checkedAt": "2026-08-27T16:23:20.834Z",
+      "durationMs": 3976,
       "error": "TypeError"
+    },
+    {
+      "id": "xinje",
+      "name": "信捷电气",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.xinje.com/",
+      "result": "未发现明确招聘信号",
+      "httpStatus": 200,
+      "finalUrl": "https://www.xinje.com/",
+      "title": "无锡信捷电气股份有限公司",
+      "fingerprint": "f6927515d90d42cf",
+      "checkedAt": "2026-08-27T16:23:23.764Z",
+      "durationMs": 729
     },
     {
       "name": "徐工集团",
@@ -696,8 +895,8 @@
       "finalUrl": "https://www.xcmg.com/aboutus/job_center.htm",
       "title": "人才招聘-徐工官网",
       "fingerprint": "bfc36c68760322ed",
-      "checkedAt": "2026-08-27T16:10:24.365Z",
-      "durationMs": 2529
+      "checkedAt": "2026-08-27T16:22:59.031Z",
+      "durationMs": 1431
     },
     {
       "name": "旭升集团",
@@ -710,8 +909,8 @@
       "finalUrl": "https://www.shengroup.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:28.663Z",
-      "durationMs": 905,
+      "checkedAt": "2026-08-27T16:23:02.152Z",
+      "durationMs": 449,
       "error": "TypeError"
     },
     {
@@ -725,8 +924,24 @@
       "finalUrl": "https://www.yangli.com/",
       "title": "金属成形完整解决方案提供商-扬力集团股份有限公司",
       "fingerprint": "c0389d18687e0a6e",
-      "checkedAt": "2026-08-27T16:10:38.683Z",
-      "durationMs": 2583
+      "checkedAt": "2026-08-27T16:23:16.494Z",
+      "durationMs": 4306
+    },
+    {
+      "id": "sungrow",
+      "name": "阳光电源",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://app.mokahr.com/campus-recruitment/sungrow/94416#/jobs",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "https://app.mokahr.com/campus-recruitment/sungrow/94416#/jobs",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:26.895Z",
+      "durationMs": 6067,
+      "error": "TypeError"
     },
     {
       "name": "应流股份",
@@ -739,8 +954,23 @@
       "finalUrl": "https://www.yingliugroup.com/",
       "title": "安徽应流集团官网",
       "fingerprint": "d3c7b0491712dbb5",
-      "checkedAt": "2026-08-27T16:10:30.012Z",
-      "durationMs": 1349
+      "checkedAt": "2026-08-27T16:23:04.482Z",
+      "durationMs": 1185
+    },
+    {
+      "id": "cctech",
+      "name": "长川科技",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.hzcctech.com/JoinUs/index.aspx",
+      "result": "访问异常，待人工复核",
+      "httpStatus": 418,
+      "finalUrl": "https://www.hzcctech.com/JoinUs/index.aspx",
+      "title": "访问被拦截！",
+      "fingerprint": "db1eaecac005669b",
+      "checkedAt": "2026-08-27T16:23:25.453Z",
+      "durationMs": 952
     },
     {
       "name": "浙江吉利控股",
@@ -753,8 +983,8 @@
       "finalUrl": "https://campus.geely.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:27.909Z",
-      "durationMs": 858,
+      "checkedAt": "2026-08-27T16:23:01.652Z",
+      "durationMs": 697,
       "error": "TypeError"
     },
     {
@@ -768,8 +998,8 @@
       "finalUrl": "https://www.crrcgc.cc/pz/",
       "title": "网站首页",
       "fingerprint": "99a200f8df60d3cd",
-      "checkedAt": "2026-08-27T16:10:26.050Z",
-      "durationMs": 3628
+      "checkedAt": "2026-08-27T16:22:59.791Z",
+      "durationMs": 2160
     },
     {
       "name": "中车戚墅堰",
@@ -782,8 +1012,85 @@
       "finalUrl": "https://www.crrcgc.cc/qs/",
       "title": "404 Not Found",
       "fingerprint": "b0add0657058ec33",
-      "checkedAt": "2026-08-27T16:10:26.091Z",
-      "durationMs": 2786
+      "checkedAt": "2026-08-27T16:22:59.896Z",
+      "durationMs": 2233
+    },
+    {
+      "id": "cetc8",
+      "name": "中国电科八所",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://8.cetc.com.cn/8/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "https://8.cetc.com.cn/8/",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:33.658Z",
+      "durationMs": 10404,
+      "error": "TypeError"
+    },
+    {
+      "id": "cetc38",
+      "name": "中国电科三十八所",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://cetc38.zhaopin.com/",
+      "result": "疑似在招校招信号",
+      "httpStatus": 200,
+      "finalUrl": "https://cetc38.zhaopin.com/",
+      "title": "电科博微/38所2027届校园招聘",
+      "fingerprint": "7b44ab67efe53ed4",
+      "checkedAt": "2026-08-27T16:23:26.257Z",
+      "durationMs": 1057
+    },
+    {
+      "id": "cecii",
+      "name": "中国电子系统工程第二建设",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://campus.cec.com.cn/",
+      "result": "发现招聘入口，待人工确认校招",
+      "httpStatus": 200,
+      "finalUrl": "https://campus.cec.com.cn/",
+      "title": "中国电子信息产业集团有限公司招聘",
+      "fingerprint": "a61062ceacc53bcf",
+      "checkedAt": "2026-08-27T16:23:27.640Z",
+      "durationMs": 745
+    },
+    {
+      "id": "amd",
+      "name": "中科光电",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "http://www.cn-amd.com",
+      "result": "疑似在招校招信号",
+      "httpStatus": 200,
+      "finalUrl": "http://www.cn-amd.com/",
+      "title": "安美达品牌色选机—安徽中科光电色选机械有限公司",
+      "fingerprint": "c991e9f11fe8a1ed",
+      "checkedAt": "2026-08-27T16:23:21.795Z",
+      "durationMs": 855
+    },
+    {
+      "id": "sugon",
+      "name": "中科曙光",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://go.sugon.com/campus",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "https://go.sugon.com/campus",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:37.656Z",
+      "durationMs": 10016,
+      "error": "TypeError"
     },
     {
       "name": "中控技术",
@@ -796,8 +1103,8 @@
       "finalUrl": "https://www.supcon.com/",
       "title": "中控技术股份有限公司",
       "fingerprint": "21af439ef80dad95",
-      "checkedAt": "2026-08-27T16:10:27.366Z",
-      "durationMs": 1275
+      "checkedAt": "2026-08-27T16:23:01.044Z",
+      "durationMs": 939
     },
     {
       "name": "中天科技",
@@ -810,9 +1117,40 @@
       "finalUrl": "https://www.chinaztt.com/",
       "title": "",
       "fingerprint": null,
-      "checkedAt": "2026-08-27T16:10:35.749Z",
-      "durationMs": 274,
+      "checkedAt": "2026-08-27T16:23:09.892Z",
+      "durationMs": 108,
       "error": "TypeError"
+    },
+    {
+      "id": "sinoma",
+      "name": "中亚装备",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "http://www.hfzyhrm.com/",
+      "result": "访问异常，待人工复核",
+      "httpStatus": null,
+      "finalUrl": "http://www.hfzyhrm.com/",
+      "title": "",
+      "fingerprint": null,
+      "checkedAt": "2026-08-27T16:23:21.819Z",
+      "durationMs": 985,
+      "error": "TypeError"
+    },
+    {
+      "id": "asml",
+      "name": "ASML",
+      "area": "当前可投企业",
+      "tag": "中国官网/中国区官方入口",
+      "focus": "当前可投岗位核验",
+      "url": "https://www.asml.com/zh/careers",
+      "result": "访问异常，待人工复核",
+      "httpStatus": 404,
+      "finalUrl": "https://www.asml.com/en/zh/careers",
+      "title": "",
+      "fingerprint": "ee240f24114b4a6e",
+      "checkedAt": "2026-08-27T16:23:29.463Z",
+      "durationMs": 1796
     }
   ]
 }
