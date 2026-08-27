@@ -130,12 +130,38 @@ const companies: Company[] = [
       { id: 'iflytek-structure', title: '机械结构工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '以官方职位页为准', direction: '研发设计', majors: '机械工程、机电、自动化等相关专业', deadline: '秋招申请开放', responsibilities: ['科大讯飞2027届秋招公告已列出合肥机械结构工程师岗位'], requirements: ['公告已确认面向2025年6月至2027年8月毕业生', '具体学历、职责、设计软件要求以科大讯飞校招职位页为准'], note: '公告级信息：岗位名称与工作地点已公开，独立岗位JD需在讯飞校招系统进一步确认。', url: 'https://jy.bsu.edu.cn/front/zpxx.jspa?tid=2089619655797788673' },
     ],
   },
+  {
+    id: 'cctech', name: '长川科技', short: 'CCTECH', industry: '上市公司 · 半导体测试装备', batch: '2027届校园招聘', verified: '2026-08-28 11:10', source: '长川科技2027校招简章', website: 'https://career.nankai.edu.cn/correcruit/content/id/116718.html',
+    jobs: [
+      { id: 'cctech-mechanical', title: '机械工程师', location: '浙江 · 杭州', areas: ['杭州'], degree: '硕士及以上', direction: '研发设计', majors: '机械设计及相关专业', deadline: '网申申请开放', responsibilities: ['参与半导体测试装备的机械设计与研发工作', '按项目要求开展结构方案、图纸和工程化工作'], requirements: ['机械设计及相关专业硕士及以上', '具体产品线、设计软件和项目经历要求以长川校招职位页为准'], note: '公告已明确岗位、专业、地点和学历；独立JD在企业校招系统中持续更新。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116718.html' },
+      { id: 'cctech-fea', title: 'FEA工程师', location: '浙江 · 杭州', areas: ['杭州'], degree: '硕士及以上', direction: '仿真分析', majors: '机械工程、航空航天、车辆工程、热能工程等', deadline: '网申申请开放', responsibilities: ['开展产品有限元分析与工程仿真支持'], requirements: ['机械、航空航天、车辆、热能等专业硕士及以上', '具体仿真软件与项目能力要求以校招职位页为准'], note: '公告级信息：岗位类别和基本资格已公开。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116718.html' },
+      { id: 'cctech-production', title: '生产技术工程师', location: '浙江 · 杭州', areas: ['杭州'], degree: '本科及以上', direction: '制造工程', majors: '机械、电气、自动化等相关专业', deadline: '网申申请开放', responsibilities: ['参与半导体测试装备的生产技术与制造支持工作'], requirements: ['机械、电气、自动化等相关专业本科及以上', '具体制造工艺与现场能力要求以企业职位页为准'], note: '公告级信息：企业已列明岗位、地点、专业和学历。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116718.html' },
+    ],
+  },
+  {
+    id: 'cetc38', name: '中国电科三十八所', short: 'CETC38', industry: '央企 · 国防电子装备', batch: '2027届校园招聘', verified: '2026-08-28 11:05', source: '国家大学生就业服务平台校招公告', website: 'https://www.ncss.cn/student/jobs/DDCCdr9FkSs7hfr55TsHPB/detail.html', status: 'announcement',
+    jobs: [
+      { id: 'cetc38-mechanical', title: '浮空器系统设计师 / 数字化设计与制造设计师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士 / 博士', direction: '研发设计', majors: '机械、材料、机电、制造等相关专业', deadline: '公告投递开放', responsibilities: ['公告列出浮空器系统设计、数字化设计与制造等机械材料类岗位', '服务于电子装备的研究、开发、制造与测试'], requirements: ['博士岗位覆盖浮空器系统、工艺、机电、环控、力学仿真与测试方向', '硕士及以上岗位覆盖浮空器系统和数字化设计与制造方向', '有相关项目经验或论文者优先'], note: '公告级信息：招聘方向、学历与专业类别已公开，独立岗位详情以官方校招官网为准。', url: 'https://www.ncss.cn/student/jobs/DDCCdr9FkSs7hfr55TsHPB/detail.html' },
+    ],
+  },
+  {
+    id: 'shuanghuan', name: '双环传动', short: 'SH', industry: '上市公司 · 齿轮与传动系统', batch: '2027届秋季校园招聘', verified: '2026-08-28 11:00', source: '双环传动2027校招公告', website: 'https://www.gearbox.com.cn/', status: 'announcement',
+    jobs: [
+      { id: 'shuanghuan-project', title: '项目管理岗（机械/车辆方向）', location: '杭州 / 宁波', areas: ['杭州', '宁波'], degree: '本科及以上', direction: '研发设计', majors: '机械类、车辆工程、项目管理等相关专业', deadline: '秋招申请开放', responsibilities: ['参与传动系统相关项目管理与跨部门协同'], requirements: ['面向2027届本科及以上毕业生', '机械类、车辆工程、项目管理等相关专业', '具体项目方向与岗位职责以企业校招系统为准'], note: '公告级信息：岗位、专业、届次和目标工作城市已公开。', url: 'https://www.gearbox.com.cn/' },
+    ],
+  },
+  {
+    id: 'jingce', name: '精测电子', short: 'JINGCE', industry: '上市公司 · 精密检测装备', batch: '2027届校园招聘', verified: '2026-08-28 10:55', source: '精测电子2027校招公告', website: 'https://www.jingce.com/', status: 'announcement',
+    jobs: [
+      { id: 'jingce-mechanical', title: '机械工程师 / 工艺工程师', location: '江苏 · 苏州 / 常州 / 无锡', areas: ['江苏全域'], degree: '本科 / 硕士 / 博士', direction: '研发设计', majors: '机械工程、机电、自动化等相关专业', deadline: '校招申请开放', responsibilities: ['公告列出机械工程师、工艺工程师、研发测试和电控等热招方向', '服务半导体、显示和新能源领域的精密检测装备研发制造'], requirements: ['面向2027届海内外本科、硕士、博士毕业生', '具体学历、专业与产品线要求以精测官方校招系统为准'], note: '公告级信息：企业已确认苏州、常州、无锡制造研发基地和机械类热招方向。', url: 'https://www.jingce.com/' },
+    ],
+  },
 ];
 
 const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
 const directions = ['全部方向', '研发设计', '车辆研发', '仿真分析', '自动化', '制造工程', '设备工程', '质量测试'];
 const companyTypes = ['全部企业', '上市公司 / 央国企', '未上市大型企业'];
-const listedOrStateOwned = new Set(['三一集团', '吉利控股', '阳光电源', '中亚装备', '恒立液压', '海天集团', '利欧集团', '信捷电气', '中国电科八所', '科大讯飞']);
+const listedOrStateOwned = new Set(['三一集团', '吉利控股', '阳光电源', '中亚装备', '恒立液压', '海天集团', '利欧集团', '信捷电气', '中国电科八所', '科大讯飞', '长川科技', '中国电科三十八所', '双环传动', '精测电子']);
 const publicationDates: Record<string, string> = {
   'cat-logistics': '2026-08-13', 'cat-digital': '2026-08-13', 'cat-mfg-xz': '2026-08-13',
   'cat-virtual': '2026-08-09', 'cat-smart': '2026-08-09', 'cat-engine': '2026-08-09', 'cat-transmission': '2026-08-09',
@@ -150,6 +176,7 @@ const publicationDates: Record<string, string> = {
   'leoch-rd': '2026-08-19', 'leoch-production': '2026-08-19',
   'xinje-motor-structure': '2026-08-18', 'xinje-motor-process': '2026-08-18', 'xinje-electromagnetic': '2026-08-18',
   'cetc8-mechanical': '2026-08-20', 'iflytek-structure': '2026-08-24',
+  'cctech-mechanical': '2026-08-21', 'cctech-fea': '2026-08-21', 'cctech-production': '2026-08-21', 'cetc38-mechanical': '2026-08-21', 'shuanghuan-project': '2026-08-22', 'jingce-mechanical': '2026-08-10',
 };
 
 const watchlist = [
