@@ -26,6 +26,7 @@ type Company = {
   verified: string;
   source: string;
   website: string;
+  status?: 'official' | 'announcement';
   jobs: Job[];
 };
 
@@ -72,6 +73,43 @@ const companies: Company[] = [
       { id: 'sg-tooling', title: '工装设计工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '研发设计', majors: '机械设计、自动化相关专业', deadline: '正式批申请开放', responsibilities: ['负责新能源电源设备生产工装夹具、模具的方案设计与优化', '主导方案评审并协同生产、工艺部门验证可行性', '设计工装 3D/2D 图纸，编制技术要求和 BOM', '跟踪加工、装配和试产，解决现场应用问题', '评估工装效率并优化结构以提升良率和效率', '建立技术档案并规范全生命周期维护流程', '对接供应商并跟踪外采工装质量和周期'], requirements: ['机械设计、自动化相关专业本科及以上', '熟练使用 SolidWorks、AutoCAD，掌握机械加工工艺', '熟悉工装夹具、非标自动化治具设计，可独立完成全流程设计', '了解钣金、机加工、注塑等工艺，具备现场问题解决能力', '严谨细致，具备跨部门沟通和团队协作意识'], url: 'https://app.mokahr.com/campus-recruitment/sungrow/94416#/job/c828f8b3-cf8f-48b2-8281-f5556c4f9e42' },
     ],
   },
+  {
+    id: 'sinoma', name: '中亚装备', short: 'SINOMA', industry: '央企 · 高端建材装备', batch: '2027届校园招聘', verified: '2026-08-28 09:20', source: '高校就业网发布的中亚装备2027校招公告', website: 'https://job.hust.edu.cn/zpinfo1/2407505.htm',
+    jobs: [
+      { id: 'sinoma-rd-doctor', title: '装备研发设计工程师（博士专项）', location: '安徽 · 合肥', areas: ['合肥'], degree: '博士及以上', direction: '研发设计', majors: '机械工程、智能制造等相关专业', deadline: '公告投递开放中', responsibilities: ['牵头核心产品立式磨的技术战略规划与迭代升级', '主导关键技术预研与突破，构建核心技术壁垒', '统筹新产品研发全流程，包括方案论证、仿真验证、性能优化和可靠性研究', '制定产品设计标准与制造规范，推动工艺体系升级', '统筹研究总院、实验室和跨部门研发资源，推动前沿技术产业化'], requirements: ['博士及以上，具备扎实理论基础和系统科研方法论', '精通机械结构设计、多物理场仿真分析等技术', '具备独立牵头重大科研项目及成果转化能力', '具备技术战略视野、创新思维和团队领导潜质', '党员、英语突出或有高端装备重大项目经验者优先'], url: 'https://job.hust.edu.cn/zpinfo1/2407505.htm' },
+      { id: 'sinoma-rd', title: '装备研发设计工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机械工程、智能制造等相关专业', deadline: '公告投递开放中', responsibilities: ['负责立式磨产品迭代升级、设计优化、仿真分析和性能可靠性研究', '跟进新产品研发、试验和应用，协助解决技术问题', '制定产品设计标准和规范，优化制造工艺', '开展与集团研究总院和实验室的协同研发'], requirements: ['硕士及以上学历', '能独立开展工作并适应中等强度出差', '熟悉机械结构设计和仿真分析', '具备科研思维、学习创新、科研攻关和团队协作能力', '党员、英语突出或有类似项目经验者优先'], url: 'https://job.hust.edu.cn/zpinfo1/2407505.htm' },
+      { id: 'sinoma-smart', title: '智能化工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士及以上', direction: '自动化', majors: '计算机、软件工程、电子信息、自动化、控制工程等', deadline: '公告投递开放中', responsibilities: ['研发并落地立式磨少人化、无人化智能控制系统', '推动生产制造端信息化、智能化和数字化升级', '参与集团或公司重大专项研发项目', '实施和维护公司信息化管理系统'], requirements: ['硕士及以上学历', '能独立工作并适应中等强度出差', '熟练使用多种编程语言，具备编程或低代码开发能力', '熟悉工业网络、工业软件和自动化设备接口', '党员、英语突出或有类似项目经验者优先'], url: 'https://job.hust.edu.cn/zpinfo1/2407505.htm' },
+    ],
+  },
+  {
+    id: 'amd', name: '中科光电', short: 'AMD', industry: '智能分选装备', batch: '2027届校园招聘', verified: '2026-08-28 09:20', source: '中科大就业网来源的校招公告', website: 'http://www.cn-amd.com',
+    jobs: [
+      { id: 'amd-mechatronic', title: '机电工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机电一体化、机械设计制造、力学、精密仪器等', deadline: '官网投递开放中', responsibilities: ['开展机电产品设计与优化', '进行电磁、静力、流体和热力学等多物理场仿真'], requirements: ['硕士及以上，机电一体化、机械设计制造、力学或精密仪器相关专业', '熟悉 SolidWorks、AutoCAD、Ansys、COMSOL 等软件', '有振动、气动或传动相关设计经验者优先'], url: 'http://www.cn-amd.com' },
+      { id: 'amd-mechatronic-research', title: '机电研究员', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机电一体化、机械设计制造、力学、精密仪器、机器人等', deadline: '官网投递开放中', responsibilities: ['预研色选机机电系统相关新材料、新结构、新工艺和新系统', '攻关复杂机电问题，开展复杂机电系统设计优化和多物理场耦合仿真', '牵头机电新产品、新部件研发，协调资源推动项目落地'], requirements: ['硕士及以上，机电、机械、力学、精密仪器或机器人相关专业', '对技术趋势敏感，具备学术转化和问题解决能力', '精密机械、工业机器人或智能装备研发经验优先', '有振动、气动、传动相关经验优先', '熟练使用 SolidWorks、AutoCAD、Ansys、COMSOL 等软件'], url: 'http://www.cn-amd.com' },
+      { id: 'amd-mechanical', title: '机械工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '研发设计', majors: '机械工程及相关专业', deadline: '官网投递开放中', responsibilities: ['负责产品结构设计'], requirements: ['本科及以上学历', '掌握机械原理与 CAD 制图', '能使用 SolidWorks、AutoCAD 等绘图软件', '具备结构设计相关项目经历'], url: 'http://www.cn-amd.com' },
+    ],
+  },
+  {
+    id: 'hengli', name: '恒立液压', short: 'HL', industry: '上市公司 · 液压系统', batch: '2027届校园招聘', verified: '2026-08-28 09:10', source: '恒立2027校招公告；官方校园招聘页', website: 'https://www.henglihydraulics.com/col47/list', status: 'announcement',
+    jobs: [
+      { id: 'hengli-rd', title: '27届培训生 · 研发类（泵阀）', location: '江苏 · 常州', areas: ['江苏全域'], degree: '硕士及以上', direction: '研发设计', majors: '液压、流体、机械、机电、电气等相关专业', deadline: '公告截止 2026-09-20', responsibilities: ['研发工程：液压泵、阀、马达等产品开发设计和测试调试', '液压应用工程：整机液压系统匹配调试和搭载测试', '仿真工程：开展流场、结构强度和多物理场耦合仿真', '标准化工程：制定编写标准文件，开展规范宣讲、技术支持和指导', '嵌入式工程：研究双核嵌入式AI控制器及智能传感器', '电气工程：开展整机电气系统匹配调试、元件选型和技术支持'], requirements: ['公告确认面向2027届硕士及以上毕业生', '液压、流体、机械、机电、材料、电气等相关专业', '具体岗位会在恒立校园招聘页面继续细分'], note: '公告级信息：校招已启动，岗位方向和基本要求已公开；各方向独立职位页仍在逐步更新。', url: 'https://www.henglihydraulics.com/col47/list' },
+      { id: 'hengli-production', title: '27届培训生 · 生产管理类（泵阀）', location: '江苏 · 常州', areas: ['江苏全域'], degree: '本科及以上', direction: '制造工程', majors: '机械、机电、材料、电气、工业工程等相关专业', deadline: '公告截止 2026-09-20', responsibilities: ['生产计划：安排生产计划、智能调度和排产模型优化', '工艺管理：开展工艺策划、刀具应用和测试编程', '物流管理：建设精益与智能物流，提升交付效率', '质量管理：开展供应商、物料、制程、新品和客诉全流程质量管理', '设备管理：推进设备维修、保养和自动化，降低故障率', '采购工程：开展标准件、非标件采购与供应商管理'], requirements: ['公告确认面向2027届本科及以上毕业生', '机械、机电、材料、电气、工业工程等相关专业', '具体专项要求在恒立校园招聘页面持续发布'], note: '公告级信息：企业已明确开放方向与地点，独立岗位JD尚在官方系统陆续更新。', url: 'https://www.henglihydraulics.com/col47/list' },
+    ],
+  },
+  {
+    id: 'haitian', name: '海天集团', short: 'HT', industry: '上市公司 · 高端装备制造', batch: '2027届校园招聘', verified: '2026-08-28 09:05', source: '海天集团官方校招入口及2027校招公告', website: 'https://www.haitian.com/cn/career/', status: 'announcement',
+    jobs: [
+      { id: 'haitian-rd', title: '2027届校园招聘 · 设计研发方向', location: '浙江 · 宁波 / 安徽 · 合肥', areas: ['宁波', '合肥'], degree: '以官方职位页为准', direction: '研发设计', majors: '机械、机电、自动化、材料等制造相关专业', deadline: '招满即止', responsibilities: ['海天2027届校招公告已确认覆盖宁波、合肥等制造基地', '设计研发为官方校招职位类别之一，具体职责随各事业部独立岗位发布'], requirements: ['面向2027届应届毕业生', '具体学历、专业和软件要求需以事业部最新职位页为准'], note: '公告级信息：官方已确认2027校招启动和地点范围，但当前公开页面尚未列出可逐条核验的设计研发岗位。', url: 'https://www.haitian.com/cn/career/' },
+      { id: 'haitian-manufacturing', title: '2027届校园招聘 · 制造技术方向', location: '浙江 · 宁波 / 安徽 · 合肥', areas: ['宁波', '合肥'], degree: '以官方职位页为准', direction: '制造工程', majors: '机械制造、自动化、工业工程等相关专业', deadline: '招满即止', responsibilities: ['制造技术为海天官方校招职位类别之一', '具体部门、产品线和岗位职责将随校园招聘系统职位发布'], requirements: ['面向2027届应届毕业生', '各岗位学历和专业门槛以招聘系统实时职位为准'], note: '公告级信息：仅用于提示当前校招已开启，不将未发布的岗位细节虚构为完整JD。', url: 'https://www.haitian.com/cn/career/' },
+    ],
+  },
+  {
+    id: 'leoch', name: '利欧集团', short: 'LEO', industry: '上市公司 · 泵与流体装备', batch: '2027届全球校园招聘', verified: '2026-08-28 09:00', source: '利欧2027校招公告', website: 'https://www.leogroup.cn/', status: 'announcement',
+    jobs: [
+      { id: 'leoch-rd', title: '研究开发方向 · 研发技术/测试认证', location: '浙江 · 杭州', areas: ['杭州'], degree: '本科 / 硕士 / 博士', direction: '研发设计', majors: '机械设计制造、机电一体化、流体机械、能源动力、电气、自动控制等', deadline: '公告投递开放中', responsibilities: ['研究开发方向覆盖研发技术、项目管理、电磁研发、控制软件和测试认证', '具体职责会按产品线和独立岗位进一步发布'], requirements: ['面向2026年9月至2027年7月毕业的应届生', '机械、流体、机电、能源动力、电气和自动控制等相关专业', '具体学历、岗位技能要求以利欧校招系统为准'], note: '公告级信息：校招岗位类别、专业和杭州地点已公开；独立职位JD由校招系统实时发布。', url: 'https://www.leogroup.cn/' },
+      { id: 'leoch-production', title: '生产制造方向 · 工艺/采购管理', location: '浙江 · 杭州', areas: ['杭州'], degree: '本科及以上', direction: '制造工程', majors: '机械工程、材料成型、机电、工业工程、质量管理等', deadline: '公告投递开放中', responsibilities: ['生产制造方向覆盖采购管理、计划采购和工艺岗位', '具体职责和部门分配将以校招系统开放职位为准'], requirements: ['面向2027届应届毕业生', '机械、材料成型、机电、工业工程等相关专业', '具体学历和经验门槛按实时职位确认'], note: '公告级信息：用于保留已确认开放的制造方向，等待企业细化独立岗位JD。', url: 'https://www.leogroup.cn/' },
+    ],
+  },
 ];
 
 const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
@@ -83,6 +121,11 @@ const publicationDates: Record<string, string> = {
   'sany-product': '2026-08-26', 'sany-assembly': '2026-08-26', 'sany-process': '2026-08-26',
   'geely-mech-maint': '2026-08-22', 'geely-elec-maint': '2026-08-13',
   'sg-reliability': '2026-08-10', 'sg-equipment': '2026-08-10', 'sg-manufacturing': '2026-08-10', 'sg-tooling': '2026-08-10',
+  'sinoma-rd-doctor': '2026-08-26', 'sinoma-rd': '2026-08-26', 'sinoma-smart': '2026-08-26',
+  'amd-mechatronic': '2026-08-14', 'amd-mechatronic-research': '2026-08-14', 'amd-mechanical': '2026-08-14',
+  'hengli-rd': '2026-08-23', 'hengli-production': '2026-08-23',
+  'haitian-rd': '2026-08-20', 'haitian-manufacturing': '2026-08-20',
+  'leoch-rd': '2026-08-19', 'leoch-production': '2026-08-19',
 };
 
 export default function Home() {
@@ -124,7 +167,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8 sm:py-16">
           <p className="mb-4 text-xs font-bold tracking-[0.18em] text-[#ce5a35]">2027 届校园招聘 · 持续更新</p>
           <div className="grid gap-7 lg:grid-cols-[1fr_330px] lg:items-end">
-            <div><h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] sm:text-6xl">先选公司，再看清<br className="hidden sm:block" /><span className="text-[#1c6741]">每一个完整岗位</span></h1><p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#59675e]">点开公司查看当前校招岗位，再点岗位查看企业官网公布的全部职责和任职资格。核心字段不完整的职位不再上架。</p></div>
+            <div><h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] sm:text-6xl">先选公司，再看清<br className="hidden sm:block" /><span className="text-[#1c6741]">岗位与招聘进度</span></h1><p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#59675e]">完整官方JD逐项展示职责和资格；企业已启动校招但尚未公开独立JD的，保留在公告级信息中，并明确标注待补全。</p></div>
             <div className="rounded-2xl border border-[#ced8cf] bg-white/70 p-5"><div className="flex items-end justify-between"><span className="text-sm text-[#647168]">当前收录</span><strong className="text-4xl font-semibold tracking-tight">{companies.reduce((sum, company) => sum + company.jobs.length, 0)}</strong></div><div className="mt-4 flex justify-between text-xs text-[#748078]"><span>{companies.length} 家重点企业</span><span>核验于 8月27日</span></div></div>
           </div>
         </div>
@@ -139,14 +182,14 @@ export default function Home() {
         </aside>
 
         <div>
-          <div className="mb-5 flex items-end justify-between gap-3"><div><h2 className="text-2xl font-semibold tracking-tight">招聘公司</h2><p className="mt-1 text-sm text-[#6c786f]">{filtered.length} 家公司 · {totalJobs} 个匹配岗位</p></div><span className="rounded-full bg-[#e4ece5] px-3 py-1.5 text-xs font-semibold text-[#225d3d]">仅完整官方 JD</span></div>
+          <div className="mb-5 flex items-end justify-between gap-3"><div><h2 className="text-2xl font-semibold tracking-tight">招聘公司</h2><p className="mt-1 text-sm text-[#6c786f]">{filtered.length} 家公司 · {totalJobs} 个匹配岗位或招聘方向</p></div><span className="rounded-full bg-[#e4ece5] px-3 py-1.5 text-xs font-semibold text-[#225d3d]">完整JD + 公告级信息</span></div>
           <div className="space-y-4" aria-live="polite">
             {filtered.map((company) => {
               const isOpen = openCompanies.has(company.id);
               return <article key={company.id} className="overflow-hidden rounded-2xl border border-[#d8dfd9] bg-white shadow-[0_7px_22px_rgba(31,61,42,0.04)]">
                 <button onClick={() => toggleCompany(company.id)} aria-expanded={isOpen} className="flex w-full items-center gap-4 p-5 text-left transition hover:bg-[#fbfcf9] sm:p-6">
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#173f2a] text-xs font-bold tracking-wide text-white">{company.short}</span>
-                  <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2"><strong className="text-xl tracking-tight">{company.name}</strong><span className="rounded-md bg-[#f4e8de] px-2 py-1 text-[11px] font-medium text-[#a94728]">{company.batch}</span></span><span className="mt-1.5 block text-sm text-[#6b776f]">{company.industry} · {company.jobs.length} 个匹配岗位</span></span>
+                  <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2"><strong className="text-xl tracking-tight">{company.name}</strong><span className="rounded-md bg-[#f4e8de] px-2 py-1 text-[11px] font-medium text-[#a94728]">{company.batch}</span>{company.status === 'announcement' && <span className="rounded-md bg-[#fff2c7] px-2 py-1 text-[11px] font-medium text-[#8a5b00]">公告级 · 待补全JD</span>}</span><span className="mt-1.5 block text-sm text-[#6b776f]">{company.industry} · {company.jobs.length} 个匹配岗位</span></span>
                   <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#cbd4cc] text-xl text-[#245b3c] transition ${isOpen ? 'rotate-45 bg-[#e5eee7]' : ''}`}>＋</span>
                 </button>
 
@@ -162,9 +205,10 @@ export default function Home() {
                           <span className="hidden text-xs font-medium text-[#1c6741] sm:block">{job.deadline}</span><span className={`text-lg text-[#5d6c62] transition ${jobOpen ? 'rotate-180' : ''}`}>⌄</span>
                         </button>
                         {jobOpen && <div className="drawer-in border-t border-[#e5e9e5] px-4 py-5 sm:px-8 sm:py-6">
+                          {company.status === 'announcement' && <p className="mb-5 rounded-lg border border-[#eed99e] bg-[#fff8df] px-3 py-2.5 text-xs leading-5 text-[#765100]">公告级信息：企业已确认启动该届校招与招聘方向，但尚未公开或尚未能核验独立岗位JD。页面只展示当前已公开内容。</p>}
                           <div className="grid gap-6 md:grid-cols-2">
-                            <div><p className="drawer-label">岗位职责</p><ul className="detail-list">{job.responsibilities.map((item) => <li key={item}>{item}</li>)}</ul></div>
-                            <div><p className="drawer-label">招聘要求</p><ul className="detail-list">{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul></div>
+                            <div><p className="drawer-label">{company.status === 'announcement' ? '已公开的工作内容' : '岗位职责'}</p><ul className="detail-list">{job.responsibilities.map((item) => <li key={item}>{item}</li>)}</ul></div>
+                            <div><p className="drawer-label">{company.status === 'announcement' ? '已公开的招聘条件' : '招聘要求'}</p><ul className="detail-list">{job.requirements.map((item) => <li key={item}>{item}</li>)}</ul></div>
                           </div>
                           <div className="mt-6 grid gap-3 rounded-xl bg-[#f1f5f0] p-4 text-sm sm:grid-cols-2 lg:grid-cols-3"><p><span className="detail-key">专业</span>{job.majors}</p><p><span className="detail-key">学历</span>{job.degree}</p><p><span className="detail-key">工作性质</span>校园招聘 · 全职</p><p><span className="detail-key">发布日期</span>{publicationDates[job.id]}</p><p><span className="detail-key">截止状态</span>{job.deadline}</p><p><span className="detail-key">薪资</span>企业官网未公布</p></div>
                           {job.note && <p className="mt-4 rounded-lg border border-[#ead5c8] bg-[#fff8f3] px-3 py-2.5 text-xs leading-5 text-[#9b4d31]">信息说明：{job.note}</p>}
