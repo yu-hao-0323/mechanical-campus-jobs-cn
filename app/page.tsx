@@ -156,12 +156,48 @@ const companies: Company[] = [
       { id: 'jingce-mechanical', title: '机械工程师 / 工艺工程师', location: '江苏 · 苏州 / 常州 / 无锡', areas: ['江苏全域'], degree: '本科 / 硕士 / 博士', direction: '研发设计', majors: '机械工程、机电、自动化等相关专业', deadline: '校招申请开放', responsibilities: ['公告列出机械工程师、工艺工程师、研发测试和电控等热招方向', '服务半导体、显示和新能源领域的精密检测装备研发制造'], requirements: ['面向2027届海内外本科、硕士、博士毕业生', '具体学历、专业与产品线要求以精测官方校招系统为准'], note: '公告级信息：企业已确认苏州、常州、无锡制造研发基地和机械类热招方向。', url: 'https://www.jingce.com/' },
     ],
   },
+  {
+    id: 'donghua', name: '东华科技', short: 'ECEC', industry: '驻皖央企 · 上市工程科技公司', batch: '2027届校园招聘', verified: '2026-08-28 11:45', source: '东华科技2027校招简章', website: 'https://job.tju.edu.cn/recruitment/content/type/2/id/6218.html', status: 'announcement',
+    jobs: [
+      { id: 'donghua-process', title: '化工机械 / 过程装备与控制相关岗位', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科 / 硕士', direction: '研发设计', majors: '化工过程机械、过程装备与控制、机械设计制造、机械工程、动力工程、流体机械等', deadline: '校招申请开放', responsibilities: ['参与化工、新材料、新能源和生态环保工程的研发、咨询、设计、采购、施工管理与工程总承包业务'], requirements: ['面向2027届毕业生', '招收化工机械、过程装备、机械设计制造、机械工程、动力和流体机械等专业', '具体岗位职责与项目地点以企业校招系统为准'], note: '公告级信息：企业、届次、总部地点和机械相关专业范围已公开。', url: 'https://job.tju.edu.cn/recruitment/content/type/2/id/6218.html' },
+    ],
+  },
+  {
+    id: 'cecii', name: '中国电子系统工程第二建设', short: 'CECI', industry: '央企 · 高科技工业工程', batch: '2027届校园招聘', verified: '2026-08-28 11:40', source: '中电二2027校招公告', website: 'https://www.fenbi.com/page/fenxiaozhaokaodetail/1/2072/468660734153728', status: 'announcement',
+    jobs: [
+      { id: 'cecii-power', title: '动力工程师', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '本科 / 硕士', direction: '设备工程', majors: '机械工程、动力工程、给排水、电气、化工等相关专业', deadline: '校招申请开放', responsibilities: ['服务电子、大健康、数据中心和新能源等高科技制造领域的工程设计、建造与智慧运维'], requirements: ['面向2027年毕业的本科、硕士毕业生', '机械、动力、给排水、电气、化工等相关专业', '具体项目与岗位职责以中电二招聘官网为准'], note: '公告级信息：当前校招已启动，岗位名称、地点和专业范围已公开。', url: 'https://www.fenbi.com/page/fenxiaozhaokaodetail/1/2072/468660734153728' },
+    ],
+  },
+  {
+    id: 'huaqin', name: '华勤技术', short: 'HQ', industry: '上市公司 · 智能制造', batch: '2027届秋季校园招聘', verified: '2026-08-28 11:35', source: '华勤技术2027校招公告', website: 'https://zz.jrzp.com/nView_CBBA790940CD038B.shtml', status: 'announcement',
+    jobs: [
+      { id: 'huaqin-engineering', title: '工程技术类 · 工艺 / 设备 / 自动化工程师', location: '江苏 · 无锡 / 浙江 · 宁波', areas: ['江苏全域', '宁波'], degree: '本科及以上', direction: '制造工程', majors: '机械工程、工业工程、自动化、电子、通信、材料等相关专业', deadline: '网申与测评已启动', responsibilities: ['工程技术方向覆盖测试、工业工程、工艺、生产、设备、自动化、新产品导入等岗位'], requirements: ['面向2027届毕业生', '机械、工业工程、自动化等理工科专业', '具体岗位和工作城市以企业校招系统实时开放信息为准'], note: '公告级信息：无锡与宁波属于企业公布的国内校招城市，工程技术岗位类别已公开。', url: 'https://zz.jrzp.com/nView_CBBA790940CD038B.shtml' },
+    ],
+  },
+  {
+    id: 'sugon', name: '中科曙光', short: 'SUGON', industry: '上市公司 · 高端计算与装备', batch: '2027届校园招聘', verified: '2026-08-28 11:30', source: '中科曙光2027校招简章', website: 'https://career.nankai.edu.cn/correcruit/content/id/116837.html', status: 'announcement',
+    jobs: [
+      { id: 'sugon-structure', title: '高端工作站 · 结构工程师', location: '江苏 · 昆山 / 南京 / 浙江 · 杭州', areas: ['江苏全域', '杭州'], degree: '硕士 / 博士', direction: '研发设计', majors: '机械、自动化、硬件、电子、通信、物理等相关专业', deadline: '校招申请开放', responsibilities: ['公告列出高端工作站结构工程师、散热工程师、硬件工程师和测试工程师等研发方向'], requirements: ['面向2027年毕业的硕士、博士应届生', '机械、自动化、硬件、电子、通信、物理等相关专业', '具体岗位职责和实验室方向以中科曙光校招官网为准'], note: '公告级信息：目标城市、岗位方向、学历和专业范围已公开。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116837.html' },
+    ],
+  },
+  {
+    id: 'asml', name: 'ASML', short: 'ASML', industry: '外资制造 · 半导体装备', batch: '2027届校园招聘', verified: '2026-08-28 11:25', source: 'ASML 2027校招公告', website: 'https://www.asml.com/zh/careers', status: 'announcement',
+    jobs: [
+      { id: 'asml-install', title: '客户服务 / 装机工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '设备工程', majors: '机械、自动化、电子、材料、光学、物理、计算机等理工科专业', deadline: '校招申请开放', responsibilities: ['参与半导体光刻设备的客户服务、安装调试和现场技术支持'], requirements: ['面向2027届本科及以上应届生', '机械、自动化、电子、材料、光学、物理、计算机等理工科背景', '具体岗位职责、英语及出差要求以ASML官方职位页为准'], note: '公告级信息：合肥为企业公布的招聘城市，装机与客户服务工程师为当前校招方向。', url: 'https://www.asml.com/zh/careers' },
+    ],
+  },
+  {
+    id: 'lead', name: '先导智能', short: 'LEAD', industry: '上市公司 · 锂电智能装备', batch: '2027届校园招聘', verified: '2026-08-28 11:20', source: '先导智能2027校招职位公告', website: 'https://www.leadintelligent.com/', status: 'announcement',
+    jobs: [
+      { id: 'lead-lean', title: '精益工程师 / 智能制造方向', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '本科及以上', direction: '制造工程', majors: '机械、工业工程、自动化、物流等相关专业', deadline: '校招申请开放', responsibilities: ['参与智能装备制造现场的精益改善、产线效率和制造运营提升'], requirements: ['面向2027届毕业生', '机械、工业工程、自动化、物流等相关专业', '具体岗位职责和学历要求以先导智能招聘系统为准'], note: '公告级信息：无锡2027届精益工程师职位已公开，独立JD随招聘系统更新。', url: 'https://www.leadintelligent.com/' },
+    ],
+  },
 ];
 
 const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
 const directions = ['全部方向', '研发设计', '车辆研发', '仿真分析', '自动化', '制造工程', '设备工程', '质量测试'];
 const companyTypes = ['全部企业', '上市公司 / 央国企', '未上市大型企业'];
-const listedOrStateOwned = new Set(['三一集团', '吉利控股', '阳光电源', '中亚装备', '恒立液压', '海天集团', '利欧集团', '信捷电气', '中国电科八所', '科大讯飞', '长川科技', '中国电科三十八所', '双环传动', '精测电子']);
+const listedOrStateOwned = new Set(['三一集团', '吉利控股', '阳光电源', '中亚装备', '恒立液压', '海天集团', '利欧集团', '信捷电气', '中国电科八所', '科大讯飞', '长川科技', '中国电科三十八所', '双环传动', '精测电子', '东华科技', '中国电子系统工程第二建设', '华勤技术', '中科曙光', '先导智能']);
 const publicationDates: Record<string, string> = {
   'cat-logistics': '2026-08-13', 'cat-digital': '2026-08-13', 'cat-mfg-xz': '2026-08-13',
   'cat-virtual': '2026-08-09', 'cat-smart': '2026-08-09', 'cat-engine': '2026-08-09', 'cat-transmission': '2026-08-09',
@@ -177,6 +213,7 @@ const publicationDates: Record<string, string> = {
   'xinje-motor-structure': '2026-08-18', 'xinje-motor-process': '2026-08-18', 'xinje-electromagnetic': '2026-08-18',
   'cetc8-mechanical': '2026-08-20', 'iflytek-structure': '2026-08-24',
   'cctech-mechanical': '2026-08-21', 'cctech-fea': '2026-08-21', 'cctech-production': '2026-08-21', 'cetc38-mechanical': '2026-08-21', 'shuanghuan-project': '2026-08-22', 'jingce-mechanical': '2026-08-10',
+  'donghua-process': '2026-08-28', 'cecii-power': '2026-08-27', 'huaqin-engineering': '2026-08-18', 'sugon-structure': '2026-08-21', 'asml-install': '2026-08-01', 'lead-lean': '2026-08-25',
 };
 
 const watchlist = [
