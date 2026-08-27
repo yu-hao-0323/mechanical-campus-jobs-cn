@@ -134,6 +134,8 @@ const companies: Company[] = [
 
 const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
 const directions = ['全部方向', '研发设计', '车辆研发', '仿真分析', '自动化', '制造工程', '设备工程', '质量测试'];
+const companyTypes = ['全部企业', '上市公司 / 央国企', '未上市大型企业'];
+const listedOrStateOwned = new Set(['三一集团', '吉利控股', '阳光电源', '中亚装备', '恒立液压', '海天集团', '利欧集团', '信捷电气', '中国电科八所', '科大讯飞']);
 const publicationDates: Record<string, string> = {
   'cat-logistics': '2026-08-13', 'cat-digital': '2026-08-13', 'cat-mfg-xz': '2026-08-13',
   'cat-virtual': '2026-08-09', 'cat-smart': '2026-08-09', 'cat-engine': '2026-08-09', 'cat-transmission': '2026-08-09',
@@ -181,8 +183,12 @@ export default function Home() {
   const [query, setQuery] = useState('');
   const [area, setArea] = useState('全部地区');
   const [direction, setDirection] = useState('全部方向');
+  const [companyType, setCompanyType] = useState('全部企业');
   const [openCompanies, setOpenCompanies] = useState<Set<string>>(new Set());
   const [openJob, setOpenJob] = useState<string | null>(null);
+
+  const isUnlisted = (label: string) => !/(上市|央企|国企)/.test(label);
+  const isUnlistedCompany = (company: Company) => !listedOrStateOwned.has(company.name);
 
   const filtered = useMemo(() => companies.map((company) => {
     const needle = query.trim().toLowerCase();
@@ -190,13 +196,15 @@ export default function Home() {
       const matchesQuery = !needle || `${company.name}${job.title}${job.majors}${job.location}`.toLowerCase().includes(needle);
       const matchesArea = area === '全部地区' || job.areas.includes(area);
       const matchesDirection = direction === '全部方向' || job.direction === direction;
-      return matchesQuery && matchesArea && matchesDirection;
+      const matchesCompanyType = companyType === '全部企业' || (companyType === '未上市大型企业' ? isUnlistedCompany(company) : !isUnlistedCompany(company));
+      return matchesQuery && matchesArea && matchesDirection && matchesCompanyType;
     });
     return { ...company, jobs };
-  }).filter((company) => company.jobs.length > 0), [query, area, direction]);
+  }).filter((company) => company.jobs.length > 0), [query, area, direction, companyType]);
 
   const totalJobs = filtered.reduce((sum, company) => sum + company.jobs.length, 0);
-  const reset = () => { setQuery(''); setArea('全部地区'); setDirection('全部方向'); };
+  const radarFiltered = useMemo(() => watchlist.filter((company) => companyType === '全部企业' || (companyType === '未上市大型企业' ? isUnlisted(company.tag) : !isUnlisted(company.tag))), [companyType]);
+  const reset = () => { setQuery(''); setArea('全部地区'); setDirection('全部方向'); setCompanyType('全部企业'); };
   const toggleCompany = (id: string) => setOpenCompanies((current) => {
     const next = new Set(current);
     if (next.has(id)) next.delete(id); else next.add(id);
@@ -228,6 +236,7 @@ export default function Home() {
           <label htmlFor="keyword" className="block text-xs font-medium text-[#68746c]">关键词</label><input id="keyword" value={query} onChange={(event) => setQuery(event.target.value)} className="mt-2 w-full rounded-xl border border-[#d3dad4] bg-[#fafbf8] px-3 py-2.5 text-sm outline-none focus:border-[#508465] focus:ring-2 focus:ring-[#d8e8dc]" placeholder="岗位、公司或专业" />
           <fieldset className="mt-6 space-y-3"><legend className="mb-3 text-xs font-medium text-[#68746c]">工作地区</legend>{areas.map((item) => <label key={item} className="flex cursor-pointer items-center gap-2.5 text-sm"><input type="radio" name="area" checked={area === item} onChange={() => setArea(item)} className="accent-[#1c6741]" />{item}</label>)}</fieldset>
           <label htmlFor="direction" className="mt-6 block text-xs font-medium text-[#68746c]">岗位方向</label><select id="direction" value={direction} onChange={(event) => setDirection(event.target.value)} className="mt-2 w-full rounded-xl border border-[#d3dad4] bg-[#fafbf8] px-3 py-2.5 text-sm outline-none focus:border-[#508465]">{directions.map((item) => <option key={item}>{item}</option>)}</select>
+          <label htmlFor="company-type" className="mt-6 block text-xs font-medium text-[#68746c]">企业性质</label><select id="company-type" value={companyType} onChange={(event) => setCompanyType(event.target.value)} className="mt-2 w-full rounded-xl border border-[#d3dad4] bg-[#fafbf8] px-3 py-2.5 text-sm outline-none focus:border-[#508465]">{companyTypes.map((item) => <option key={item}>{item}</option>)}</select>
         </aside>
 
         <div>
@@ -276,9 +285,9 @@ export default function Home() {
 
       <section className="border-t border-[#dce1da] bg-white">
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">重点企业雷达</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">{watchlist.length} 家持续监测企业</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#66736a]">这些企业在目标地区设有制造、研发或工程技术岗位。尚未进入“当前可投”列表的，不代表没有机会，只是尚未满足本站的校招与岗位信息核验标准。</p></div><span className="w-fit rounded-full border border-[#cbd5cc] px-3 py-1.5 text-xs font-semibold text-[#42624d]">上市公司 · 央国企 · 头部制造</span></div>
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">重点企业雷达</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">{radarFiltered.length} 家持续监测企业</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#66736a]">这些企业在目标地区设有制造、研发或工程技术岗位。尚未进入“当前可投”列表的，不代表没有机会，只是尚未满足本站的校招与岗位信息核验标准。</p></div><span className="w-fit rounded-full border border-[#cbd5cc] px-3 py-1.5 text-xs font-semibold text-[#42624d]">上市公司 · 央国企 · 头部制造</span></div>
           <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {watchlist.map((company) => <a key={company.name} href={company.url} target="_blank" rel="noreferrer" className="group rounded-xl border border-[#dde4de] bg-[#fbfcfa] p-4 transition hover:-translate-y-0.5 hover:border-[#9cb6a1] hover:bg-white"><div className="flex items-start justify-between gap-3"><strong className="text-[15px] group-hover:text-[#1c6741]">{company.name}</strong><span className="shrink-0 rounded-md bg-[#e8eee7] px-2 py-1 text-[10px] font-semibold text-[#3f614a]">{company.tag}</span></div><p className="mt-2 text-xs text-[#657269]">{company.area}</p><p className="mt-1 text-sm text-[#33463a]">{company.focus}</p><p className="mt-3 text-xs font-semibold text-[#1c6741]">查看招聘入口 ↗</p></a>)}
+            {radarFiltered.map((company) => <a key={company.name} href={company.url} target="_blank" rel="noreferrer" className="group rounded-xl border border-[#dde4de] bg-[#fbfcfa] p-4 transition hover:-translate-y-0.5 hover:border-[#9cb6a1] hover:bg-white"><div className="flex items-start justify-between gap-3"><strong className="text-[15px] group-hover:text-[#1c6741]">{company.name}</strong><span className="shrink-0 rounded-md bg-[#e8eee7] px-2 py-1 text-[10px] font-semibold text-[#3f614a]">{company.tag}</span></div><p className="mt-2 text-xs text-[#657269]">{company.area}</p><p className="mt-1 text-sm text-[#33463a]">{company.focus}</p><p className="mt-3 text-xs font-semibold text-[#1c6741]">查看招聘入口 ↗</p></a>)}
           </div>
         </div>
       </section>
