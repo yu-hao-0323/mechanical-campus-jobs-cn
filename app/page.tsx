@@ -128,6 +128,33 @@ const publicationDates: Record<string, string> = {
   'leoch-rd': '2026-08-19', 'leoch-production': '2026-08-19',
 };
 
+const watchlist = [
+  { name: '安徽合力', area: '合肥', tag: '上市国企', focus: '工业车辆、智能物流', url: 'https://www.helichina.com/contact/job/' },
+  { name: '江淮汽车', area: '合肥', tag: '上市国企', focus: '整车、底盘、工艺研发', url: 'https://www.jac.com.cn/rczp/' },
+  { name: '国轩高科', area: '合肥', tag: '上市公司', focus: '动力电池、设备、工艺', url: 'https://www.gotion.com.cn/join' },
+  { name: '安凯汽车', area: '合肥', tag: '上市国企', focus: '新能源客车、整车研发', url: 'https://www.ankai.com/' },
+  { name: '大众安徽', area: '合肥', tag: '合资车企', focus: '新能源汽车、制造工程', url: 'https://www.volkswagen-anhui.com/' },
+  { name: '蔚来合肥', area: '合肥', tag: '新能源车企', focus: '整车、智能制造、质量', url: 'https://www.nio.com/careers' },
+  { name: '徐工集团', area: '江苏 · 徐州', tag: '上市国企', focus: '工程机械、研发制造', url: 'https://www.xcmg.com/aboutus/job_center.htm' },
+  { name: '中车南京浦镇', area: '江苏 · 南京', tag: '央企', focus: '轨道交通、车辆装备', url: 'https://www.crrcgc.cc/pz/' },
+  { name: '中车戚墅堰', area: '江苏 · 常州', tag: '央企', focus: '轨道交通、传动系统', url: 'https://www.crrcgc.cc/qs/' },
+  { name: '先导智能', area: '江苏 · 无锡', tag: '上市公司', focus: '锂电智能装备、自动化', url: 'https://www.leadintelligent.com/' },
+  { name: '博世中国', area: '江苏 · 苏州/无锡', tag: '外资制造', focus: '汽车零部件、智能制造', url: 'https://www.bosch.com.cn/careers/' },
+  { name: '三一重机', area: '江苏 · 昆山', tag: '上市集团', focus: '工程机械、液压、研发', url: 'https://sany.zhiye.com/campus/jobs' },
+  { name: '杭叉集团', area: '杭州', tag: '上市公司', focus: '工业车辆、液压、电气', url: 'https://www.zjhc.cn/aboutHumanResources.html' },
+  { name: '西子联合', area: '杭州', tag: '装备制造', focus: '电梯、锅炉、工业装备', url: 'https://www.xizigroup.com/' },
+  { name: '中控技术', area: '杭州', tag: '上市公司', focus: '工业自动化、智能制造', url: 'https://www.supcon.com/' },
+  { name: '海康机器人', area: '杭州', tag: '上市集团', focus: '移动机器人、机器视觉', url: 'https://www.hikrobotics.com/cn/' },
+  { name: '浙江吉利控股', area: '杭州', tag: '上市集团', focus: '汽车、动力系统、智能制造', url: 'https://campus.geely.com/' },
+  { name: '拓普集团', area: '宁波', tag: '上市公司', focus: '汽车零部件、机器人', url: 'https://www.tuopu.com/' },
+  { name: '均胜电子', area: '宁波', tag: '上市公司', focus: '汽车安全、智能驾驶', url: 'https://www.joyson.com/' },
+  { name: '均普智能', area: '宁波', tag: '上市公司', focus: '智能制造装备、自动化', url: 'https://cn.piagroup.com/careers/' },
+  { name: '宁波华翔', area: '宁波', tag: '上市公司', focus: '汽车内外饰、零部件', url: 'https://www.nbhx.com/' },
+  { name: '旭升集团', area: '宁波', tag: '上市公司', focus: '精密铝合金、汽车零部件', url: 'https://www.shengroup.com/' },
+  { name: '双林股份', area: '宁波', tag: '上市公司', focus: '汽车零部件、智能座舱', url: 'https://www.slcorp.com.cn/' },
+  { name: '宁波钢铁', area: '宁波', tag: '国企', focus: '冶金装备、设备工程', url: 'https://www.nbsteel.com/' },
+];
+
 export default function Home() {
   const [query, setQuery] = useState('');
   const [area, setArea] = useState('全部地区');
@@ -225,7 +252,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="standards" className="border-t border-[#dce1da] bg-[#173f2a] text-white"><div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1fr_1.25fr]"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ef9a78]">完整性标准</p><h2 className="mt-3 text-3xl font-semibold tracking-tight">字段不全，暂不上架</h2></div><div className="grid gap-4 text-sm leading-6 text-[#d4e2d7] sm:grid-cols-2"><p><strong className="block text-white">只收当前可投</strong>提前批结束、申请入口关闭后立即隐藏。</p><p><strong className="block text-white">完整职责与资格</strong>逐项展示企业公布的全部职责和任职要求。</p><p><strong className="block text-white">核心字段齐全</strong>岗位、地点、学历、专业、届次、日期与入口均可核验。</p><p><strong className="block text-white">缺失值明确说明</strong>薪资等企业未公开字段直接标明未公布，不推测。</p></div></div></section>
+      <section className="border-t border-[#dce1da] bg-white">
+        <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">重点企业雷达</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">{watchlist.length} 家持续监测企业</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#66736a]">这些企业在目标地区设有制造、研发或工程技术岗位。尚未进入“当前可投”列表的，不代表没有机会，只是尚未满足本站的校招与岗位信息核验标准。</p></div><span className="w-fit rounded-full border border-[#cbd5cc] px-3 py-1.5 text-xs font-semibold text-[#42624d]">上市公司 · 央国企 · 头部制造</span></div>
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {watchlist.map((company) => <a key={company.name} href={company.url} target="_blank" rel="noreferrer" className="group rounded-xl border border-[#dde4de] bg-[#fbfcfa] p-4 transition hover:-translate-y-0.5 hover:border-[#9cb6a1] hover:bg-white"><div className="flex items-start justify-between gap-3"><strong className="text-[15px] group-hover:text-[#1c6741]">{company.name}</strong><span className="shrink-0 rounded-md bg-[#e8eee7] px-2 py-1 text-[10px] font-semibold text-[#3f614a]">{company.tag}</span></div><p className="mt-2 text-xs text-[#657269]">{company.area}</p><p className="mt-1 text-sm text-[#33463a]">{company.focus}</p><p className="mt-3 text-xs font-semibold text-[#1c6741]">查看招聘入口 ↗</p></a>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="standards" className="border-t border-[#dce1da] bg-[#173f2a] text-white"><div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1fr_1.25fr]"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ef9a78]">收录标准</p><h2 className="mt-3 text-3xl font-semibold tracking-tight">岗位与企业，分层呈现</h2></div><div className="grid gap-4 text-sm leading-6 text-[#d4e2d7] sm:grid-cols-2"><p><strong className="block text-white">当前可投</strong>只保留仍有效的校招岗位或已明确启动的校招公告。</p><p><strong className="block text-white">完整职责与资格</strong>逐项展示企业公布的全部职责和任职要求。</p><p><strong className="block text-white">公告级信息</strong>校招已经确认、但独立JD未完全公开时，明确标为待补全。</p><p><strong className="block text-white">重点企业雷达</strong>持续监测上市公司、央国企和头部制造企业的官方招聘入口。</p></div></div></section>
       <footer className="bg-[#102d20] px-5 py-6 text-center text-xs text-[#9fb3a5]">公开访问，无需登录。岗位信息以企业官网实时页面为最终依据。</footer>
     </main>
   );
