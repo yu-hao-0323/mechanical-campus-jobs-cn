@@ -6,7 +6,7 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mechanical-campus-jobs-cn.liuy87951.chatgpt.site'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mechanical-campus-jobs-cn.liuy87951.chatgpt.site'),
   title: '机遇引擎｜机械行业校园招聘',
   description: '聚合合肥、江苏、杭州和宁波当前仍可投递的机械工程类校园招聘岗位。',
   openGraph: {
