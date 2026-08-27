@@ -110,6 +110,26 @@ const companies: Company[] = [
       { id: 'leoch-production', title: '生产制造方向 · 工艺/采购管理', location: '浙江 · 杭州', areas: ['杭州'], degree: '本科及以上', direction: '制造工程', majors: '机械工程、材料成型、机电、工业工程、质量管理等', deadline: '公告投递开放中', responsibilities: ['生产制造方向覆盖采购管理、计划采购和工艺岗位', '具体职责和部门分配将以校招系统开放职位为准'], requirements: ['面向2027届应届毕业生', '机械、材料成型、机电、工业工程等相关专业', '具体学历和经验门槛按实时职位确认'], note: '公告级信息：用于保留已确认开放的制造方向，等待企业细化独立岗位JD。', url: 'https://www.leogroup.cn/' },
     ],
   },
+  {
+    id: 'xinje', name: '信捷电气', short: 'XINJE', industry: '上市公司 · 工业自动化', batch: '2027届校园招聘', verified: '2026-08-28 10:30', source: '信捷电气2027校招简章', website: 'https://www.xinje.com/',
+    jobs: [
+      { id: 'xinje-motor-structure', title: '电机结构工程师', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '本科及以上', direction: '研发设计', majors: '机械设计、机械电子等相关专业', deadline: '校招申请开放', responsibilities: ['完成通用品、行业专机和定制机的电机结构整体设计、出图、样机试制与测试跟踪', '负责转轴、轴承、密封件、机壳和端盖等零件的设计校核、材料选型和供应商技术交流', '与电磁、硬件、软件和测试部门协作完成问题分析与闭环', '参与电机技术攻关、质量改进和产品降本', '整理归档项目资料、图纸并参与专利申请'], requirements: ['机械设计、机械电子等专业本科及以上', '了解机械原理、电气控制、机械加工和装配工艺', '熟练使用 AutoCAD、SolidWorks/Creo/NX、Ansys、ERP/PLM 等工具', '熟练使用测量与装配工具', '熟悉标准件选型、非标设计和强度理论计算校核', '责任心强，具备沟通、钻研和团队协作能力'], url: 'https://career.hebut.edu.cn/home/correcruit/content/id/79439.html' },
+      { id: 'xinje-motor-process', title: '电机工艺工程师', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '本科及以上', direction: '制造工程', majors: '机械设计、机械电子等相关专业', deadline: '校招申请开放', responsibilities: ['参与新品开发设计评审，评估制造工艺可行性并制定方案', '开展新产品工艺开发和导入，制定生产工艺流程', '设计、验证并优化样机工装夹具', '主导新产品试制，梳理并解决样机制作问题', '搭建工艺平台，改善瓶颈工序和关键工艺，提升质量与效率'], requirements: ['机械设计、机械电子等相关专业本科及以上', '具备机械制造、装配及工艺设计基础', '具备工装夹具设计、试制问题分析与跨部门协作能力', '责任心强，学习意愿和团队合作意识良好'], url: 'https://career.hebut.edu.cn/home/correcruit/content/id/79439.html' },
+      { id: 'xinje-electromagnetic', title: '电磁设计工程师', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '硕士及以上', direction: '研发设计', majors: '电气工程、机械工程等相关专业', deadline: '校招申请开放', responsibilities: ['负责电机产品设计开发，包括方案设计和磁路设计', '开展电磁、热仿真与振动噪音优化', '跟踪样机测试，分析结果、排查故障并进行设计改进', '指导电机电磁相关生产工艺', '优化电机性能和成本，提升可制造性'], requirements: ['电气工程、机械工程等相关专业硕士及以上', '熟悉电机基本知识、参数与设计方法', '能熟练使用 Maxwell、Jmag 等主流电磁设计软件', '具备责任心、主动性和沟通协调能力'], url: 'https://career.hebut.edu.cn/home/correcruit/content/id/79439.html' },
+    ],
+  },
+  {
+    id: 'cetc8', name: '中国电科八所', short: 'CETC8', industry: '央企 · 光电装备与传输', batch: '2027届校园招聘', verified: '2026-08-28 10:25', source: '中国电科八所2027校招公告', website: 'https://career.nankai.edu.cn/correcruit/content/id/116835.html', status: 'announcement',
+    jobs: [
+      { id: 'cetc8-mechanical', title: '机械设计工程师（大型机械）', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士 / 博士', direction: '研发设计', majors: '机械工程、液压机械、材料工程、精密仪器等相关专业', deadline: '邮件投递开放', responsibilities: ['中国电科八所2027校招公告已列出机械设计工程师（大型机械）岗位', '所属单位研发光电线缆、连接器、光器件、光纤传感器和独立功能装备等产品'], requirements: ['公告明确面向硕士、博士毕业生', '机械工程、液压机械、材料工程、精密仪器等相关专业', '岗位详情通过官方校招二维码或邮件渠道获取'], note: '公告级信息：岗位名称、学历、专业、投递渠道已公开；完整职责由企业在扫码岗位详情中发布。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116835.html' },
+    ],
+  },
+  {
+    id: 'iflytek', name: '科大讯飞', short: 'iFLYTEK', industry: '上市公司 · 人工智能装备', batch: '2027届秋季校园招聘', verified: '2026-08-28 10:20', source: '科大讯飞2027校招公告', website: 'https://www.iflytek.com/', status: 'announcement',
+    jobs: [
+      { id: 'iflytek-structure', title: '机械结构工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '以官方职位页为准', direction: '研发设计', majors: '机械工程、机电、自动化等相关专业', deadline: '秋招申请开放', responsibilities: ['科大讯飞2027届秋招公告已列出合肥机械结构工程师岗位'], requirements: ['公告已确认面向2025年6月至2027年8月毕业生', '具体学历、职责、设计软件要求以科大讯飞校招职位页为准'], note: '公告级信息：岗位名称与工作地点已公开，独立岗位JD需在讯飞校招系统进一步确认。', url: 'https://jy.bsu.edu.cn/front/zpxx.jspa?tid=2089619655797788673' },
+    ],
+  },
 ];
 
 const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
@@ -126,6 +146,8 @@ const publicationDates: Record<string, string> = {
   'hengli-rd': '2026-08-23', 'hengli-production': '2026-08-23',
   'haitian-rd': '2026-08-20', 'haitian-manufacturing': '2026-08-20',
   'leoch-rd': '2026-08-19', 'leoch-production': '2026-08-19',
+  'xinje-motor-structure': '2026-08-18', 'xinje-motor-process': '2026-08-18', 'xinje-electromagnetic': '2026-08-18',
+  'cetc8-mechanical': '2026-08-20', 'iflytek-structure': '2026-08-24',
 };
 
 const watchlist = [
