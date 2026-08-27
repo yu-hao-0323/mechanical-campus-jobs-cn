@@ -1,0 +1,38 @@
+name: Daily recruitment scan
+
+on:
+  schedule:
+    # UTC 00:30 = 北京时间 08:30；GitHub 定时任务可能有数分钟延迟。
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-recruitment-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Scan official recruitment entrances
+        run: node scripts/scan-recruitment.mjs
+      - name: Save changed scan report
+        run: |
+          if git diff --quiet -- reports; then
+            echo "No report changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/latest-recruitment-scan.json reports/latest-recruitment-scan.md
+          git commit -m "chore: update daily recruitment scan"
+          git push
