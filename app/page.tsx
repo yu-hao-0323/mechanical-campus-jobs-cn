@@ -48,6 +48,12 @@ const companies: Company[] = [
     ],
   },
   {
+    id: 'nio', name: '蔚来', short: 'NIO', industry: '智能电动汽车 · 热管理与换电装备', batch: '2027届秋季校园招聘·正式批', verified: '2026-08-28 16:35', source: '蔚来中国校园招聘官网', website: 'https://campus.nio.com/', sourceOrigin: '企业官网发布',
+    jobs: [
+      { id: 'nio-thermal-rd', title: '热管理研发工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机械设计及其自动化、车辆工程、热能与动力工程等相关专业', deadline: '校招正式批 · 申请开放', responsibilities: ['从事新能源汽车热管理零部件（热管理集成模块、空调箱等）的智能化开发', '参与热管理零部件从需求分析、零件设计到验证的正向开发', '参与零件标准化模块开发，借助 AI 根据输入需求生成三维数据方案'], requirements: ['硕士及以上学历优先，机械设计及其自动化、车辆工程、热能与动力工程等相关专业，偏机械与热管理方向', '具备扎实的机械结构设计或热管理研发理论基础', '熟悉 CAD、Catia 等至少一种相关软件', '具备机器学习或数据建模课程基础；对 AI 赋能工业研发、智能化设计感兴趣，有相关项目实践、竞赛经历或数据分析经验者优先', '逻辑清晰，善于总结沉淀，具备学习能力、创新思维和团队协作能力，愿意深耕智能化机械研发领域'], url: 'https://nio.jobs.feishu.cn/campus/position/7673027301600938266/detail' },
+    ],
+  },
+  {
     id: 'sany', name: '三一集团', short: 'SANY', industry: '工程机械与高端装备', batch: '2027届秋季校园招聘', verified: '2026-08-27 19:20', source: '三一集团校招系统', website: 'https://sany.zhiye.com/campus/jobs', sourceOrigin: '企业官网发布',
     jobs: [
       { id: 'sany-mech', title: '机械工程师', location: '江苏 · 昆山 / 常熟', areas: ['江苏全域'], degree: '硕士及以上', direction: '研发设计', majors: '机械设计制造及其自动化、车辆工程、机械电子工程、工业设计等', deadline: '申请入口开放', responsibilities: ['承担通用机械、传动或转向/制动/悬架等底盘系统设计开发与验证', '负责需求分析、方案设计、三维建模和工程图纸输出', '开展选型匹配、设计评审和技术文件编制', '跟进样机试制、装配调试及试验验证，闭环技术问题', '推进产品系列化、标准化、降本和持续优化'], requirements: ['硕士及以上，机械设计制造、车辆、机械电子或工业设计等专业优先', '掌握机械原理、工程制图、机械系统及零部件设计', '能使用 CAD、Creo、CATIA 等工具建模分析', '掌握通用机械、传动或底盘系统匹配验证方法', '逻辑清晰、严谨负责，具备学习、分析、沟通和协作能力', '相关科研、竞赛、实习或项目经历优先，能配合现场调试或短期出差'], url: 'https://sany.zhiye.com/campus/jobs' },
@@ -225,6 +231,7 @@ const companyTypes = ['全部企业', '上市公司 / 央国企', '未上市大�
 const listedOrStateOwned = new Set(['三一集团', '吉利控股', '阳光电源', '中亚装备', '恒立液压', '海天集团', '利欧集团', '信捷电气', '中国电科八所', '科大讯飞', '长川科技', '中国电科三十八所', '双环传动', '精测电子', '东华科技', '中国电子系统工程第二建设', '华勤技术', '中科曙光', '先导智能']);
 const sourceOrigins: Record<string, '企业官网发布' | '官网招聘入口' | '高校/国家就业平台转发' | '第三方平台转发'> = {
   caterpillar: '企业官网发布', sany: '企业官网发布', geely: '企业官网发布', sungrow: '企业官网发布',
+  nio: '企业官网发布',
   hengli: '官网招聘入口', haitian: '官网招聘入口',
   sinoma: '高校/国家就业平台转发', amd: '高校/国家就业平台转发', xinje: '高校/国家就业平台转发', cetc8: '高校/国家就业平台转发', iflytek: '高校/国家就业平台转发', cctech: '高校/国家就业平台转发', cetc38: '高校/国家就业平台转发', donghua: '高校/国家就业平台转发', sugon: '高校/国家就业平台转发', firstack: '高校/国家就业平台转发',
   leoch: '第三方平台转发', shuanghuan: '第三方平台转发', jingce: '第三方平台转发', cecii: '第三方平台转发', huaqin: '第三方平台转发', asml: '第三方平台转发', lead: '第三方平台转发', uaes: '第三方平台转发', boschbcsc: '第三方平台转发', neolix: '第三方平台转发',
@@ -235,6 +242,7 @@ const publicationDates: Record<string, string> = {
   'sany-mech': '2026-08-26', 'sany-hydraulic': '2026-08-26', 'sany-test': '2026-08-26',
   'sany-product': '2026-08-26', 'sany-assembly': '2026-08-26', 'sany-process': '2026-08-26',
   'geely-mech-maint': '2026-08-22', 'geely-elec-maint': '2026-08-13',
+  'nio-thermal-rd': '2026-08-28',
   'sg-reliability': '2026-08-10', 'sg-equipment': '2026-08-10', 'sg-manufacturing': '2026-08-10', 'sg-tooling': '2026-08-10',
   'sinoma-rd-doctor': '2026-08-26', 'sinoma-rd': '2026-08-26', 'sinoma-smart': '2026-08-26',
   'amd-mechatronic': '2026-08-14', 'amd-mechatronic-research': '2026-08-14', 'amd-mechanical': '2026-08-14',
@@ -254,7 +262,7 @@ const watchlist = [
   { name: '国轩高科', area: '合肥', tag: '上市公司', focus: '动力电池、设备、工艺', url: 'https://www.gotion.com.cn/join' },
   { name: '安凯汽车', area: '合肥', tag: '上市国企', focus: '新能源客车、整车研发', url: 'https://www.ankai.com/' },
   { name: '大众安徽', area: '合肥', tag: '合资车企', focus: '新能源汽车、制造工程', url: 'https://www.volkswagen-anhui.com/' },
-  { name: '蔚来合肥', area: '合肥', tag: '新能源车企', focus: '整车、智能制造、质量', url: 'https://www.nio.com/careers' },
+  { name: '蔚来合肥', area: '合肥', tag: '新能源车企', focus: '整车、智能制造、质量', url: 'https://campus.nio.com/' },
   { name: '徐工集团', area: '江苏 · 徐州', tag: '上市国企', focus: '工程机械、研发制造', url: 'https://www.xcmg.com/aboutus/job_center.htm' },
   { name: '中车南京浦镇', area: '江苏 · 南京', tag: '央企', focus: '轨道交通、车辆装备', url: 'https://www.crrcgc.cc/pz/' },
   { name: '中车戚墅堰', area: '江苏 · 常州', tag: '央企', focus: '轨道交通、传动系统', url: 'https://www.crrcgc.cc/qs/' },
@@ -344,7 +352,7 @@ export default function Home() {
       <header className="border-b border-[#dce1da] bg-[#f5f6f2]/95">
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-5 sm:px-8">
           <a href="#top" className="flex items-center gap-3" aria-label="机遇引擎首页"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#173f2a] text-sm font-bold text-white">ME</span><span><strong className="block text-[15px] tracking-[0.08em]">机遇引擎</strong><small className="text-xs text-[#68746c]">机械校招聚合</small></span></a>
-          <nav className="hidden items-center gap-7 text-sm text-[#536159] sm:flex"><span>无需登录 · 官网直投</span><a href="#standards" className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">收录标准</a></nav>
+          <nav className="hidden items-center gap-7 text-sm text-[#536159] sm:flex"><span>无需登录 · 中国官网优先</span><a href="#standards" className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">收录标准</a></nav>
         </div>
       </header>
 
@@ -352,7 +360,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8 sm:py-16">
           <p className="mb-4 text-xs font-bold tracking-[0.18em] text-[#ce5a35]">2027 届校园招聘 · 持续更新</p>
           <div className="grid gap-7 lg:grid-cols-[1fr_330px] lg:items-end">
-            <div><h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] sm:text-6xl">先选公司，再看清<br className="hidden sm:block" /><span className="text-[#1c6741]">岗位与招聘进度</span></h1><p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#59675e]">完整官方JD逐项展示职责和资格；企业已启动校招但尚未公开独立JD的，保留在公告级信息中，并明确标注待补全。</p></div>
+            <div><h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] sm:text-6xl">先选公司，再看清<br className="hidden sm:block" /><span className="text-[#1c6741]">岗位与招聘进度</span></h1><p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#59675e]">所有企业优先以中国官网或中国区官方校招站核验；完整官方JD逐项展示职责和资格，第三方仅作为原始公告参考。</p></div>
             <div className="rounded-2xl border border-[#ced8cf] bg-white/70 p-5"><div className="flex items-end justify-between"><span className="text-sm text-[#647168]">当前收录</span><strong className="text-4xl font-semibold tracking-tight">{companies.reduce((sum, company) => sum + company.jobs.length, 0)}</strong></div><div className="mt-4 flex justify-between text-xs text-[#748078]"><span>{companies.length} 家重点企业</span><span>核验于 8月27日</span></div></div>
           </div>
         </div>
@@ -382,7 +390,7 @@ export default function Home() {
                 </button>
 
                 {isOpen && <div className="drawer-in border-t border-[#e2e6e1] bg-[#f8faf7] p-3 sm:p-5">
-                  <div className="mb-4 flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-[#738077]"><span>来源：{company.source} · 最后核验 {company.verified}</span><a href={company.website} target="_blank" rel="noreferrer" className="font-semibold text-[#1c6741] hover:underline">{sourceOrigin === '企业官网发布' || sourceOrigin === '官网招聘入口' ? '企业官网招聘入口 ↗' : '来源页面 / 企业入口 ↗'}</a></div>
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-[#738077]"><span>来源：{company.source} · 最后核验 {company.verified}</span><a href={company.website} target="_blank" rel="noreferrer" className="font-semibold text-[#1c6741] hover:underline">中国官网招聘入口 ↗</a></div>
                   <div className="space-y-2">
                     {company.jobs.map((job) => {
                       const jobOpen = openJob === job.id;
@@ -422,7 +430,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="standards" className="border-t border-[#dce1da] bg-[#173f2a] text-white"><div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1fr_1.25fr]"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ef9a78]">收录标准</p><h2 className="mt-3 text-3xl font-semibold tracking-tight">岗位与企业，分层呈现</h2></div><div className="grid gap-4 text-sm leading-6 text-[#d4e2d7] sm:grid-cols-2"><p><strong className="block text-white">当前可投</strong>只保留仍有效的校招岗位或已明确启动的校招公告。</p><p><strong className="block text-white">完整职责与资格</strong>逐项展示企业公布的全部职责和任职要求。</p><p><strong className="block text-white">公告级信息</strong>校招已经确认、但独立JD未完全公开时，明确标为待补全。</p><p><strong className="block text-white">重点企业雷达</strong>持续监测上市公司、央国企和头部制造企业的官方招聘入口。</p></div></div></section>
+      <section id="standards" className="border-t border-[#dce1da] bg-[#173f2a] text-white"><div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1fr_1.25fr]"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ef9a78]">收录标准</p><h2 className="mt-3 text-3xl font-semibold tracking-tight">岗位与企业，分层呈现</h2></div><div className="grid gap-4 text-sm leading-6 text-[#d4e2d7] sm:grid-cols-2"><p><strong className="block text-white">中国官网优先</strong>所有企业以中国官网或中国区官方校招站为核验入口；外企同样优先中国区官网。</p><p><strong className="block text-white">完整职责与资格</strong>逐项展示企业公布的全部职责和任职要求。</p><p><strong className="block text-white">公告级信息</strong>高校与第三方只作原始公告参考；校招确认但JD不完整时明确标待补全。</p><p><strong className="block text-white">重点企业雷达</strong>持续监测上市公司、央国企和头部制造企业的中国官方招聘入口。</p></div></div></section>
       <footer className="bg-[#102d20] px-5 py-6 text-center text-xs text-[#9fb3a5]">公开访问，无需登录。岗位信息以企业官网实时页面为最终依据。</footer>
     </main>
   );

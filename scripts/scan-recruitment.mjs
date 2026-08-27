@@ -16,6 +16,11 @@ function extractWatchlist(source) {
   return entries.map(([, name, area, tag, focus, url]) => ({ name, area, tag, focus, url }));
 }
 
+function extractCurrentCompanyPortals(source) {
+  const entries = [...source.matchAll(/id: '([^']+)', name: '([^']+)'[^\n]*website: '([^']+)'/g)];
+  return entries.map(([, id, name, url]) => ({ id, name, area: '当前可投企业', tag: '中国官网/中国区官方入口', focus: '当前可投岗位核验', url }));
+}
+
 function compactText(html) {
   return html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
@@ -92,7 +97,9 @@ async function pool(items, handler) {
   return result.sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
 }
 
-const allCompanies = extractWatchlist(await readFile(sourcePath, 'utf8'));
+const source = await readFile(sourcePath, 'utf8');
+const allCompanies = [...extractWatchlist(source), ...extractCurrentCompanyPortals(source)]
+  .filter((company, index, list) => list.findIndex((item) => item.url === company.url) === index);
 const limit = Number.parseInt(process.env.SCAN_LIMIT ?? '', 10);
 const companies = Number.isFinite(limit) && limit > 0 ? allCompanies.slice(0, limit) : allCompanies;
 const results = await pool(companies, inspect);
@@ -100,7 +107,7 @@ const counts = Object.groupBy(results, ({ result }) => result);
 const report = {
   generatedAt: new Date().toISOString(),
   scope: '合肥、江苏全域、杭州、宁波；机械/装备及相关工程技术校招监测',
-  policy: '扫描结果仅作为待核验线索。不会自动发布岗位；发布前必须人工核对官网、岗位JD和投递状态。',
+  policy: '仅监测中国官网或中国区官方招聘入口。扫描结果仅作为待核验线索；发布前必须人工核对官网、岗位JD和投递状态。',
   totals: Object.fromEntries(Object.entries(counts).map(([key, value]) => [key, value.length])),
   companies: results,
 };
