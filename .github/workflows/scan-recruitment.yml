@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: daily-recruitment-scan
@@ -27,7 +28,7 @@ jobs:
         run: node scripts/scan-recruitment.mjs
       - name: Save changed scan report
         run: |
-          git add reports/latest-recruitment-scan.json reports/latest-recruitment-scan.md
+          git add reports/latest-recruitment-scan.json reports/latest-recruitment-scan.md public/scan/latest-recruitment-scan.json
           if git diff --cached --quiet; then
             echo "No report changes."
             exit 0
@@ -36,3 +37,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "chore: update daily recruitment scan"
           git push
+          gh workflow run deploy-pages.yml --ref main
