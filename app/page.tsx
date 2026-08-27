@@ -75,7 +75,7 @@ const companies: Company[] = [
     ],
   },
   {
-    id: 'sinoma', name: '中亚装备', short: 'SINOMA', industry: '央企 · 高端建材装备', batch: '2027届校园招聘', verified: '2026-08-28 09:20', source: '高校就业网发布的中亚装备2027校招公告', website: 'https://job.hust.edu.cn/zpinfo1/2407505.htm',
+    id: 'sinoma', name: '中亚装备', short: 'SINOMA', industry: '央企 · 高端建材装备', batch: '2027届校园招聘', verified: '2026-08-28 09:20', source: '高校就业网发布的中亚装备2027校招公告', website: 'http://www.hfzyhrm.com/',
     jobs: [
       { id: 'sinoma-rd-doctor', title: '装备研发设计工程师（博士专项）', location: '安徽 · 合肥', areas: ['合肥'], degree: '博士及以上', direction: '研发设计', majors: '机械工程、智能制造等相关专业', deadline: '公告投递开放中', responsibilities: ['牵头核心产品立式磨的技术战略规划与迭代升级', '主导关键技术预研与突破，构建核心技术壁垒', '统筹新产品研发全流程，包括方案论证、仿真验证、性能优化和可靠性研究', '制定产品设计标准与制造规范，推动工艺体系升级', '统筹研究总院、实验室和跨部门研发资源，推动前沿技术产业化'], requirements: ['博士及以上，具备扎实理论基础和系统科研方法论', '精通机械结构设计、多物理场仿真分析等技术', '具备独立牵头重大科研项目及成果转化能力', '具备技术战略视野、创新思维和团队领导潜质', '党员、英语突出或有高端装备重大项目经验者优先'], url: 'https://job.hust.edu.cn/zpinfo1/2407505.htm' },
       { id: 'sinoma-rd', title: '装备研发设计工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机械工程、智能制造等相关专业', deadline: '公告投递开放中', responsibilities: ['负责立式磨产品迭代升级、设计优化、仿真分析和性能可靠性研究', '跟进新产品研发、试验和应用，协助解决技术问题', '制定产品设计标准和规范，优化制造工艺', '开展与集团研究总院和实验室的协同研发'], requirements: ['硕士及以上学历', '能独立开展工作并适应中等强度出差', '熟悉机械结构设计和仿真分析', '具备科研思维、学习创新、科研攻关和团队协作能力', '党员、英语突出或有类似项目经验者优先'], url: 'https://job.hust.edu.cn/zpinfo1/2407505.htm' },
@@ -120,7 +120,7 @@ const companies: Company[] = [
     ],
   },
   {
-    id: 'cetc8', name: '中国电科八所', short: 'CETC8', industry: '央企 · 光电装备与传输', batch: '2027届校园招聘', verified: '2026-08-28 10:25', source: '中国电科八所2027校招公告', website: 'https://career.nankai.edu.cn/correcruit/content/id/116835.html', status: 'announcement',
+    id: 'cetc8', name: '中国电科八所', short: 'CETC8', industry: '央企 · 光电装备与传输', batch: '2027届校园招聘', verified: '2026-08-28 10:25', source: '中国电科八所2027校招公告', website: 'https://8.cetc.com.cn/8/', status: 'announcement',
     jobs: [
       { id: 'cetc8-mechanical', title: '机械设计工程师（大型机械）', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士 / 博士', direction: '研发设计', majors: '机械工程、液压机械、材料工程、精密仪器等相关专业', deadline: '邮件投递开放', responsibilities: ['中国电科八所2027校招公告已列出机械设计工程师（大型机械）岗位', '所属单位研发光电线缆、连接器、光器件、光纤传感器和独立功能装备等产品'], requirements: ['公告明确面向硕士、博士毕业生', '机械工程、液压机械、材料工程、精密仪器等相关专业', '岗位详情通过官方校招二维码或邮件渠道获取'], note: '公告级信息：岗位名称、学历、专业、投递渠道已公开；完整职责由企业在扫码岗位详情中发布。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116835.html' },
     ],
@@ -132,7 +132,7 @@ const companies: Company[] = [
     ],
   },
   {
-    id: 'cctech', name: '长川科技', short: 'CCTECH', industry: '上市公司 · 半导体测试装备', batch: '2027届校园招聘', verified: '2026-08-28 11:10', source: '长川科技2027校招简章', website: 'https://career.nankai.edu.cn/correcruit/content/id/116718.html',
+    id: 'cctech', name: '长川科技', short: 'CCTECH', industry: '上市公司 · 半导体测试装备', batch: '2027届校园招聘', verified: '2026-08-28 11:10', source: '长川科技2027校招简章', website: 'https://www.hzcctech.com/JoinUs/index.aspx',
     jobs: [
       { id: 'cctech-mechanical', title: '机械工程师', location: '浙江 · 杭州', areas: ['杭州'], degree: '硕士及以上', direction: '研发设计', majors: '机械设计及相关专业', deadline: '网申申请开放', responsibilities: ['参与半导体测试装备的机械设计与研发工作', '按项目要求开展结构方案、图纸和工程化工作'], requirements: ['机械设计及相关专业硕士及以上', '具体产品线、设计软件和项目经历要求以长川校招职位页为准'], note: '公告已明确岗位、专业、地点和学历；独立JD在企业校招系统中持续更新。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116718.html' },
       { id: 'cctech-fea', title: 'FEA工程师', location: '浙江 · 杭州', areas: ['杭州'], degree: '硕士及以上', direction: '仿真分析', majors: '机械工程、航空航天、车辆工程、热能工程等', deadline: '网申申请开放', responsibilities: ['开展产品有限元分析与工程仿真支持'], requirements: ['机械、航空航天、车辆、热能等专业硕士及以上', '具体仿真软件与项目能力要求以校招职位页为准'], note: '公告级信息：岗位类别和基本资格已公开。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116718.html' },
@@ -140,7 +140,7 @@ const companies: Company[] = [
     ],
   },
   {
-    id: 'cetc38', name: '中国电科三十八所', short: 'CETC38', industry: '央企 · 国防电子装备', batch: '2027届校园招聘', verified: '2026-08-28 11:05', source: '国家大学生就业服务平台校招公告', website: 'https://www.ncss.cn/student/jobs/DDCCdr9FkSs7hfr55TsHPB/detail.html', status: 'announcement',
+    id: 'cetc38', name: '中国电科三十八所', short: 'CETC38', industry: '央企 · 国防电子装备', batch: '2027届校园招聘', verified: '2026-08-28 11:05', source: '国家大学生就业服务平台校招公告', website: 'https://cetc38.zhaopin.com/', status: 'announcement',
     jobs: [
       { id: 'cetc38-mechanical', title: '浮空器系统设计师 / 数字化设计与制造设计师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士 / 博士', direction: '研发设计', majors: '机械、材料、机电、制造等相关专业', deadline: '公告投递开放', responsibilities: ['公告列出浮空器系统设计、数字化设计与制造等机械材料类岗位', '服务于电子装备的研究、开发、制造与测试'], requirements: ['博士岗位覆盖浮空器系统、工艺、机电、环控、力学仿真与测试方向', '硕士及以上岗位覆盖浮空器系统和数字化设计与制造方向', '有相关项目经验或论文者优先'], note: '公告级信息：招聘方向、学历与专业类别已公开，独立岗位详情以官方校招官网为准。', url: 'https://www.ncss.cn/student/jobs/DDCCdr9FkSs7hfr55TsHPB/detail.html' },
     ],
@@ -158,25 +158,25 @@ const companies: Company[] = [
     ],
   },
   {
-    id: 'donghua', name: '东华科技', short: 'ECEC', industry: '驻皖央企 · 上市工程科技公司', batch: '2027届校园招聘', verified: '2026-08-28 11:45', source: '东华科技2027校招简章', website: 'https://job.tju.edu.cn/recruitment/content/type/2/id/6218.html', status: 'announcement',
+    id: 'donghua', name: '东华科技', short: 'ECEC', industry: '驻皖央企 · 上市工程科技公司', batch: '2027届校园招聘', verified: '2026-08-28 11:45', source: '东华科技2027校招简章', website: 'https://www.chinaecec.com/', status: 'announcement',
     jobs: [
       { id: 'donghua-process', title: '化工机械 / 过程装备与控制相关岗位', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科 / 硕士', direction: '研发设计', majors: '化工过程机械、过程装备与控制、机械设计制造、机械工程、动力工程、流体机械等', deadline: '校招申请开放', responsibilities: ['参与化工、新材料、新能源和生态环保工程的研发、咨询、设计、采购、施工管理与工程总承包业务'], requirements: ['面向2027届毕业生', '招收化工机械、过程装备、机械设计制造、机械工程、动力和流体机械等专业', '具体岗位职责与项目地点以企业校招系统为准'], note: '公告级信息：企业、届次、总部地点和机械相关专业范围已公开。', url: 'https://job.tju.edu.cn/recruitment/content/type/2/id/6218.html' },
     ],
   },
   {
-    id: 'cecii', name: '中国电子系统工程第二建设', short: 'CECI', industry: '央企 · 高科技工业工程', batch: '2027届校园招聘', verified: '2026-08-28 11:40', source: '中电二2027校招公告', website: 'https://www.fenbi.com/page/fenxiaozhaokaodetail/1/2072/468660734153728', status: 'announcement',
+    id: 'cecii', name: '中国电子系统工程第二建设', short: 'CECI', industry: '央企 · 高科技工业工程', batch: '2027届校园招聘', verified: '2026-08-28 11:40', source: '中电二2027校招公告', website: 'https://campus.cec.com.cn/', status: 'announcement',
     jobs: [
       { id: 'cecii-power', title: '动力工程师', location: '江苏 · 无锡', areas: ['江苏全域'], degree: '本科 / 硕士', direction: '设备工程', majors: '机械工程、动力工程、给排水、电气、化工等相关专业', deadline: '校招申请开放', responsibilities: ['服务电子、大健康、数据中心和新能源等高科技制造领域的工程设计、建造与智慧运维'], requirements: ['面向2027年毕业的本科、硕士毕业生', '机械、动力、给排水、电气、化工等相关专业', '具体项目与岗位职责以中电二招聘官网为准'], note: '公告级信息：当前校招已启动，岗位名称、地点和专业范围已公开。', url: 'https://www.fenbi.com/page/fenxiaozhaokaodetail/1/2072/468660734153728' },
     ],
   },
   {
-    id: 'huaqin', name: '华勤技术', short: 'HQ', industry: '上市公司 · 智能制造', batch: '2027届秋季校园招聘', verified: '2026-08-28 11:35', source: '华勤技术2027校招公告', website: 'https://zz.jrzp.com/nView_CBBA790940CD038B.shtml', status: 'announcement',
+    id: 'huaqin', name: '华勤技术', short: 'HQ', industry: '上市公司 · 智能制造', batch: '2027届秋季校园招聘', verified: '2026-08-28 11:35', source: '华勤技术2027校招公告', website: 'https://www.huaqin.com/', status: 'announcement',
     jobs: [
       { id: 'huaqin-engineering', title: '工程技术类 · 工艺 / 设备 / 自动化工程师', location: '江苏 · 无锡 / 浙江 · 宁波', areas: ['江苏全域', '宁波'], degree: '本科及以上', direction: '制造工程', majors: '机械工程、工业工程、自动化、电子、通信、材料等相关专业', deadline: '网申与测评已启动', responsibilities: ['工程技术方向覆盖测试、工业工程、工艺、生产、设备、自动化、新产品导入等岗位'], requirements: ['面向2027届毕业生', '机械、工业工程、自动化等理工科专业', '具体岗位和工作城市以企业校招系统实时开放信息为准'], note: '公告级信息：无锡与宁波属于企业公布的国内校招城市，工程技术岗位类别已公开。', url: 'https://zz.jrzp.com/nView_CBBA790940CD038B.shtml' },
     ],
   },
   {
-    id: 'sugon', name: '中科曙光', short: 'SUGON', industry: '上市公司 · 高端计算与装备', batch: '2027届校园招聘', verified: '2026-08-28 11:30', source: '中科曙光2027校招简章', website: 'https://career.nankai.edu.cn/correcruit/content/id/116837.html', status: 'announcement',
+    id: 'sugon', name: '中科曙光', short: 'SUGON', industry: '上市公司 · 高端计算与装备', batch: '2027届校园招聘', verified: '2026-08-28 11:30', source: '中科曙光2027校招简章', website: 'https://go.sugon.com/campus', status: 'announcement',
     jobs: [
       { id: 'sugon-structure', title: '高端工作站 · 结构工程师', location: '江苏 · 昆山 / 南京 / 浙江 · 杭州', areas: ['江苏全域', '杭州'], degree: '硕士 / 博士', direction: '研发设计', majors: '机械、自动化、硬件、电子、通信、物理等相关专业', deadline: '校招申请开放', responsibilities: ['公告列出高端工作站结构工程师、散热工程师、硬件工程师和测试工程师等研发方向'], requirements: ['面向2027年毕业的硕士、博士应届生', '机械、自动化、硬件、电子、通信、物理等相关专业', '具体岗位职责和实验室方向以中科曙光校招官网为准'], note: '公告级信息：目标城市、岗位方向、学历和专业范围已公开。', url: 'https://career.nankai.edu.cn/correcruit/content/id/116837.html' },
     ],
@@ -400,7 +400,7 @@ export default function Home() {
                           </div>
                           <div className="mt-6 grid gap-3 rounded-xl bg-[#f1f5f0] p-4 text-sm sm:grid-cols-2 lg:grid-cols-3"><p><span className="detail-key">专业</span>{job.majors}</p><p><span className="detail-key">学历</span>{job.degree}</p><p><span className="detail-key">工作性质</span>校园招聘 · 全职</p><p><span className="detail-key">发布日期</span>{publicationDates[job.id]}</p><p><span className="detail-key">截止状态</span>{job.deadline}</p><p><span className="detail-key">薪资</span>企业官网未公布</p></div>
                           {job.note && <p className="mt-4 rounded-lg border border-[#ead5c8] bg-[#fff8f3] px-3 py-2.5 text-xs leading-5 text-[#9b4d31]">信息说明：{job.note}</p>}
-                          <div className="mt-5 flex items-center justify-between gap-3"><span className="text-xs text-[#808a82]">投递前请再次核对官网最新要求</span><a href={job.url} target="_blank" rel="noreferrer" className="rounded-xl bg-[#173f2a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#225c3a]">前往官网投递 ↗</a></div>
+                          <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><span className="text-xs text-[#808a82]">投递前请再次核对官网最新要求</span><span className="flex flex-wrap gap-2">{sourceOrigin === '企业官网发布' ? <a href={job.url} target="_blank" rel="noreferrer" className="rounded-xl bg-[#173f2a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#225c3a]">前往官网投递 ↗</a> : <><a href={job.url} target="_blank" rel="noreferrer" className="rounded-xl border border-[#b9c6bb] bg-white px-4 py-2.5 text-sm font-semibold text-[#365541] hover:bg-[#f1f5f0]">查看原始公告 ↗</a><a href={company.website} target="_blank" rel="noreferrer" className="rounded-xl bg-[#173f2a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#225c3a]">前往企业招聘入口 ↗</a></>}</span></div>
                         </div>}
                       </section>;
                     })}
