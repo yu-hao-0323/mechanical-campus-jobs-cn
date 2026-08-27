@@ -86,6 +86,14 @@ const companies: Company[] = [
     ],
   },
   {
+    id: 'wayeal', name: '皖仪科技', short: 'WAYEAL', industry: '分析仪器与精密装备', batch: '2027届秋季校园招聘', verified: '2026-08-28 18:20', source: '皖仪科技中国校园招聘官网', website: 'https://wayeal.zhiye.com/campus/jobs', sourceOrigin: '企业官网发布',
+    jobs: [
+      { id: 'wayeal-mechanical', title: '机械工程师', location: '安徽 · 合肥 · 高新区', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机械工程（真空方向）、机械设计制造及其自动化、机械电子工程、过程装备与控制工程、流体机械及工程等', deadline: '校招申请开放', responsibilities: ['承担项目方案设计与技术沟通，完成设计方案确认', '完成机械结构、气动图纸及材料清单编制，对项目节点负责', '为机械装配和售后现场提供机械结构技术支持', '开展机械改进设计、设计标准化工作，输出图纸和 BOM'], requirements: ['硕士及以上，机械工程（真空方向）、机械设计制造、机械电子、过程装备与控制、流体机械等相关专业', '具备扎实机械设计理论基础，掌握机械原理、机械设计、材料力学、公差配合与测量、机械制造工艺等知识', '具备机械问题分析思路，能判断故障可能原因；图纸和 BOM 条理清晰、版本可控，具备设计标准化和模块化改进基础'], url: 'https://wayeal.zhiye.com/campus/jobs' },
+      { id: 'wayeal-system-product', title: '系统/产品工程师', location: '安徽 · 合肥 · 高新区', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '精密仪器、机械工程、自动化、测控技术与仪器、流体机械、过程装备与控制等相关专业', deadline: '校招申请开放', responsibilities: ['参与产品前期方案讨论，协助确定技术路线和关键指标', '完成样机机械结构组装、电气接线、系统联调与性能验证', '承担单一模块需求分解、方案设计、验证测试和问题闭环', '编写并归档测试报告、验证记录和操作手册等技术资料', '参与产品版本改进，为售前、生产和售后提供全生命周期技术支持'], requirements: ['硕士及以上，精密仪器、机械工程、自动化、测控、流体机械、过程装备与控制等相关专业', '具备精密仪器结构、真空系统基础理论，有样机装配、调试和测试经验', '沟通表达、主动性和抗压能力良好，逻辑清晰、严谨细致，具备学习复盘意识'], url: 'https://wayeal.zhiye.com/campus/jobs' },
+      { id: 'wayeal-process', title: '工艺工程师', location: '安徽 · 合肥 · 高新区', areas: ['合肥'], degree: '本科及以上', direction: '制造工程', majors: '机械工程、物理、电子、控制科学与工程等机电相关专业', deadline: '校招申请开放', responsibilities: ['维护和改善仪器量产及机加工艺', '参与产品试制，固化 SOP、装配规范、调试/标定作业指导书、工时定额、PFMEA 与控制计划', '监督工艺纪律并支持现场，处理制程工艺异常、装配不良和调试合格率波动', '推动 ECN 工程变更在产线落地，组织培训并验证变更效果', '维护优化工装夹具，提出产线自动化和测试工装升级需求'], requirements: ['本科及以上，机械工程、物理、电子、控制科学与工程等机电相关专业', '具备独立工作和解决问题能力，善于沟通合作，热衷新技术、乐于动手实践和总结分享'], url: 'https://wayeal.zhiye.com/campus/jobs' },
+    ],
+  },
+  {
     id: 'sinoma', name: '中亚装备', short: 'SINOMA', industry: '央企 · 高端建材装备', batch: '2027届校园招聘', verified: '2026-08-28 09:20', source: '高校就业网发布的中亚装备2027校招公告', website: 'http://www.hfzyhrm.com/',
     jobs: [
       { id: 'sinoma-rd-doctor', title: '装备研发设计工程师（博士专项）', location: '安徽 · 合肥', areas: ['合肥'], degree: '博士及以上', direction: '研发设计', majors: '机械工程、智能制造等相关专业', deadline: '公告投递开放中', responsibilities: ['牵头核心产品立式磨的技术战略规划与迭代升级', '主导关键技术预研与突破，构建核心技术壁垒', '统筹新产品研发全流程，包括方案论证、仿真验证、性能优化和可靠性研究', '制定产品设计标准与制造规范，推动工艺体系升级', '统筹研究总院、实验室和跨部门研发资源，推动前沿技术产业化'], requirements: ['博士及以上，具备扎实理论基础和系统科研方法论', '精通机械结构设计、多物理场仿真分析等技术', '具备独立牵头重大科研项目及成果转化能力', '具备技术战略视野、创新思维和团队领导潜质', '党员、英语突出或有高端装备重大项目经验者优先'], url: 'https://job.hust.edu.cn/zpinfo1/2407505.htm' },
@@ -234,7 +242,7 @@ const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
 const directions = ['全部方向', '研发设计', '车辆研发', '仿真分析', '自动化', '制造工程', '设备工程', '质量测试'];
 const companyTypes = ['全部企业', '央国企', '外企', '上市公司', '大型公司'];
 const currentCompanyCategories: Record<string, string> = {
-  caterpillar: '外企', sany: '上市公司', geely: '上市公司', sungrow: '上市公司', nio: '上市公司', sinoma: '央国企', amd: '大型公司', hengli: '上市公司', haitian: '上市公司', leoch: '上市公司', xinje: '上市公司', cetc8: '央国企', iflytek: '上市公司', cctech: '上市公司', cetc38: '央国企', shuanghuan: '上市公司', jingce: '上市公司', donghua: '央国企', cecii: '央国企', huaqin: '上市公司', sugon: '上市公司', asml: '外企', lead: '上市公司', firstack: '大型公司', uaes: '外企', boschbcsc: '外企', neolix: '大型公司',
+  caterpillar: '外企', sany: '上市公司', geely: '上市公司', sungrow: '上市公司', nio: '上市公司', wayeal: '上市公司', sinoma: '央国企', amd: '大型公司', hengli: '上市公司', haitian: '上市公司', leoch: '上市公司', xinje: '上市公司', cetc8: '央国企', iflytek: '上市公司', cctech: '上市公司', cetc38: '央国企', shuanghuan: '上市公司', jingce: '上市公司', donghua: '央国企', cecii: '央国企', huaqin: '上市公司', sugon: '上市公司', asml: '外企', lead: '上市公司', firstack: '大型公司', uaes: '外企', boschbcsc: '外企', neolix: '大型公司',
 };
 const sourceOrigins: Record<string, '企业官网发布' | '官网招聘入口' | '高校/国家就业平台转发' | '第三方平台转发'> = {
   caterpillar: '企业官网发布', sany: '企业官网发布', geely: '企业官网发布', sungrow: '企业官网发布',
@@ -252,6 +260,7 @@ const publicationDates: Record<string, string> = {
   'nio-thermal-rd': '2026-08-28',
   'nio-project-quality': '2026-08-28', 'nio-process-quality': '2026-08-28', 'nio-smart-equipment': '2026-08-28',
   'nio-stamping-equipment': '2026-08-28', 'nio-stamping-process': '2026-08-28',
+  'wayeal-mechanical': '2026-08-24', 'wayeal-system-product': '2026-08-24', 'wayeal-process': '2026-08-24',
   'sg-reliability': '2026-08-10', 'sg-equipment': '2026-08-10', 'sg-manufacturing': '2026-08-10', 'sg-tooling': '2026-08-10',
   'sinoma-rd-doctor': '2026-08-26', 'sinoma-rd': '2026-08-26', 'sinoma-smart': '2026-08-26',
   'amd-mechatronic': '2026-08-14', 'amd-mechatronic-research': '2026-08-14', 'amd-mechanical': '2026-08-14',
