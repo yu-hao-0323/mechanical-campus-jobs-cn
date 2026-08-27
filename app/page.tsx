@@ -51,6 +51,9 @@ const companies: Company[] = [
     id: 'nio', name: '蔚来', short: 'NIO', industry: '智能电动汽车 · 热管理与换电装备', batch: '2027届秋季校园招聘·正式批', verified: '2026-08-28 16:35', source: '蔚来中国校园招聘官网', website: 'https://campus.nio.com/', sourceOrigin: '企业官网发布',
     jobs: [
       { id: 'nio-thermal-rd', title: '热管理研发工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机械设计及其自动化、车辆工程、热能与动力工程等相关专业', deadline: '校招正式批 · 申请开放', responsibilities: ['从事新能源汽车热管理零部件（热管理集成模块、空调箱等）的智能化开发', '参与热管理零部件从需求分析、零件设计到验证的正向开发', '参与零件标准化模块开发，借助 AI 根据输入需求生成三维数据方案'], requirements: ['硕士及以上学历优先，机械设计及其自动化、车辆工程、热能与动力工程等相关专业，偏机械与热管理方向', '具备扎实的机械结构设计或热管理研发理论基础', '熟悉 CAD、Catia 等至少一种相关软件', '具备机器学习或数据建模课程基础；对 AI 赋能工业研发、智能化设计感兴趣，有相关项目实践、竞赛经历或数据分析经验者优先', '逻辑清晰，善于总结沉淀，具备学习能力、创新思维和团队协作能力，愿意深耕智能化机械研发领域'], url: 'https://nio.jobs.feishu.cn/campus/position/7673027301600938266/detail' },
+      { id: 'nio-project-quality', title: '项目质量改进工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '质量测试', majors: '车辆工程、机械、质量、材料等相关专业', deadline: '校招正式批 · 申请开放', responsibilities: ['牵头整车质量问题改进工作', '建立供应链、制造、质量、研发、售后等跨部门团队，持续提升过程与产品质量', '协调跨部门团队优先推进质量改进行动', '管理项目阶段重难点复合问题，推进制造范围内问题的根因分析和纠正措施', '针对整车重大质量与关键过程质量问题建立临时围堵和长期纠正措施，评估市场风险并落实处理决策'], requirements: ['本科及以上，车辆工程、机械、质量、材料等相关专业', '了解车辆构造及制造工艺，有大学生方程式经历者优先', '热爱汽车行业，具备良好学习能力、沟通表达能力和团队合作精神'], url: 'https://nio.jobs.feishu.cn/campus/position/7677841219935291711/detail' },
+      { id: 'nio-process-quality', title: '过程质量工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '质量测试', majors: '理工科专业（机械、车辆、制造、材料等方向优先）', deadline: '校招正式批 · 申请开放', responsibilities: ['实施制造过程质量预防，协同研发与制造工艺团队推进新项目质量活动', '提升关键工艺过程控制能力，制定覆盖结构设计、制造控制和交付质量的标准', '结合项目风险开展质量工艺文件开发，通过 FMEA 完成 QCP 开发、验证、发布和迭代', '结合新工艺、新材料开展质量风险评估与预防方案策划，推进专项 FMEA', '使用 PFMEA、CP、作业指导书等文件开展过程能力评估，识别并闭环制造风险', '分析制造过程质量数据，挖掘潜在风险并提升过程能力'], requirements: ['本科及以上，理工科专业背景', '具备数据分析能力，有 AI 数据分析应用案例者优先', '熟悉汽车制造工艺，有相关实习经历者优先', '具备沟通、协调、组织、快速适应和学习能力', '熟练使用 Office，能够操作 AutoCAD、Catia 等软件', '熟悉 8D、FMEA 等质量管理工具'], url: 'https://nio.jobs.feishu.cn/campus/position/7673026938868615434/detail' },
+      { id: 'nio-smart-equipment', title: '智能设备运营工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '自动化', majors: '机械工程、智能制造工程、机械电子、自动化等相关专业', deadline: '校招正式批 · 申请开放', responsibilities: ['开展智能制造领域机器人技术研发、方案设计与落地调试，覆盖工业/人形机器人结构优化、运动控制与功能迭代', '承担机器视觉方案设计、算法适配、程序开发与现场调试，实现视觉检测、定位、识别和分拣等功能', '参与机器人和机器视觉项目的需求调研、可行性分析、方案输出、开发测试与迭代优化', '推进既有智能制造设备和机器人系统的技术升级、故障排查、性能优化和车型迭代', '跟进行业前沿机器人、工业智能视觉和智能制造自动化技术，沉淀并优化技术体系'], requirements: ['机械工程、智能制造工程、机械电子、自动化等专业本科及以上，具备机械结构设计、智能制造原理和自动化控制基础', '熟悉机器视觉原理，了解工业相机、镜头、光源等硬件选型，以及视觉算法适配、图像预处理和特征识别', '熟练掌握 Python、C++、C# 等至少一种编程语言，熟悉 Halcon、OpenCV 等视觉开发工具者优先', '能够接受高强度工作节奏'], url: 'https://nio.jobs.feishu.cn/campus/position/7673026938868910346/detail' },
     ],
   },
   {
@@ -243,6 +246,7 @@ const publicationDates: Record<string, string> = {
   'sany-product': '2026-08-26', 'sany-assembly': '2026-08-26', 'sany-process': '2026-08-26',
   'geely-mech-maint': '2026-08-22', 'geely-elec-maint': '2026-08-13',
   'nio-thermal-rd': '2026-08-28',
+  'nio-project-quality': '2026-08-28', 'nio-process-quality': '2026-08-28', 'nio-smart-equipment': '2026-08-28',
   'sg-reliability': '2026-08-10', 'sg-equipment': '2026-08-10', 'sg-manufacturing': '2026-08-10', 'sg-tooling': '2026-08-10',
   'sinoma-rd-doctor': '2026-08-26', 'sinoma-rd': '2026-08-26', 'sinoma-smart': '2026-08-26',
   'amd-mechatronic': '2026-08-14', 'amd-mechatronic-research': '2026-08-14', 'amd-mechanical': '2026-08-14',
