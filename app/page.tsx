@@ -27,7 +27,7 @@ type Company = {
   source: string;
   website: string;
   status?: 'official' | 'announcement';
-  sourceOrigin?: '官网发布';
+  sourceOrigin?: '企业官网发布';
   jobs: Job[];
 };
 
@@ -36,7 +36,7 @@ const catMfg = 'https://careers.caterpillar.com/zh/%E8%81%8C%E4%BD%8D/r000038738
 const catPower = 'https://careers.caterpillar.com/zh/%E8%81%8C%E4%BD%8D/r0000387378/2027%E6%A0%A1%E5%9B%AD%E6%8B%9B%E8%81%98-%E7%A0%94%E5%8F%91%E6%8A%80%E6%9C%AF%E7%B1%BB-%E5%8F%91%E5%8A%A8%E6%9C%BA-%E4%BC%A0%E5%8A%A8%E6%96%B9%E5%90%91/';
 const companies: Company[] = [
   {
-    id: 'caterpillar', name: '卡特彼勒', short: 'CAT', industry: '工程机械与动力系统', batch: '2027届校园招聘', verified: '2026-08-27 18:10', source: '卡特彼勒招聘官网', website: 'https://careers.caterpillar.com/zh/', sourceOrigin: '官网发布',
+    id: 'caterpillar', name: '卡特彼勒', short: 'CAT', industry: '工程机械与动力系统', batch: '2027届校园招聘', verified: '2026-08-27 18:10', source: '卡特彼勒招聘官网', website: 'https://careers.caterpillar.com/zh/', sourceOrigin: '企业官网发布',
     jobs: [
       { id: 'cat-logistics', title: '智能物流研发工程师', location: '江苏 · 徐州', areas: ['江苏全域'], degree: '本科及以上', direction: '自动化', majors: '机械、电气自动化、智能物流、工业工程或计算机相关专业', deadline: '截止 2026-10-30', responsibilities: ['负责 AGV/AMR 或自动化仓库的现场部署、业务逻辑梳理及供应商沟通', '完成 AGV 路线建图、站点配置、对接调试及任务配置', '完成简单逻辑电路设计修改，解决联调问题', '开展 AGV 整车机械、电气元器件检修及导航激光校准', '记录现场问题并协同研发、生产人员推动产品迭代', '处理项目售后问题，对客户开展使用培训并配合项目验收'], requirements: ['本科及以上，机械、电气自动化、智能物流、工业工程或计算机相关专业', '熟悉低压电气元件、传感器、驱动器、电机和编码器', '熟悉电路图并能独立完成接线，具有 PLC 软件基础', '具备软件代码及应用层基础', '熟悉 TCP/IP、串口、MODBUS、S7、CAN 等工业通信协议', '抗压、沟通协调和学习能力强', '熟悉 AGV/ASRS 机械电气结构、工程机械生产工艺或独立项目经验者优先'], url: catOps },
       { id: 'cat-digital', title: '数字化工程师', location: '江苏 · 徐州', areas: ['江苏全域'], degree: '本科及以上', direction: '自动化', majors: '计算机、软件、工业工程或相关工科专业', deadline: '截止 2026-10-30', responsibilities: ['推动企业级数字化转型与落地实施', '围绕业务需求参与并主导数字化解决方案设计与开发', '运用数据分析和智能办公自动化技术提升运营效率与决策能力', '精简部署流程、提高实施效率并降低项目风险'], requirements: ['具备清晰高效的沟通能力', '掌握识别、预判和解决组织、运营或流程问题的方法', '理解软件产品技术架构与关键技术要素', '能够设计、配置及集成软件产品技术方案', '能够排查硬件、软件、应用系统或运营过程中的技术故障'], url: catOps },
@@ -48,7 +48,7 @@ const companies: Company[] = [
     ],
   },
   {
-    id: 'sany', name: '三一集团', short: 'SANY', industry: '工程机械与高端装备', batch: '2027届秋季校园招聘', verified: '2026-08-27 19:20', source: '三一集团校招系统', website: 'https://sany.zhiye.com/campus/jobs', sourceOrigin: '官网发布',
+    id: 'sany', name: '三一集团', short: 'SANY', industry: '工程机械与高端装备', batch: '2027届秋季校园招聘', verified: '2026-08-27 19:20', source: '三一集团校招系统', website: 'https://sany.zhiye.com/campus/jobs', sourceOrigin: '企业官网发布',
     jobs: [
       { id: 'sany-mech', title: '机械工程师', location: '江苏 · 昆山 / 常熟', areas: ['江苏全域'], degree: '硕士及以上', direction: '研发设计', majors: '机械设计制造及其自动化、车辆工程、机械电子工程、工业设计等', deadline: '申请入口开放', responsibilities: ['承担通用机械、传动或转向/制动/悬架等底盘系统设计开发与验证', '负责需求分析、方案设计、三维建模和工程图纸输出', '开展选型匹配、设计评审和技术文件编制', '跟进样机试制、装配调试及试验验证，闭环技术问题', '推进产品系列化、标准化、降本和持续优化'], requirements: ['硕士及以上，机械设计制造、车辆、机械电子或工业设计等专业优先', '掌握机械原理、工程制图、机械系统及零部件设计', '能使用 CAD、Creo、CATIA 等工具建模分析', '掌握通用机械、传动或底盘系统匹配验证方法', '逻辑清晰、严谨负责，具备学习、分析、沟通和协作能力', '相关科研、竞赛、实习或项目经历优先，能配合现场调试或短期出差'], url: 'https://sany.zhiye.com/campus/jobs' },
       { id: 'sany-hydraulic', title: '液压工程师', location: '江苏 · 昆山 / 杭州', areas: ['江苏全域', '杭州'], degree: '硕士及以上', direction: '研发设计', majors: '机械工程、流体传动与控制、液压、车辆工程等', deadline: '申请入口开放', responsibilities: ['承担液压系统总体、回路或泵阀缸等元件设计选型与验证', '负责需求分析、回路设计、参数匹配与元件选型', '输出液压原理图、技术规范、计算分析及设计文件', '参与系统联调、性能测试和故障诊断', '推动泄漏、温升、冲击问题闭环及效率、可靠性和成本优化'], requirements: ['硕士及以上，机械、流体传动、液压、车辆等专业优先', '掌握液压传动、元件选型和系统回路设计', '能使用液压仿真、测试和数据分析工具', '具备液压元件性能分析能力', '逻辑清晰，具备学习、工程分析、沟通和团队协作能力', '相关科研、竞赛、实习或项目经历优先，可配合现场调试和短期出差'], url: 'https://sany.zhiye.com/campus/jobs' },
@@ -59,14 +59,14 @@ const companies: Company[] = [
     ],
   },
   {
-    id: 'geely', name: '吉利控股', short: 'GEELY', industry: '汽车与智能出行', batch: '2027届秋季全球校招', verified: '2026-08-27 19:10', source: '吉利校园招聘官网', website: 'https://campus.geely.com/campus-recruitment/geely/78436?locale=zh-CN#/jobs?commitment%5B0%5D=%E5%85%A8%E8%81%8C', sourceOrigin: '官网发布',
+    id: 'geely', name: '吉利控股', short: 'GEELY', industry: '汽车与智能出行', batch: '2027届秋季全球校招', verified: '2026-08-27 19:10', source: '吉利校园招聘官网', website: 'https://campus.geely.com/campus-recruitment/geely/78436?locale=zh-CN#/jobs?commitment%5B0%5D=%E5%85%A8%E8%81%8C', sourceOrigin: '企业官网发布',
     jobs: [
       { id: 'geely-mech-maint', title: '机械维修岗', location: '浙江 · 宁波', areas: ['宁波'], degree: '本科及以上', direction: '设备工程', majors: '机械、电气、自动化等相关专业优先', deadline: '申请入口开放', responsibilities: ['负责工厂设备产品的程序设计、改良和升级优化', '制作机械原理图并指导布线安装', '负责设备故障排查、升级和维修保养', '负责新项目机械方案及机械控制需求设计', '响应现场设备报修并快速恢复生产'], requirements: ['本科及以上，机械、电气、自动化等相关专业优先', 'CET-4 及以上，具备良好英语听说读写能力', '具备设备电气、机械系统维护和设计能力', '熟悉机械制造、装配和测试基础知识', '了解常见设备及检测方法，能够阅读图纸', '具备沟通表达和团队协作精神，相关项目或实习经验优先'], url: 'https://campus.geely.com/campus-recruitment/geely/78436?locale=zh-CN#/job/8ba0dc88-85df-4217-91e9-1b7108eb8d76' },
       { id: 'geely-elec-maint', title: '机械电气维修岗', location: '浙江 · 宁波', areas: ['宁波'], degree: '本科及以上', direction: '设备工程', majors: '机械、电气自动化、电气控制相关专业', deadline: '申请入口开放', responsibilities: ['执行挂牌上锁等安全规定，编制安全操作规程并落实培训', '审核维修工单、收集故障数据并提出技改方案', '参与疑难故障维修与分析，采购电气备件、耗材和工辅具', '编制优化 TPM、PM 计划和设备单机卡，优化加工动作及防错程序', '编制培训课件并培训电气/机械维修人员', '分析备件异常消耗，调整库存并支持备件采购'], requirements: ['本科及以上，机械、电气自动化或电气控制相关专业', 'CET-4 以上或英语听说读写熟练', '熟练掌握电气/机械控制图纸和硬件规范', '熟练应用 FANUC、SIEMENS Step7 等编程软件', '具备设备电气/机械控制改造调试能力', '具备 S120 等驱动系统调试和诊断能力'], url: 'https://campus.geely.com/campus-recruitment/geely/78436?locale=zh-CN#/job/3b260a99-eb56-4751-84e6-9e18030fbfc4' },
     ],
   },
   {
-    id: 'sungrow', name: '阳光电源', short: 'SG', industry: '新能源装备与电力电子', batch: '2027届全球校招正式批', verified: '2026-08-27 19:35', source: '阳光电源校园招聘官网', website: 'https://app.mokahr.com/campus-recruitment/sungrow/94416#/jobs', sourceOrigin: '官网发布',
+    id: 'sungrow', name: '阳光电源', short: 'SG', industry: '新能源装备与电力电子', batch: '2027届全球校招正式批', verified: '2026-08-27 19:35', source: '阳光电源校园招聘官网', website: 'https://app.mokahr.com/campus-recruitment/sungrow/94416#/jobs', sourceOrigin: '企业官网发布',
     jobs: [
       { id: 'sg-reliability', title: '可靠性工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '博士', direction: '质量测试', majors: '电气工程、电力电子、材料、可靠性工程、机械工程等', deadline: '正式批申请开放', responsibilities: ['参与搭建功率半导体、电力电子/储能整机及零部件可靠性评估体系，编制标准和测试规范', '配合完成加速老化、逆向分析和整机可靠性试验方案设计、落地与判定', '使用电学测试、金相、SEM-EDS、X-ray、热成像等手段分析器件、结构件、功率模块和电池失效', '运用 FMEA、FTA 开展可靠性风险分析，在器件、材料、结构和电路设计阶段识别隐患', '参与宽禁带器件、电池和高压绝缘老化等课题研究并沉淀方法'], requirements: ['2027届博士，电气、电力电子、材料、可靠性或机械工程等专业', '熟悉电力电子拓扑和高压绝缘，掌握 IGBT/SiC 特性并了解储能电池基础', '掌握可靠性理论、加速寿命试验、威布尔分析、ESS/HASS 等方法', '了解高分子、金属和电池材料老化机理及相关国标、IEC 标准', '逻辑清晰，善于故障分析，具备钻研、并行推进和抗压能力', '高压设备、光储 PCS、功率半导体封装可靠性或产学研项目经历优先'], url: 'https://app.mokahr.com/campus-recruitment/sungrow/94416#/job/6b00594c-d8a8-4991-acd3-43cbb5004b37' },
       { id: 'sg-equipment', title: '设备工程师', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '设备工程', majors: '电气类、机械类、工业工程类相关专业', deadline: '正式批申请开放', responsibilities: ['指导统筹日常设备故障维修、问题分析和跟踪总结，协调突发事件资源', '起草设备技改方案并跟进落地，提升生产率、自动化和信息化水平', '管理设备档案、现场资料、软件及核心设备备件', '搭建并推进 TPM 体系，降低故障率并提升综合效率', '制定年度、月度和周维护计划，编制操作程序和标准作业流程，监控 OEE'], requirements: ['2027届本科及以上毕业生', '电气类、机械类或工业工程类相关专业'], url: 'https://app.mokahr.com/campus-recruitment/sungrow/94416#/job/7be305ea-0745-4954-957e-522b5295c86f' },
@@ -223,6 +223,12 @@ const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
 const directions = ['全部方向', '研发设计', '车辆研发', '仿真分析', '自动化', '制造工程', '设备工程', '质量测试'];
 const companyTypes = ['全部企业', '上市公司 / 央国企', '未上市大型企业'];
 const listedOrStateOwned = new Set(['三一集团', '吉利控股', '阳光电源', '中亚装备', '恒立液压', '海天集团', '利欧集团', '信捷电气', '中国电科八所', '科大讯飞', '长川科技', '中国电科三十八所', '双环传动', '精测电子', '东华科技', '中国电子系统工程第二建设', '华勤技术', '中科曙光', '先导智能']);
+const sourceOrigins: Record<string, '企业官网发布' | '官网招聘入口' | '高校/国家就业平台转发' | '第三方平台转发'> = {
+  caterpillar: '企业官网发布', sany: '企业官网发布', geely: '企业官网发布', sungrow: '企业官网发布',
+  hengli: '官网招聘入口', haitian: '官网招聘入口',
+  sinoma: '高校/国家就业平台转发', amd: '高校/国家就业平台转发', xinje: '高校/国家就业平台转发', cetc8: '高校/国家就业平台转发', iflytek: '高校/国家就业平台转发', cctech: '高校/国家就业平台转发', cetc38: '高校/国家就业平台转发', donghua: '高校/国家就业平台转发', sugon: '高校/国家就业平台转发', firstack: '高校/国家就业平台转发',
+  leoch: '第三方平台转发', shuanghuan: '第三方平台转发', jingce: '第三方平台转发', cecii: '第三方平台转发', huaqin: '第三方平台转发', asml: '第三方平台转发', lead: '第三方平台转发', uaes: '第三方平台转发', boschbcsc: '第三方平台转发', neolix: '第三方平台转发',
+};
 const publicationDates: Record<string, string> = {
   'cat-logistics': '2026-08-13', 'cat-digital': '2026-08-13', 'cat-mfg-xz': '2026-08-13',
   'cat-virtual': '2026-08-09', 'cat-smart': '2026-08-09', 'cat-engine': '2026-08-09', 'cat-transmission': '2026-08-09',
@@ -366,15 +372,17 @@ export default function Home() {
           <div className="space-y-4" aria-live="polite">
             {filtered.map((company) => {
               const isOpen = openCompanies.has(company.id);
+              const sourceOrigin = sourceOrigins[company.id] ?? company.sourceOrigin ?? '第三方平台转发';
+              const sourceOriginClass = sourceOrigin === '企业官网发布' ? 'bg-[#e4ece5] text-[#225d3d]' : sourceOrigin === '官网招聘入口' ? 'bg-[#e8effa] text-[#29558a]' : 'bg-[#f1f0ec] text-[#6d665e]';
               return <article key={company.id} className="overflow-hidden rounded-2xl border border-[#d8dfd9] bg-white shadow-[0_7px_22px_rgba(31,61,42,0.04)]">
                 <button onClick={() => toggleCompany(company.id)} aria-expanded={isOpen} className="flex w-full items-center gap-4 p-5 text-left transition hover:bg-[#fbfcf9] sm:p-6">
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#173f2a] text-xs font-bold tracking-wide text-white">{company.short}</span>
-                  <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2"><strong className="text-xl tracking-tight">{company.name}</strong><span className="rounded-md bg-[#f4e8de] px-2 py-1 text-[11px] font-medium text-[#a94728]">{company.batch}</span><span className={`rounded-md px-2 py-1 text-[11px] font-medium ${company.sourceOrigin === '官网发布' ? 'bg-[#e4ece5] text-[#225d3d]' : 'bg-[#f1f0ec] text-[#6d665e]'}`}>{company.sourceOrigin ?? '非官网发布'}</span>{company.status === 'announcement' && <span className="rounded-md bg-[#fff2c7] px-2 py-1 text-[11px] font-medium text-[#8a5b00]">公告级 · 待补全JD</span>}</span><span className="mt-1.5 block text-sm text-[#6b776f]">{company.industry} · {company.jobs.length} 个匹配岗位</span></span>
+                  <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2"><strong className="text-xl tracking-tight">{company.name}</strong><span className="rounded-md bg-[#f4e8de] px-2 py-1 text-[11px] font-medium text-[#a94728]">{company.batch}</span><span className={`rounded-md px-2 py-1 text-[11px] font-medium ${sourceOriginClass}`}>{sourceOrigin}</span>{company.status === 'announcement' && <span className="rounded-md bg-[#fff2c7] px-2 py-1 text-[11px] font-medium text-[#8a5b00]">公告级 · 待补全JD</span>}</span><span className="mt-1.5 block text-sm text-[#6b776f]">{company.industry} · {company.jobs.length} 个匹配岗位</span></span>
                   <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#cbd4cc] text-xl text-[#245b3c] transition ${isOpen ? 'rotate-45 bg-[#e5eee7]' : ''}`}>＋</span>
                 </button>
 
                 {isOpen && <div className="drawer-in border-t border-[#e2e6e1] bg-[#f8faf7] p-3 sm:p-5">
-                  <div className="mb-4 flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-[#738077]"><span>来源：{company.source} · 最后核验 {company.verified}</span><a href={company.website} target="_blank" rel="noreferrer" className="font-semibold text-[#1c6741] hover:underline">{company.sourceOrigin === '官网发布' ? '企业官网招聘入口 ↗' : '来源页面 / 企业入口 ↗'}</a></div>
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-[#738077]"><span>来源：{company.source} · 最后核验 {company.verified}</span><a href={company.website} target="_blank" rel="noreferrer" className="font-semibold text-[#1c6741] hover:underline">{sourceOrigin === '企业官网发布' || sourceOrigin === '官网招聘入口' ? '企业官网招聘入口 ↗' : '来源页面 / 企业入口 ↗'}</a></div>
                   <div className="space-y-2">
                     {company.jobs.map((job) => {
                       const jobOpen = openJob === job.id;
