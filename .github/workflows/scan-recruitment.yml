@@ -27,6 +27,8 @@ jobs:
       - name: Scan official recruitment entrances
         run: node scripts/scan-recruitment.mjs
       - name: Save changed scan report
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git add reports/latest-recruitment-scan.json reports/latest-recruitment-scan.md public/scan/latest-recruitment-scan.json
           if git diff --cached --quiet; then
