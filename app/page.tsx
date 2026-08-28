@@ -248,6 +248,7 @@ const companies: Company[] = [
 const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
 const directions = ['全部方向', '研发设计', '车辆研发', '仿真分析', '自动化', '制造工程', '设备工程', '质量测试'];
 const companyTypes = ['全部企业', '央国企', '外企', '上市公司', '大型公司'];
+const informationLevels = ['全部信息', '完整官方JD', '已核验岗位', '公告级待补全'];
 const currentCompanyCategories: Record<string, string> = {
   caterpillar: '外企', sany: '上市公司', geely: '上市公司', sungrow: '上市公司', nio: '上市公司', cxmt: '大型公司', wayeal: '上市公司', sinoma: '央国企', amd: '大型公司', hengli: '上市公司', haitian: '上市公司', leoch: '上市公司', xinje: '上市公司', cetc8: '央国企', iflytek: '上市公司', cctech: '上市公司', cetc38: '央国企', shuanghuan: '上市公司', jingce: '上市公司', donghua: '央国企', cecii: '央国企', huaqin: '上市公司', sugon: '上市公司', asml: '外企', lead: '上市公司', firstack: '大型公司', uaes: '外企', boschbcsc: '外企', neolix: '大型公司',
 };
@@ -349,8 +350,10 @@ export default function Home() {
   const [area, setArea] = useState('全部地区');
   const [direction, setDirection] = useState('全部方向');
   const [companyType, setCompanyType] = useState('全部企业');
+  const [informationLevel, setInformationLevel] = useState('全部信息');
   const [openCompanies, setOpenCompanies] = useState<Set<string>>(new Set());
   const [openJob, setOpenJob] = useState<string | null>(null);
+  const [compareJobIds, setCompareJobIds] = useState<Set<string>>(new Set());
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [applicationStagesByJob, setApplicationStagesByJob] = useState<Record<string, ApplicationStage>>({});
   const [storageReady, setStorageReady] = useState(false);
@@ -383,15 +386,20 @@ export default function Home() {
       const matchesArea = area === '全部地区' || job.areas.includes(area);
       const matchesDirection = direction === '全部方向' || job.direction === direction;
       const matchesCompanyType = companyType === '全部企业' || currentCategory(company) === companyType;
-      return matchesQuery && matchesArea && matchesDirection && matchesCompanyType;
+      const origin = sourceOrigins[company.id] ?? company.sourceOrigin ?? '第三方平台转发';
+      const matchesInformationLevel = informationLevel === '全部信息' || (informationLevel === '完整官方JD' ? company.status !== 'announcement' && origin === '企业官网发布' : informationLevel === '已核验岗位' ? company.status !== 'announcement' : company.status === 'announcement');
+      return matchesQuery && matchesArea && matchesDirection && matchesCompanyType && matchesInformationLevel;
     });
     return { ...company, jobs };
-  }).filter((company) => company.jobs.length > 0), [query, area, direction, companyType]);
+  }).filter((company) => company.jobs.length > 0), [query, area, direction, companyType, informationLevel]);
 
   const totalJobs = filtered.reduce((sum, company) => sum + company.jobs.length, 0);
   const savedJobs = companies.flatMap((company) => company.jobs.map((job) => ({ company, job }))).filter(({ job }) => favorites.has(job.id));
+  const comparisonJobs = companies.flatMap((company) => company.jobs.map((job) => ({ company, job }))).filter(({ job }) => compareJobIds.has(job.id));
+  const completeOfficialCount = companies.reduce((total, company) => total + (company.status !== 'announcement' && (sourceOrigins[company.id] ?? company.sourceOrigin) === '企业官网发布' ? company.jobs.length : 0), 0);
+  const announcementCount = companies.reduce((total, company) => total + (company.status === 'announcement' ? company.jobs.length : 0), 0);
   const radarFiltered = useMemo(() => watchlist.filter((company) => companyType === '全部企业' || radarCategory(company) === companyType), [companyType]);
-  const reset = () => { setQuery(''); setArea('全部地区'); setDirection('全部方向'); setCompanyType('全部企业'); };
+  const reset = () => { setQuery(''); setArea('全部地区'); setDirection('全部方向'); setCompanyType('全部企业'); setInformationLevel('全部信息'); };
   const toggleCompany = (id: string) => setOpenCompanies((current) => {
     const next = new Set(current);
     if (next.has(id)) next.delete(id); else next.add(id);
@@ -402,6 +410,21 @@ export default function Home() {
     if (next.has(jobId)) next.delete(jobId); else next.add(jobId);
     return next;
   });
+  const toggleCompare = (jobId: string) => setCompareJobIds((current) => {
+    const next = new Set(current);
+    if (next.has(jobId)) next.delete(jobId); else if (next.size < 3) next.add(jobId);
+    return next;
+  });
+  const exportSavedJobs = () => {
+    if (savedJobs.length === 0) return;
+    const escapeCell = (value: string) => `"${value.replaceAll('"', '""')}"`;
+    const rows = [['公司', '岗位', '地点', '学历', '方向', '专业', '个人进度', '投递链接'], ...savedJobs.map(({ company, job }) => [company.name, job.title, job.location, job.degree, job.direction, job.majors, applicationStagesByJob[job.id] ?? '未投递', job.url])];
+    const blob = new Blob([`\uFEFF${rows.map((row) => row.map(escapeCell).join(',')).join('\n')}`], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url; anchor.download = '机械校招投递清单.csv'; anchor.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <main className="min-h-screen bg-[#f5f6f2] text-[#14211a]">
@@ -417,7 +440,7 @@ export default function Home() {
           <p className="mb-4 text-xs font-bold tracking-[0.18em] text-[#ce5a35]">2027 届校园招聘 · 持续更新</p>
           <div className="grid gap-7 lg:grid-cols-[1fr_330px] lg:items-end">
             <div><h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] sm:text-6xl">先选公司，再看清<br className="hidden sm:block" /><span className="text-[#1c6741]">岗位与招聘进度</span></h1><p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#59675e]">所有企业优先以中国官网或中国区官方校招站核验；完整官方JD逐项展示职责和资格，第三方仅作为原始公告参考。</p></div>
-            <div className="rounded-2xl border border-[#ced8cf] bg-white/70 p-5"><div className="flex items-end justify-between"><span className="text-sm text-[#647168]">当前收录</span><strong className="text-4xl font-semibold tracking-tight">{companies.reduce((sum, company) => sum + company.jobs.length, 0)}</strong></div><div className="mt-4 flex justify-between text-xs text-[#748078]"><span>{companies.length} 家重点企业</span><span>核验于 8月27日</span></div></div>
+            <div className="rounded-2xl border border-[#ced8cf] bg-white/70 p-5"><div className="flex items-end justify-between"><span className="text-sm text-[#647168]">当前收录</span><strong className="text-4xl font-semibold tracking-tight">{companies.reduce((sum, company) => sum + company.jobs.length, 0)}</strong></div><div className="mt-4 grid grid-cols-3 gap-2 border-t border-[#dce4dd] pt-4 text-center"><div><strong className="block text-lg text-[#1c6741]">{companies.length}</strong><span className="text-[10px] text-[#748078]">招聘企业</span></div><div><strong className="block text-lg text-[#1c6741]">{completeOfficialCount}</strong><span className="text-[10px] text-[#748078]">完整官方JD</span></div><div><strong className="block text-lg text-[#a85b36]">{announcementCount}</strong><span className="text-[10px] text-[#748078]">公告级方向</span></div></div></div>
           </div>
         </div>
       </section>
@@ -429,6 +452,7 @@ export default function Home() {
           <fieldset className="mt-6 space-y-3"><legend className="mb-3 text-xs font-medium text-[#68746c]">工作地区</legend>{areas.map((item) => <label key={item} className="flex cursor-pointer items-center gap-2.5 text-sm"><input type="radio" name="area" checked={area === item} onChange={() => setArea(item)} className="accent-[#1c6741]" />{item}</label>)}</fieldset>
           <label htmlFor="direction" className="mt-6 block text-xs font-medium text-[#68746c]">岗位方向</label><select id="direction" value={direction} onChange={(event) => setDirection(event.target.value)} className="mt-2 w-full rounded-xl border border-[#d3dad4] bg-[#fafbf8] px-3 py-2.5 text-sm outline-none focus:border-[#508465]">{directions.map((item) => <option key={item}>{item}</option>)}</select>
           <label htmlFor="company-type" className="mt-6 block text-xs font-medium text-[#68746c]">企业类别</label><select id="company-type" value={companyType} onChange={(event) => setCompanyType(event.target.value)} className="mt-2 w-full rounded-xl border border-[#d3dad4] bg-[#fafbf8] px-3 py-2.5 text-sm outline-none focus:border-[#508465]">{companyTypes.map((item) => <option key={item}>{item}</option>)}</select>
+          <label htmlFor="information-level" className="mt-6 block text-xs font-medium text-[#68746c]">信息完整度</label><select id="information-level" value={informationLevel} onChange={(event) => setInformationLevel(event.target.value)} className="mt-2 w-full rounded-xl border border-[#d3dad4] bg-[#fafbf8] px-3 py-2.5 text-sm outline-none focus:border-[#508465]">{informationLevels.map((item) => <option key={item}>{item}</option>)}</select>
         </aside>
 
         <div>
@@ -464,7 +488,7 @@ export default function Home() {
                           </div>
                           <div className="mt-6 grid gap-3 rounded-xl bg-[#f1f5f0] p-4 text-sm sm:grid-cols-2 lg:grid-cols-3"><p><span className="detail-key">专业</span>{job.majors}</p><p><span className="detail-key">学历</span>{job.degree}</p><p><span className="detail-key">工作性质</span>校园招聘 · 全职</p><p><span className="detail-key">发布日期</span>{publicationDates[job.id]}</p><p><span className="detail-key">截止状态</span>{job.deadline}</p><p><span className="detail-key">薪资</span>企业官网未公布</p></div>
                           {job.note && <p className="mt-4 rounded-lg border border-[#ead5c8] bg-[#fff8f3] px-3 py-2.5 text-xs leading-5 text-[#9b4d31]">信息说明：{job.note}</p>}
-                          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dce4dd] bg-white px-4 py-3 text-xs"><span><strong className="text-[#284933]">网站审核：</strong>{company.status === 'announcement' ? '校招已确认 · 独立JD待补全' : sourceOrigin === '企业官网发布' ? '完整官方JD · 官网显示可投' : '招聘信息已核验 · 投递前需复查官网'}</span><span className="flex items-center gap-2"><button onClick={() => toggleFavorite(job.id)} className={`rounded-lg px-3 py-1.5 font-semibold ${favorites.has(job.id) ? 'bg-[#e2efe3] text-[#1c6741]' : 'bg-[#f1f4f0] text-[#526259]'}`}>{favorites.has(job.id) ? '已收藏' : '收藏岗位'}</button><label className="sr-only" htmlFor={`stage-${job.id}`}>个人投递进度</label><select id={`stage-${job.id}`} value={applicationStagesByJob[job.id] ?? '未投递'} onChange={(event) => setApplicationStagesByJob((current) => ({ ...current, [job.id]: event.target.value as ApplicationStage }))} className="rounded-lg border border-[#cbd6cc] bg-white px-2 py-1.5 text-xs text-[#33463a]">{applicationStages.map((stage) => <option key={stage}>{stage}</option>)}</select></span></div>
+                          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dce4dd] bg-white px-4 py-3 text-xs"><span><strong className="text-[#284933]">网站审核：</strong>{company.status === 'announcement' ? '校招已确认 · 独立JD待补全' : sourceOrigin === '企业官网发布' ? '完整官方JD · 官网显示可投' : '招聘信息已核验 · 投递前需复查官网'}</span><span className="flex flex-wrap items-center gap-2"><button onClick={() => toggleFavorite(job.id)} className={`rounded-lg px-3 py-1.5 font-semibold ${favorites.has(job.id) ? 'bg-[#e2efe3] text-[#1c6741]' : 'bg-[#f1f4f0] text-[#526259]'}`}>{favorites.has(job.id) ? '已收藏' : '收藏岗位'}</button><button onClick={() => toggleCompare(job.id)} disabled={!compareJobIds.has(job.id) && compareJobIds.size >= 3} className={`rounded-lg px-3 py-1.5 font-semibold disabled:cursor-not-allowed disabled:opacity-40 ${compareJobIds.has(job.id) ? 'bg-[#e8edf7] text-[#285277]' : 'bg-[#f1f4f0] text-[#526259]'}`}>{compareJobIds.has(job.id) ? '已加入对比' : '加入对比'}</button><label className="sr-only" htmlFor={`stage-${job.id}`}>个人投递进度</label><select id={`stage-${job.id}`} value={applicationStagesByJob[job.id] ?? '未投递'} onChange={(event) => setApplicationStagesByJob((current) => ({ ...current, [job.id]: event.target.value as ApplicationStage }))} className="rounded-lg border border-[#cbd6cc] bg-white px-2 py-1.5 text-xs text-[#33463a]">{applicationStages.map((stage) => <option key={stage}>{stage}</option>)}</select></span></div>
                           <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><span className="text-xs text-[#808a82]">投递前请再次核对官网最新要求</span><span className="flex flex-wrap gap-2">{sourceOrigin === '企业官网发布' ? <a href={job.url} target="_blank" rel="noreferrer" className="rounded-xl bg-[#173f2a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#225c3a]">前往官网投递 ↗</a> : <><a href={job.url} target="_blank" rel="noreferrer" className="rounded-xl border border-[#b9c6bb] bg-white px-4 py-2.5 text-sm font-semibold text-[#365541] hover:bg-[#f1f5f0]">查看原始公告 ↗</a><a href={company.website} target="_blank" rel="noreferrer" className="rounded-xl bg-[#173f2a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#225c3a]">前往企业招聘入口 ↗</a></>}</span></div>
                         </div>}
                       </section>;
@@ -478,9 +502,11 @@ export default function Home() {
         </div>
       </section>
 
+      {comparisonJobs.length > 0 && <section id="compare" className="border-t border-[#dce1da] bg-white"><div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8"><div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">岗位横向对比</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">已选择 {comparisonJobs.length} / 3 个岗位</h2></div><button onClick={() => setCompareJobIds(new Set())} className="rounded-xl border border-[#b7c5b8] px-4 py-2 text-sm font-semibold text-[#365541]">清空对比</button></div><div className="mt-6 overflow-x-auto rounded-xl border border-[#dce3dd]"><table className="w-full min-w-[760px] border-collapse text-left text-sm"><thead className="bg-[#edf3ed]"><tr><th className="w-32 p-3 text-xs text-[#627068]">对比项</th>{comparisonJobs.map(({ company, job }) => <th key={job.id} className="min-w-52 p-3"><span className="block text-xs text-[#6d786f]">{company.name}</span><strong className="mt-1 block">{job.title}</strong></th>)}</tr></thead><tbody>{[['地点', ...comparisonJobs.map(({ job }) => job.location)], ['学历', ...comparisonJobs.map(({ job }) => job.degree)], ['方向', ...comparisonJobs.map(({ job }) => job.direction)], ['专业', ...comparisonJobs.map(({ job }) => job.majors)], ['投递状态', ...comparisonJobs.map(({ job }) => applicationStagesByJob[job.id] ?? '未投递')]].map((row) => <tr key={row[0]} className="border-t border-[#e2e7e2]"><th className="p-3 text-xs text-[#627068]">{row[0]}</th>{row.slice(1).map((cell, index) => <td key={`${row[0]}-${comparisonJobs[index].job.id}`} className="p-3 align-top leading-6 text-[#34473a]">{cell}</td>)}</tr>)}</tbody></table></div></div></section>}
+
       <section id="my-list" className="border-t border-[#dce1da] bg-[#edf3ed]">
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
-          <div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">我的投递清单</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">已收藏 {savedJobs.length} 个岗位</h2><p className="mt-2 text-sm leading-6 text-[#66736a]">收藏和投递进度仅保存于当前浏览器，不需要账号，也不会上传到招聘网站。</p></div><button onClick={() => { setFavorites(new Set()); setApplicationStagesByJob({}); }} disabled={savedJobs.length === 0} className="rounded-xl border border-[#b7c5b8] bg-white px-4 py-2 text-sm font-semibold text-[#365541] disabled:cursor-not-allowed disabled:opacity-40">清空本地清单</button></div>
+          <div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">我的投递清单</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">已收藏 {savedJobs.length} 个岗位</h2><p className="mt-2 text-sm leading-6 text-[#66736a]">收藏和投递进度仅保存于当前浏览器，不需要账号，也不会上传到招聘网站。</p></div><div className="flex gap-2"><button onClick={exportSavedJobs} disabled={savedJobs.length === 0} className="rounded-xl bg-[#173f2a] px-4 py-2 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40">导出 CSV</button><button onClick={() => { setFavorites(new Set()); setApplicationStagesByJob({}); }} disabled={savedJobs.length === 0} className="rounded-xl border border-[#b7c5b8] bg-white px-4 py-2 text-sm font-semibold text-[#365541] disabled:cursor-not-allowed disabled:opacity-40">清空本地清单</button></div></div>
           {savedJobs.length > 0 ? <div className="mt-6 grid gap-3 md:grid-cols-2">{savedJobs.map(({ company, job }) => <article key={job.id} className="rounded-xl border border-[#d7e0d8] bg-white p-4"><div className="flex items-start justify-between gap-3"><div><strong>{job.title}</strong><p className="mt-1 text-xs text-[#68756c]">{company.name} · {job.location}</p></div><button onClick={() => toggleFavorite(job.id)} className="text-xs font-semibold text-[#9a4e32] hover:underline">移除</button></div><div className="mt-4 flex flex-wrap items-center justify-between gap-2"><a href={job.url} target="_blank" rel="noreferrer" className="text-sm font-semibold text-[#1c6741] hover:underline">打开投递页 ↗</a><label className="flex items-center gap-2 text-xs text-[#5e6e64]">我的进度<select value={applicationStagesByJob[job.id] ?? '未投递'} onChange={(event) => setApplicationStagesByJob((current) => ({ ...current, [job.id]: event.target.value as ApplicationStage }))} className="rounded-lg border border-[#cbd6cc] bg-white px-2 py-1.5 text-xs">{applicationStages.map((stage) => <option key={stage}>{stage}</option>)}</select></label></div></article>)}</div> : <div className="mt-6 rounded-xl border border-dashed border-[#bdcabf] bg-white/70 px-5 py-8 text-sm text-[#657269]">在任一岗位详情中点击“收藏岗位”，它就会出现在这里。</div>}
         </div>
       </section>
