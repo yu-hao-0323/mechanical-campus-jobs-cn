@@ -2847,6 +2847,7 @@ export default function Home() {
   const [direction, setDirection] = useState("全部方向");
   const [companyType, setCompanyType] = useState("全部企业");
   const [informationLevel, setInformationLevel] = useState("全部信息");
+  const [sortMode, setSortMode] = useState("相关度");
   const [openCompanies, setOpenCompanies] = useState<Set<string>>(new Set());
   const [openJob, setOpenJob] = useState<string | null>(null);
   const [compareJobIds, setCompareJobIds] = useState<Set<string>>(new Set());
@@ -2985,8 +2986,13 @@ export default function Home() {
           });
           return { ...company, jobs };
         })
-        .filter((company) => company.jobs.length > 0),
-    [query, area, direction, companyType, informationLevel],
+        .filter((company) => company.jobs.length > 0)
+        .sort((a, b) => {
+          if (sortMode === "公司名称") return a.name.localeCompare(b.name, "zh");
+          if (sortMode === "岗位数量") return b.jobs.length - a.jobs.length;
+          return 0;
+        }),
+    [query, area, direction, companyType, informationLevel, sortMode],
   );
 
   const totalJobs = filtered.reduce(
@@ -3027,6 +3033,7 @@ export default function Home() {
     setDirection("全部方向");
     setCompanyType("全部企业");
     setInformationLevel("全部信息");
+    setSortMode("相关度");
   };
   const toggleCompany = (id: string) =>
     setOpenCompanies((current) => {
@@ -3463,7 +3470,7 @@ export default function Home() {
         </aside>
 
         <div>
-          <div className="mb-5 flex items-end justify-between gap-3">
+          <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight">
                 招聘公司
@@ -3472,9 +3479,24 @@ export default function Home() {
                 {filtered.length} 家公司 · {totalJobs} 个匹配岗位或招聘方向
               </p>
             </div>
-            <span className="rounded-full bg-[#e4ece5] px-3 py-1.5 text-xs font-semibold text-[#225d3d]">
-              完整JD + 公告级信息
-            </span>
+            <div className="flex items-center gap-2">
+              <label htmlFor="sort-mode" className="text-xs text-[#718078]">
+                排序
+              </label>
+              <select
+                id="sort-mode"
+                value={sortMode}
+                onChange={(event) => setSortMode(event.target.value)}
+                className="rounded-full border border-[#d3dad4] bg-white px-3 py-1.5 text-xs font-medium text-[#225d3d] outline-none focus:border-[#508465]"
+              >
+                <option>相关度</option>
+                <option>岗位数量</option>
+                <option>公司名称</option>
+              </select>
+              <span className="hidden rounded-full bg-[#e4ece5] px-3 py-1.5 text-xs font-semibold text-[#225d3d] sm:inline-flex">
+                完整JD + 公告级信息
+              </span>
+            </div>
           </div>
           <div className="space-y-4" aria-live="polite">
             {filtered.map((company) => {
