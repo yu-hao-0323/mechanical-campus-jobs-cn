@@ -3060,11 +3060,8 @@ export default function Home() {
     }
     setResumeBusy(true);
     setResumeMessage("正在上传私有简历…");
-    const safeName = resumeFile.name.replace(
-      /[^a-zA-Z0-9._\-\u4e00-\u9fa5]/g,
-      "_",
-    );
-    const filePath = `${resumeUser.id}/${crypto.randomUUID()}-${safeName}`;
+    const extension = resumeFile.name.toLowerCase().match(/\.(pdf|docx|txt)$/)?.[0] ?? ".bin";
+    const filePath = `${resumeUser.id}/${crypto.randomUUID()}${extension}`;
     const uploaded = await supabase.storage
       .from("resumes")
       .upload(filePath, resumeFile, {
