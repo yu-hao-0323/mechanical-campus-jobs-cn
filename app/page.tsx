@@ -268,6 +268,10 @@ type ResumeFields = {
   politicalStatus: string;
   englishLevel: string;
   skills: string;
+  projectName: string;
+  projectTime: string;
+  projectContent: string;
+  selfEvaluation: string;
 };
 
 type ResumeRecord = { id: string; file_path: string; file_name: string; mime_type: string; file_size: number; fields: ResumeFields; created_at: string };
@@ -276,8 +280,8 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
-const emptyResumeFields: ResumeFields = { name: '', phone: '', email: '', school: '', degree: '', major: '', graduationYear: '', politicalStatus: '', englishLevel: '', skills: '' };
-const resumeFieldLabels: Record<keyof ResumeFields, string> = { name: '姓名', phone: '手机号', email: '邮箱', school: '学校', degree: '学历', major: '专业', graduationYear: '毕业年份', politicalStatus: '政治面貌', englishLevel: '英语水平', skills: '技能关键词' };
+const emptyResumeFields: ResumeFields = { name: '', phone: '', email: '', school: '', degree: '', major: '', graduationYear: '', politicalStatus: '', englishLevel: '', skills: '', projectName: '', projectTime: '', projectContent: '', selfEvaluation: '' };
+const resumeFieldLabels: Record<keyof ResumeFields, string> = { name: '姓名', phone: '手机号', email: '邮箱', school: '学校', degree: '学历', major: '专业', graduationYear: '毕业年份', politicalStatus: '政治面貌', englishLevel: '英语水平', skills: '技能关键词', projectName: '项目名称（全部）', projectTime: '项目时间（全部）', projectContent: '项目内容（完整）', selfEvaluation: '自我评价（完整）' };
 
 function extractResumeFields(text: string): ResumeFields {
   const normalized = text.replace(/\r/g, '').replace(/[ \t]+/g, ' ').replace(/\n{2,}/g, '\n');
@@ -306,6 +310,15 @@ function extractResumeFields(text: string): ResumeFields {
   const header = lines.slice(0, 5).join(' ');
   const standaloneName = lines.slice(0, 6).map((line) => line.match(/^\s*([\u4e00-\u9fa5·]{2,4})\s*$/)?.[1] ?? '').find(Boolean) ?? '';
   const skills = ['SolidWorks', 'AutoCAD', 'CAD', 'CATIA', 'Creo', 'UG', 'NX', 'ANSYS', 'Abaqus', 'Fluent', 'MATLAB', 'Simulink', 'Python', 'C++', 'PLC', 'LabVIEW', 'FMEA', 'GD&T', 'Linux', 'ROS2', 'Jetson', 'TCP', '机器视觉', '机器人'].filter((skill) => new RegExp(skill.replace('+', '\\+'), 'i').test(normalized));
+  const sectionIndex = lines.findIndex((line) => /项目经历|项目经验|实践经历/i.test(line));
+  const nextSectionIndex = sectionIndex >= 0 ? lines.slice(sectionIndex + 1).findIndex((line) => /教育背景|教育经历|工作经历|实习经历|奖项荣誉|论文专利|个人评价|自我评价|个人总结/i.test(line)) : -1;
+  const projectLines = sectionIndex >= 0 ? lines.slice(sectionIndex + 1, nextSectionIndex >= 0 ? sectionIndex + 1 + nextSectionIndex : lines.length) : [];
+  const projectText = projectLines.join('\n');
+  const projectMatches = [...projectText.matchAll(/((?:20\d{2}[.\-/年]\d{1,2}\s*(?:月)?\s*(?:~|—|-|至)\s*)?20?\d{2}[.\-/年]\d{1,2}\s*(?:月)?(?:~|—|-|至)\s*20\d{2}[.\-/年]\d{1,2}\s*(?:月)?)([\s\S]*?)(?=(?:20\d{2}[.\-/年]\d{1,2}\s*(?:月)?(?:~|—|-|至)\s*20\d{2}[.\-/年]\d{1,2}|$))/g)];
+  const projects = projectMatches.map((item) => { const block = item[2].trim(); const contentIndex = block.search(/(?:工作描述|项目内容|项目职责|职责)\s*[:：]?/i); const name = (contentIndex >= 0 ? block.slice(0, contentIndex) : block.split('\n')[0]).replace(/[\s｜|]+$/, '').trim(); const content = contentIndex >= 0 ? block.slice(contentIndex).trim() : block.trim(); return { time: item[1].trim(), name, content }; }).filter((project) => project.name.length >= 2);
+  const evaluationHeading = lines.findIndex((line) => /个人评价|自我评价|个人总结|个人优势/i.test(line));
+  const evaluationStart = lines.findIndex((line) => /^本人[\u4e00-\u9fa5]/.test(line));
+  const evaluation = evaluationHeading >= 0 ? lines.slice(evaluationHeading + 1).join('\n').trim() : evaluationStart >= 0 ? lines.slice(evaluationStart).join('\n').trim() : '';
   return {
     name: match(/(?:姓名|姓\s*名|Name)\s*[:：]?\s*([\u4e00-\u9fa5·]{2,8}|[A-Za-z][A-Za-z .'-]{1,30})/i) || standaloneName || (header.match(/^\s*([\u4e00-\u9fa5·]{2,4})\s+(?:求职意向|个人简历|简历)/)?.[1] ?? ''),
     phone: match(/(?:手机|电话|联系电话|Phone|Mobile)?\s*[:：]?\s*(1[3-9]\d{9})/i),
@@ -317,6 +330,10 @@ function extractResumeFields(text: string): ResumeFields {
     politicalStatus: match(/(中共党员|中共预备党员|共青团员|群众)/),
     englishLevel: match(/(CET[- ]?6|CET[- ]?4|英语六级|英语四级|雅思\s*\d(?:\.\d)?|托福\s*\d{2,3})/i),
     skills: [...new Set(skills)].join('、'),
+    projectName: projects.map((project) => project.name).join('；'),
+    projectTime: projects.map((project) => project.time).join('；'),
+    projectContent: projects.map((project, index) => `项目${index + 1}：${project.name}\n时间：${project.time}\n${project.content}`).join('\n\n'),
+    selfEvaluation: evaluation,
   };
 }
 
