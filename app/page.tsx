@@ -1,5 +1,6 @@
 'use client';
 
+import { createClient, type User } from '@supabase/supabase-js';
 import { useEffect, useMemo, useState } from 'react';
 
 type Job = {
@@ -255,6 +256,70 @@ const currentCompanyCategories: Record<string, string> = {
 
 type ApplicationStage = '未投递' | '已投递' | '笔试/面试' | '已结束';
 const applicationStages: ApplicationStage[] = ['未投递', '已投递', '笔试/面试', '已结束'];
+
+type ResumeFields = {
+  name: string;
+  phone: string;
+  email: string;
+  school: string;
+  degree: string;
+  major: string;
+  graduationYear: string;
+  politicalStatus: string;
+  englishLevel: string;
+  skills: string;
+};
+
+type ResumeRecord = { id: string; file_path: string; file_name: string; mime_type: string; file_size: number; fields: ResumeFields; created_at: string };
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
+const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+
+const emptyResumeFields: ResumeFields = { name: '', phone: '', email: '', school: '', degree: '', major: '', graduationYear: '', politicalStatus: '', englishLevel: '', skills: '' };
+const resumeFieldLabels: Record<keyof ResumeFields, string> = { name: '姓名', phone: '手机号', email: '邮箱', school: '学校', degree: '学历', major: '专业', graduationYear: '毕业年份', politicalStatus: '政治面貌', englishLevel: '英语水平', skills: '技能关键词' };
+
+function extractResumeFields(text: string): ResumeFields {
+  const normalized = text.replace(/\r/g, '').replace(/[ \t]+/g, ' ');
+  const lines = normalized.split('\n').map((line) => line.trim()).filter(Boolean);
+  const match = (pattern: RegExp) => normalized.match(pattern)?.[1]?.trim() ?? '';
+  const school = lines.find((line) => /(?:大学|学院|University|College)/i.test(line) && line.length <= 45) ?? '';
+  const skills = ['SolidWorks', 'AutoCAD', 'CAD', 'CATIA', 'Creo', 'UG', 'NX', 'ANSYS', 'Abaqus', 'Fluent', 'MATLAB', 'Simulink', 'Python', 'C++', 'PLC', 'LabVIEW', 'FMEA', 'GD&T'].filter((skill) => new RegExp(skill.replace('+', '\\+'), 'i').test(normalized));
+  return {
+    name: match(/(?:姓名|姓\s*名|Name)\s*[:：]?\s*([\u4e00-\u9fa5·]{2,8}|[A-Za-z][A-Za-z .'-]{1,30})/i),
+    phone: match(/(?:手机|电话|联系电话|Phone|Mobile)?\s*[:：]?\s*(1[3-9]\d{9})/i),
+    email: match(/([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})/i),
+    school: school.replace(/^(?:学校|院校)\s*[:：]?\s*/, ''),
+    degree: match(/(博士|硕士|本科|大专|专科|PhD|Master|Bachelor)/i),
+    major: match(/(?:专业|主修|Major)\s*[:：]?\s*([^\n，,；;|]{2,30})/i),
+    graduationYear: match(/(?:毕业时间|毕业年份|毕业日期|Graduation)\s*[:：]?\s*(20\d{2})/i) || match(/(20(?:2[6-9]|3\d))\s*年?\s*(?:应届|毕业)/),
+    politicalStatus: match(/(中共党员|中共预备党员|共青团员|群众)/),
+    englishLevel: match(/(CET[- ]?6|CET[- ]?4|英语六级|英语四级|雅思\s*\d(?:\.\d)?|托福\s*\d{2,3})/i),
+    skills: [...new Set(skills)].join('、'),
+  };
+}
+
+async function extractResumeText(file: File) {
+  const buffer = await file.arrayBuffer();
+  if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+    const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
+    pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/legacy/build/pdf.worker.min.mjs', import.meta.url).toString();
+    const pdf = await pdfjs.getDocument({ data: new Uint8Array(buffer) }).promise;
+    const pages: string[] = [];
+    for (let index = 1; index <= pdf.numPages; index += 1) {
+      const page = await pdf.getPage(index);
+      const content = await page.getTextContent();
+      pages.push(content.items.map((item) => 'str' in item ? item.str : '').join(' '));
+    }
+    return pages.join('\n');
+  }
+  if (file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.name.toLowerCase().endsWith('.docx')) {
+    const mammoth = await import('mammoth');
+    const result = await mammoth.extractRawText({ arrayBuffer: buffer });
+    return result.value;
+  }
+  return new TextDecoder('utf-8').decode(buffer);
+}
 const sourceOrigins: Record<string, '企业官网发布' | '官网招聘入口' | '高校/国家就业平台转发' | '第三方平台转发'> = {
   caterpillar: '企业官网发布', sany: '企业官网发布', geely: '企业官网发布', sungrow: '企业官网发布',
   nio: '企业官网发布',
@@ -357,6 +422,17 @@ export default function Home() {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [applicationStagesByJob, setApplicationStagesByJob] = useState<Record<string, ApplicationStage>>({});
   const [storageReady, setStorageReady] = useState(false);
+  const [resumeUser, setResumeUser] = useState<User | null>(null);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [resumeFields, setResumeFields] = useState<ResumeFields>({ ...emptyResumeFields });
+  const [resumeText, setResumeText] = useState('');
+  const [resumeRecords, setResumeRecords] = useState<ResumeRecord[]>([]);
+  const [selectedResumeId, setSelectedResumeId] = useState<string | null>(null);
+  const [resumeBusy, setResumeBusy] = useState(false);
+  const [resumeMessage, setResumeMessage] = useState('');
 
   useEffect(() => {
     const savedFavorites = window.localStorage.getItem('mechanical-campus-job-favorites');
@@ -375,6 +451,21 @@ export default function Home() {
     if (!storageReady) return;
     window.localStorage.setItem('mechanical-campus-job-stages', JSON.stringify(applicationStagesByJob));
   }, [applicationStagesByJob, storageReady]);
+
+  useEffect(() => {
+    if (!supabase) return;
+    supabase.auth.getUser().then(({ data }) => setResumeUser(data.user));
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => setResumeUser(session?.user ?? null));
+    return () => data.subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    if (!supabase || !resumeUser) { setResumeRecords([]); return; }
+    supabase.from('resume_profiles').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
+      if (error) setResumeMessage(`读取简历库失败：${error.message}`);
+      else setResumeRecords((data ?? []) as ResumeRecord[]);
+    });
+  }, [resumeUser]);
 
   const currentCategory = (company: Company) => currentCompanyCategories[company.id] ?? '大型公司';
   const radarCategory = (company: typeof watchlist[number]) => /(外资|合资)/.test(company.tag) ? '外企' : /(央企|国企)/.test(company.tag) ? '央国企' : /上市/.test(company.tag) ? '上市公司' : '大型公司';
@@ -425,13 +516,77 @@ export default function Home() {
     anchor.href = url; anchor.download = '机械校招投递清单.csv'; anchor.click();
     URL.revokeObjectURL(url);
   };
+  const handleAuth = async () => {
+    if (!supabase || !authEmail || authPassword.length < 8) { setResumeMessage('请输入邮箱，密码至少 8 位。'); return; }
+    setResumeBusy(true); setResumeMessage('');
+    const result = authMode === 'register' ? await supabase.auth.signUp({ email: authEmail, password: authPassword }) : await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
+    setResumeBusy(false);
+    if (result.error) setResumeMessage(result.error.message);
+    else setResumeMessage(authMode === 'register' && !result.data.session ? '注册成功，请打开邮箱完成验证后登录。' : '登录成功。');
+  };
+  const handleResumeFile = async (file: File | null) => {
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) { setResumeMessage('文件不能超过 10 MB。'); return; }
+    if (!/\.(pdf|docx|txt)$/i.test(file.name)) { setResumeMessage('仅支持 PDF、DOCX、TXT。'); return; }
+    setResumeBusy(true); setResumeMessage('正在本地提取字段…');
+    try {
+      const text = await extractResumeText(file);
+      setResumeFile(file); setResumeText(text); setResumeFields(extractResumeFields(text)); setSelectedResumeId(null);
+      setResumeMessage('字段提取完成，请检查并修正后上传。');
+    } catch {
+      setResumeMessage('无法读取该文件，请尝试导出为 PDF 或 TXT。');
+    } finally { setResumeBusy(false); }
+  };
+  const loadResumeRecords = async () => {
+    if (!supabase || !resumeUser) return;
+    const { data, error } = await supabase.from('resume_profiles').select('*').order('created_at', { ascending: false });
+    if (error) setResumeMessage(`读取简历库失败：${error.message}`); else setResumeRecords((data ?? []) as ResumeRecord[]);
+  };
+  const uploadResume = async () => {
+    if (!supabase || !resumeUser || !resumeFile) { setResumeMessage('请先登录并选择简历文件。'); return; }
+    setResumeBusy(true); setResumeMessage('正在上传私有简历…');
+    const safeName = resumeFile.name.replace(/[^a-zA-Z0-9._\-\u4e00-\u9fa5]/g, '_');
+    const filePath = `${resumeUser.id}/${crypto.randomUUID()}-${safeName}`;
+    const uploaded = await supabase.storage.from('resumes').upload(filePath, resumeFile, { contentType: resumeFile.type || 'application/octet-stream' });
+    if (uploaded.error) { setResumeMessage(`上传失败：${uploaded.error.message}`); setResumeBusy(false); return; }
+    const inserted = await supabase.from('resume_profiles').insert({ user_id: resumeUser.id, file_path: filePath, file_name: resumeFile.name, mime_type: resumeFile.type || 'application/octet-stream', file_size: resumeFile.size, fields: resumeFields });
+    if (inserted.error) {
+      await supabase.storage.from('resumes').remove([filePath]);
+      setResumeMessage(`保存字段失败：${inserted.error.message}`);
+    } else {
+      setResumeMessage('简历已保存到私有云端。'); setResumeFile(null); setResumeText(''); setResumeFields({ ...emptyResumeFields }); await loadResumeRecords();
+    }
+    setResumeBusy(false);
+  };
+  const saveResumeFields = async () => {
+    if (!supabase || !selectedResumeId) return;
+    setResumeBusy(true);
+    const { error } = await supabase.from('resume_profiles').update({ fields: resumeFields, updated_at: new Date().toISOString() }).eq('id', selectedResumeId);
+    setResumeMessage(error ? `保存失败：${error.message}` : '字段已同步。');
+    if (!error) await loadResumeRecords();
+    setResumeBusy(false);
+  };
+  const downloadResume = async (record: ResumeRecord) => {
+    if (!supabase) return;
+    const { data, error } = await supabase.storage.from('resumes').createSignedUrl(record.file_path, 60);
+    if (error) setResumeMessage(`下载失败：${error.message}`); else window.open(data.signedUrl, '_blank', 'noopener,noreferrer');
+  };
+  const deleteResume = async (record: ResumeRecord) => {
+    if (!supabase || !window.confirm(`确定删除“${record.file_name}”吗？删除后无法恢复。`)) return;
+    setResumeBusy(true);
+    const removed = await supabase.storage.from('resumes').remove([record.file_path]);
+    const deleted = removed.error ? { error: removed.error } : await supabase.from('resume_profiles').delete().eq('id', record.id);
+    setResumeMessage(deleted.error ? `删除失败：${deleted.error.message}` : '简历已删除。');
+    if (!deleted.error) await loadResumeRecords();
+    setResumeBusy(false);
+  };
 
   return (
     <main className="min-h-screen bg-[#f5f6f2] text-[#14211a]">
       <header className="border-b border-[#dce1da] bg-[#f5f6f2]/95">
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-5 sm:px-8">
           <a href="#top" className="flex items-center gap-3" aria-label="机遇引擎首页"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#173f2a] text-sm font-bold text-white">ME</span><span><strong className="block text-[15px] tracking-[0.08em]">机遇引擎</strong><small className="text-xs text-[#68746c]">机械校招聚合</small></span></a>
-          <nav className="hidden items-center gap-4 text-sm text-[#536159] sm:flex"><span>无需登录 · 中国官网优先</span><a href="#my-list" className="font-medium text-[#1c6741] hover:underline">我的投递清单 {favorites.size}</a><a href="#standards" className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">收录标准</a></nav>
+          <nav className="hidden items-center gap-4 text-sm text-[#536159] sm:flex"><span>岗位无需登录</span><a href="#resume-vault" className="font-medium text-[#1c6741] hover:underline">{resumeUser ? '我的简历库' : '简历库登录'}</a><a href="#my-list" className="font-medium text-[#1c6741] hover:underline">投递清单 {favorites.size}</a><a href="#standards" className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">收录标准</a></nav>
         </div>
       </header>
 
@@ -499,6 +654,15 @@ export default function Home() {
             })}
             {filtered.length === 0 && <div className="rounded-2xl border border-dashed border-[#c9d1ca] bg-white px-6 py-14 text-center"><p className="font-semibold">没有符合当前条件的岗位</p><p className="mt-2 text-sm text-[#6c786f]">试试减少筛选条件。</p><button onClick={reset} className="mt-5 rounded-xl bg-[#173f2a] px-4 py-2 text-sm font-semibold text-white">清除筛选</button></div>}
           </div>
+        </div>
+      </section>
+
+      <section id="resume-vault" className="border-t border-[#dce1da] bg-[#102d20] text-white">
+        <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
+          <div className="flex flex-wrap items-start justify-between gap-4"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ef9a78]">私有简历库</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">跨电脑保存与提取简历字段</h2><p className="mt-2 max-w-2xl text-sm leading-6 text-[#bfd0c3]">岗位浏览仍无需登录；简历库使用邮箱账号。文件保存在私有空间，每个账号只能访问自己的文件。</p></div>{resumeUser && <div className="rounded-xl border border-[#426650] bg-[#173f2a] px-4 py-3 text-sm"><span className="block text-xs text-[#9fb5a5]">已登录</span><strong>{resumeUser.email}</strong><button onClick={() => supabase?.auth.signOut()} className="ml-3 text-xs text-[#ef9a78] hover:underline">退出</button></div>}</div>
+
+          {!supabase ? <div className="mt-6 rounded-xl border border-[#745c49] bg-[#3a2e25] p-4 text-sm text-[#f4d8c8]">简历库尚未配置完成。</div> : !resumeUser ? <div className="mt-6 max-w-xl rounded-2xl border border-[#426650] bg-[#173f2a] p-5"><div className="mb-4 flex gap-2"><button onClick={() => setAuthMode('login')} className={`rounded-lg px-3 py-1.5 text-sm ${authMode === 'login' ? 'bg-white text-[#173f2a]' : 'bg-[#284b36] text-white'}`}>邮箱登录</button><button onClick={() => setAuthMode('register')} className={`rounded-lg px-3 py-1.5 text-sm ${authMode === 'register' ? 'bg-white text-[#173f2a]' : 'bg-[#284b36] text-white'}`}>注册账号</button></div><label className="block text-xs text-[#b7cabd]">邮箱<input type="email" value={authEmail} onChange={(event) => setAuthEmail(event.target.value)} className="mt-1.5 w-full rounded-xl border border-[#53735d] bg-[#102d20] px-3 py-2.5 text-sm text-white outline-none focus:border-[#91b49a]" autoComplete="email" /></label><label className="mt-3 block text-xs text-[#b7cabd]">密码（至少 8 位）<input type="password" value={authPassword} onChange={(event) => setAuthPassword(event.target.value)} className="mt-1.5 w-full rounded-xl border border-[#53735d] bg-[#102d20] px-3 py-2.5 text-sm text-white outline-none focus:border-[#91b49a]" autoComplete={authMode === 'register' ? 'new-password' : 'current-password'} /></label><button onClick={handleAuth} disabled={resumeBusy} className="mt-4 w-full rounded-xl bg-[#ef9a78] px-4 py-2.5 text-sm font-semibold text-[#2f201a] disabled:opacity-50">{authMode === 'login' ? '登录简历库' : '注册并发送验证邮件'}</button></div> : <div className="mt-7 grid gap-6 lg:grid-cols-[1.05fr_.95fr]"><div className="rounded-2xl border border-[#426650] bg-[#173f2a] p-5"><div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="font-semibold">上传并提取字段</h3><p className="mt-1 text-xs text-[#a9bdae]">PDF、DOCX、TXT，最大 10 MB。解析先在浏览器完成。</p></div><label className="cursor-pointer rounded-xl bg-white px-4 py-2 text-sm font-semibold text-[#173f2a]">选择简历<input type="file" accept=".pdf,.docx,.txt,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain" onChange={(event) => handleResumeFile(event.target.files?.[0] ?? null)} className="sr-only" /></label></div>{(resumeFile || selectedResumeId) && <><div className="mt-5 grid gap-3 sm:grid-cols-2">{(Object.keys(resumeFieldLabels) as Array<keyof ResumeFields>).map((key) => <label key={key} className={`text-xs text-[#b7cabd] ${key === 'skills' ? 'sm:col-span-2' : ''}`}>{resumeFieldLabels[key]}<span className="mt-1.5 flex gap-2"><input value={resumeFields[key]} onChange={(event) => setResumeFields((current) => ({ ...current, [key]: event.target.value }))} className="min-w-0 flex-1 rounded-lg border border-[#53735d] bg-[#102d20] px-3 py-2 text-sm text-white outline-none focus:border-[#91b49a]" /><button type="button" onClick={() => navigator.clipboard.writeText(resumeFields[key])} disabled={!resumeFields[key]} className="rounded-lg border border-[#53735d] px-2 text-xs disabled:opacity-40">复制</button></span></label>)}</div>{resumeText && <details className="mt-4 rounded-xl bg-[#102d20] p-3"><summary className="cursor-pointer text-xs text-[#b7cabd]">查看提取的原始文本</summary><textarea value={resumeText} onChange={(event) => setResumeText(event.target.value)} className="mt-3 h-36 w-full rounded-lg border border-[#53735d] bg-[#0c2419] p-3 text-xs text-[#d6e2d8]" /></details>}<button onClick={selectedResumeId ? saveResumeFields : uploadResume} disabled={resumeBusy} className="mt-5 w-full rounded-xl bg-[#ef9a78] px-4 py-2.5 text-sm font-semibold text-[#2f201a] disabled:opacity-50">{selectedResumeId ? '保存字段到云端' : `上传 ${resumeFile?.name ?? '简历'}`}</button></>}</div><div className="rounded-2xl border border-[#426650] bg-[#173f2a] p-5"><div className="flex items-center justify-between"><h3 className="font-semibold">云端简历</h3><span className="text-xs text-[#a9bdae]">{resumeRecords.length} 份</span></div><div className="mt-4 space-y-3">{resumeRecords.length ? resumeRecords.map((record) => <article key={record.id} className="rounded-xl border border-[#456952] bg-[#102d20] p-4"><strong className="block truncate text-sm">{record.file_name}</strong><p className="mt-1 text-xs text-[#94aa9a]">{(record.file_size / 1024 / 1024).toFixed(2)} MB · {new Date(record.created_at).toLocaleDateString('zh-CN')}</p><div className="mt-3 flex flex-wrap gap-2"><button onClick={() => { setSelectedResumeId(record.id); setResumeFields({ ...emptyResumeFields, ...record.fields }); setResumeFile(null); setResumeText(''); }} className="rounded-lg bg-[#284b36] px-3 py-1.5 text-xs">查看字段</button><button onClick={() => downloadResume(record)} className="rounded-lg bg-[#284b36] px-3 py-1.5 text-xs">下载</button><button onClick={() => deleteResume(record)} className="rounded-lg bg-[#4a2b25] px-3 py-1.5 text-xs text-[#ffc5b4]">删除</button></div></article>) : <p className="rounded-xl border border-dashed border-[#4d6c57] p-5 text-sm text-[#9fb5a5]">登录后上传第一份简历，即可在其他电脑访问。</p>}</div></div></div>}
+          {resumeMessage && <p className="mt-4 rounded-xl bg-[#173f2a] px-4 py-3 text-sm text-[#d5e4d8]">{resumeMessage}</p>}
         </div>
       </section>
 
