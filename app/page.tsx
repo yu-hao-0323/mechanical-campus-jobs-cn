@@ -310,12 +310,21 @@ function extractResumeFields(text: string): ResumeFields {
   const header = lines.slice(0, 5).join(' ');
   const standaloneName = lines.slice(0, 6).map((line) => line.match(/^\s*([\u4e00-\u9fa5·]{2,4})\s*$/)?.[1] ?? '').find(Boolean) ?? '';
   const skills = ['SolidWorks', 'AutoCAD', 'CAD', 'CATIA', 'Creo', 'UG', 'NX', 'ANSYS', 'Abaqus', 'Fluent', 'MATLAB', 'Simulink', 'Python', 'C++', 'PLC', 'LabVIEW', 'FMEA', 'GD&T', 'Linux', 'ROS2', 'Jetson', 'TCP', '机器视觉', '机器人'].filter((skill) => new RegExp(skill.replace('+', '\\+'), 'i').test(normalized));
-  const sectionIndex = lines.findIndex((line) => /项目经历|项目经验|实践经历/i.test(line));
-  const nextSectionIndex = sectionIndex >= 0 ? lines.slice(sectionIndex + 1).findIndex((line) => /教育背景|教育经历|工作经历|实习经历|奖项荣誉|论文专利|个人评价|自我评价|个人总结/i.test(line)) : -1;
-  const projectLines = sectionIndex >= 0 ? lines.slice(sectionIndex + 1, nextSectionIndex >= 0 ? sectionIndex + 1 + nextSectionIndex : lines.length) : [];
-  const projectText = projectLines.join('\n');
-  const projectMatches = [...projectText.matchAll(/((?:20\d{2}[.\-/年]\d{1,2}\s*(?:月)?\s*(?:~|—|-|至)\s*)?20?\d{2}[.\-/年]\d{1,2}\s*(?:月)?(?:~|—|-|至)\s*20\d{2}[.\-/年]\d{1,2}\s*(?:月)?)([\s\S]*?)(?=(?:20\d{2}[.\-/年]\d{1,2}\s*(?:月)?(?:~|—|-|至)\s*20\d{2}[.\-/年]\d{1,2}|$))/g)];
-  const projects = projectMatches.map((item) => { const block = item[2].trim(); const contentIndex = block.search(/(?:工作描述|项目内容|项目职责|职责)\s*[:：]?/i); const name = (contentIndex >= 0 ? block.slice(0, contentIndex) : block.split('\n')[0]).replace(/[\s｜|]+$/, '').trim(); const content = contentIndex >= 0 ? block.slice(contentIndex).trim() : block.trim(); return { time: item[1].trim(), name, content }; }).filter((project) => project.name.length >= 2);
+  const dateLinePattern = /20\d{2}[.\-/年]\d{1,2}\s*(?:月)?\s*(?:~|—|-|至)\s*20\d{2}[.\-/年]\d{1,2}\s*(?:月)?/;
+  const dateLineIndexes = lines.map((line, index) => ({ line, index })).filter(({ line }) => dateLinePattern.test(line));
+  const projectBlocks = dateLineIndexes.map(({ line, index }, position) => {
+    const context = lines.slice(index, Math.min(index + 3, lines.length)).join(' ');
+    if (/(大学|学院|学校|University|College)/i.test(context) && /(博士|硕士|本科|大专|专科|PhD|Master|Bachelor)/i.test(context)) return null;
+    const nextDate = dateLineIndexes[position + 1]?.index ?? lines.length;
+    const singleDate = lines.slice(index + 1, nextDate).findIndex((candidate) => /^20\d{2}[.\-/年]\d{1,2}\s/.test(candidate));
+    const end = singleDate >= 0 ? index + 1 + singleDate : nextDate;
+    const blockLines = lines.slice(index, end);
+    const time = line.match(dateLinePattern)?.[0] ?? '';
+    const firstRemainder = line.replace(dateLinePattern, '').trim();
+    const name = firstRemainder || blockLines[1]?.replace(/(?:工作描述|项目内容|项目职责|职责)\s*[:：]?/i, '').trim() || '';
+    const content = blockLines.slice(1).join('\n').replace(/^(?:工作描述|项目内容|项目职责|职责)\s*[:：]?\s*/i, '').trim();
+    return { time, name, content };
+  }).filter((project): project is { time: string; name: string; content: string } => Boolean(project && project.name.length >= 2 && project.content.length >= 2));
   const evaluationHeading = lines.findIndex((line) => /个人评价|自我评价|个人总结|个人优势/i.test(line));
   const evaluationStart = lines.findIndex((line) => /^本人[\u4e00-\u9fa5]/.test(line));
   const evaluation = evaluationHeading >= 0 ? lines.slice(evaluationHeading + 1).join('\n').trim() : evaluationStart >= 0 ? lines.slice(evaluationStart).join('\n').trim() : '';
@@ -330,9 +339,9 @@ function extractResumeFields(text: string): ResumeFields {
     politicalStatus: match(/(中共党员|中共预备党员|共青团员|群众)/),
     englishLevel: match(/(CET[- ]?6|CET[- ]?4|英语六级|英语四级|雅思\s*\d(?:\.\d)?|托福\s*\d{2,3})/i),
     skills: [...new Set(skills)].join('、'),
-    projectName: projects.map((project) => project.name).join('；'),
-    projectTime: projects.map((project) => project.time).join('；'),
-    projectContent: projects.map((project, index) => `项目${index + 1}：${project.name}\n时间：${project.time}\n${project.content}`).join('\n\n'),
+    projectName: projectBlocks.map((project) => project.name).join('；'),
+    projectTime: projectBlocks.map((project) => project.time).join('；'),
+    projectContent: projectBlocks.map((project, index) => `项目${index + 1}：${project.name}\n时间：${project.time}\n${project.content}`).join('\n\n'),
     selfEvaluation: evaluation,
   };
 }
