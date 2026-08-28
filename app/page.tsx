@@ -3334,7 +3334,7 @@ export default function Home() {
               <h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] text-white sm:text-6xl">
                 先选公司，再看清
                 <br className="hidden sm:block" />
-                <span className="text-[#1c6741]">岗位与招聘进度</span>
+                <span className="text-[#8de1c6]">岗位与招聘进度</span>
               </h1>
               <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#c6d9cb]">
                 所有企业优先以中国官网或中国区官方校招站核验；完整官方JD逐项展示职责和资格，第三方仅作为原始公告参考。
