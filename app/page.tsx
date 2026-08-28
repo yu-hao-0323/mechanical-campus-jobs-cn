@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type Job = {
   id: string;
@@ -251,6 +251,9 @@ const companyTypes = ['全部企业', '央国企', '外企', '上市公司', '�
 const currentCompanyCategories: Record<string, string> = {
   caterpillar: '外企', sany: '上市公司', geely: '上市公司', sungrow: '上市公司', nio: '上市公司', cxmt: '大型公司', wayeal: '上市公司', sinoma: '央国企', amd: '大型公司', hengli: '上市公司', haitian: '上市公司', leoch: '上市公司', xinje: '上市公司', cetc8: '央国企', iflytek: '上市公司', cctech: '上市公司', cetc38: '央国企', shuanghuan: '上市公司', jingce: '上市公司', donghua: '央国企', cecii: '央国企', huaqin: '上市公司', sugon: '上市公司', asml: '外企', lead: '上市公司', firstack: '大型公司', uaes: '外企', boschbcsc: '外企', neolix: '大型公司',
 };
+
+type ApplicationStage = '未投递' | '已投递' | '笔试/面试' | '已结束';
+const applicationStages: ApplicationStage[] = ['未投递', '已投递', '笔试/面试', '已结束'];
 const sourceOrigins: Record<string, '企业官网发布' | '官网招聘入口' | '高校/国家就业平台转发' | '第三方平台转发'> = {
   caterpillar: '企业官网发布', sany: '企业官网发布', geely: '企业官网发布', sungrow: '企业官网发布',
   nio: '企业官网发布',
@@ -348,6 +351,27 @@ export default function Home() {
   const [companyType, setCompanyType] = useState('全部企业');
   const [openCompanies, setOpenCompanies] = useState<Set<string>>(new Set());
   const [openJob, setOpenJob] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [applicationStagesByJob, setApplicationStagesByJob] = useState<Record<string, ApplicationStage>>({});
+  const [storageReady, setStorageReady] = useState(false);
+
+  useEffect(() => {
+    const savedFavorites = window.localStorage.getItem('mechanical-campus-job-favorites');
+    const savedStages = window.localStorage.getItem('mechanical-campus-job-stages');
+    if (savedFavorites) setFavorites(new Set(JSON.parse(savedFavorites) as string[]));
+    if (savedStages) setApplicationStagesByJob(JSON.parse(savedStages) as Record<string, ApplicationStage>);
+    setStorageReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!storageReady) return;
+    window.localStorage.setItem('mechanical-campus-job-favorites', JSON.stringify([...favorites]));
+  }, [favorites, storageReady]);
+
+  useEffect(() => {
+    if (!storageReady) return;
+    window.localStorage.setItem('mechanical-campus-job-stages', JSON.stringify(applicationStagesByJob));
+  }, [applicationStagesByJob, storageReady]);
 
   const currentCategory = (company: Company) => currentCompanyCategories[company.id] ?? '大型公司';
   const radarCategory = (company: typeof watchlist[number]) => /(外资|合资)/.test(company.tag) ? '外企' : /(央企|国企)/.test(company.tag) ? '央国企' : /上市/.test(company.tag) ? '上市公司' : '大型公司';
@@ -365,11 +389,17 @@ export default function Home() {
   }).filter((company) => company.jobs.length > 0), [query, area, direction, companyType]);
 
   const totalJobs = filtered.reduce((sum, company) => sum + company.jobs.length, 0);
+  const savedJobs = companies.flatMap((company) => company.jobs.map((job) => ({ company, job }))).filter(({ job }) => favorites.has(job.id));
   const radarFiltered = useMemo(() => watchlist.filter((company) => companyType === '全部企业' || radarCategory(company) === companyType), [companyType]);
   const reset = () => { setQuery(''); setArea('全部地区'); setDirection('全部方向'); setCompanyType('全部企业'); };
   const toggleCompany = (id: string) => setOpenCompanies((current) => {
     const next = new Set(current);
     if (next.has(id)) next.delete(id); else next.add(id);
+    return next;
+  });
+  const toggleFavorite = (jobId: string) => setFavorites((current) => {
+    const next = new Set(current);
+    if (next.has(jobId)) next.delete(jobId); else next.add(jobId);
     return next;
   });
 
@@ -378,7 +408,7 @@ export default function Home() {
       <header className="border-b border-[#dce1da] bg-[#f5f6f2]/95">
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-5 sm:px-8">
           <a href="#top" className="flex items-center gap-3" aria-label="机遇引擎首页"><span className="grid h-10 w-10 place-items-center rounded-xl bg-[#173f2a] text-sm font-bold text-white">ME</span><span><strong className="block text-[15px] tracking-[0.08em]">机遇引擎</strong><small className="text-xs text-[#68746c]">机械校招聚合</small></span></a>
-          <nav className="hidden items-center gap-7 text-sm text-[#536159] sm:flex"><span>无需登录 · 中国官网优先</span><a href="#standards" className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">收录标准</a></nav>
+          <nav className="hidden items-center gap-4 text-sm text-[#536159] sm:flex"><span>无需登录 · 中国官网优先</span><a href="#my-list" className="font-medium text-[#1c6741] hover:underline">我的投递清单 {favorites.size}</a><a href="#standards" className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">收录标准</a></nav>
         </div>
       </header>
 
@@ -434,6 +464,7 @@ export default function Home() {
                           </div>
                           <div className="mt-6 grid gap-3 rounded-xl bg-[#f1f5f0] p-4 text-sm sm:grid-cols-2 lg:grid-cols-3"><p><span className="detail-key">专业</span>{job.majors}</p><p><span className="detail-key">学历</span>{job.degree}</p><p><span className="detail-key">工作性质</span>校园招聘 · 全职</p><p><span className="detail-key">发布日期</span>{publicationDates[job.id]}</p><p><span className="detail-key">截止状态</span>{job.deadline}</p><p><span className="detail-key">薪资</span>企业官网未公布</p></div>
                           {job.note && <p className="mt-4 rounded-lg border border-[#ead5c8] bg-[#fff8f3] px-3 py-2.5 text-xs leading-5 text-[#9b4d31]">信息说明：{job.note}</p>}
+                          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dce4dd] bg-white px-4 py-3 text-xs"><span><strong className="text-[#284933]">网站审核：</strong>{company.status === 'announcement' ? '校招已确认 · 独立JD待补全' : sourceOrigin === '企业官网发布' ? '完整官方JD · 官网显示可投' : '招聘信息已核验 · 投递前需复查官网'}</span><span className="flex items-center gap-2"><button onClick={() => toggleFavorite(job.id)} className={`rounded-lg px-3 py-1.5 font-semibold ${favorites.has(job.id) ? 'bg-[#e2efe3] text-[#1c6741]' : 'bg-[#f1f4f0] text-[#526259]'}`}>{favorites.has(job.id) ? '已收藏' : '收藏岗位'}</button><label className="sr-only" htmlFor={`stage-${job.id}`}>个人投递进度</label><select id={`stage-${job.id}`} value={applicationStagesByJob[job.id] ?? '未投递'} onChange={(event) => setApplicationStagesByJob((current) => ({ ...current, [job.id]: event.target.value as ApplicationStage }))} className="rounded-lg border border-[#cbd6cc] bg-white px-2 py-1.5 text-xs text-[#33463a]">{applicationStages.map((stage) => <option key={stage}>{stage}</option>)}</select></span></div>
                           <div className="mt-5 flex flex-wrap items-center justify-between gap-3"><span className="text-xs text-[#808a82]">投递前请再次核对官网最新要求</span><span className="flex flex-wrap gap-2">{sourceOrigin === '企业官网发布' ? <a href={job.url} target="_blank" rel="noreferrer" className="rounded-xl bg-[#173f2a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#225c3a]">前往官网投递 ↗</a> : <><a href={job.url} target="_blank" rel="noreferrer" className="rounded-xl border border-[#b9c6bb] bg-white px-4 py-2.5 text-sm font-semibold text-[#365541] hover:bg-[#f1f5f0]">查看原始公告 ↗</a><a href={company.website} target="_blank" rel="noreferrer" className="rounded-xl bg-[#173f2a] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#225c3a]">前往企业招聘入口 ↗</a></>}</span></div>
                         </div>}
                       </section>;
@@ -444,6 +475,13 @@ export default function Home() {
             })}
             {filtered.length === 0 && <div className="rounded-2xl border border-dashed border-[#c9d1ca] bg-white px-6 py-14 text-center"><p className="font-semibold">没有符合当前条件的岗位</p><p className="mt-2 text-sm text-[#6c786f]">试试减少筛选条件。</p><button onClick={reset} className="mt-5 rounded-xl bg-[#173f2a] px-4 py-2 text-sm font-semibold text-white">清除筛选</button></div>}
           </div>
+        </div>
+      </section>
+
+      <section id="my-list" className="border-t border-[#dce1da] bg-[#edf3ed]">
+        <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-xs font-bold tracking-[0.16em] text-[#ce5a35]">我的投递清单</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">已收藏 {savedJobs.length} 个岗位</h2><p className="mt-2 text-sm leading-6 text-[#66736a]">收藏和投递进度仅保存于当前浏览器，不需要账号，也不会上传到招聘网站。</p></div><button onClick={() => { setFavorites(new Set()); setApplicationStagesByJob({}); }} disabled={savedJobs.length === 0} className="rounded-xl border border-[#b7c5b8] bg-white px-4 py-2 text-sm font-semibold text-[#365541] disabled:cursor-not-allowed disabled:opacity-40">清空本地清单</button></div>
+          {savedJobs.length > 0 ? <div className="mt-6 grid gap-3 md:grid-cols-2">{savedJobs.map(({ company, job }) => <article key={job.id} className="rounded-xl border border-[#d7e0d8] bg-white p-4"><div className="flex items-start justify-between gap-3"><div><strong>{job.title}</strong><p className="mt-1 text-xs text-[#68756c]">{company.name} · {job.location}</p></div><button onClick={() => toggleFavorite(job.id)} className="text-xs font-semibold text-[#9a4e32] hover:underline">移除</button></div><div className="mt-4 flex flex-wrap items-center justify-between gap-2"><a href={job.url} target="_blank" rel="noreferrer" className="text-sm font-semibold text-[#1c6741] hover:underline">打开投递页 ↗</a><label className="flex items-center gap-2 text-xs text-[#5e6e64]">我的进度<select value={applicationStagesByJob[job.id] ?? '未投递'} onChange={(event) => setApplicationStagesByJob((current) => ({ ...current, [job.id]: event.target.value as ApplicationStage }))} className="rounded-lg border border-[#cbd6cc] bg-white px-2 py-1.5 text-xs">{applicationStages.map((stage) => <option key={stage}>{stage}</option>)}</select></label></div></article>)}</div> : <div className="mt-6 rounded-xl border border-dashed border-[#bdcabf] bg-white/70 px-5 py-8 text-sm text-[#657269]">在任一岗位详情中点击“收藏岗位”，它就会出现在这里。</div>}
         </div>
       </section>
 
