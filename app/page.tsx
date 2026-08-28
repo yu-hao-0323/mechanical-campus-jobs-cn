@@ -314,7 +314,7 @@ function extractResumeFields(text: string): ResumeFields {
   const dateLineIndexes = lines.map((line, index) => ({ line, index })).filter(({ line }) => dateLinePattern.test(line));
   const projectBlocks = dateLineIndexes.map(({ line, index }, position) => {
     const context = lines.slice(index, Math.min(index + 3, lines.length)).join(' ');
-    if (/(大学|学院|学校|University|College)/i.test(context) && /(博士|硕士|本科|大专|专科|PhD|Master|Bachelor)/i.test(context)) return null;
+    if (/(主修课程|教育背景|教育经历)/i.test(context)) return null;
     const nextDate = dateLineIndexes[position + 1]?.index ?? lines.length;
     const singleDate = lines.slice(index + 1, nextDate).findIndex((candidate) => /^20\d{2}[.\-/年]\d{1,2}\s/.test(candidate));
     const end = singleDate >= 0 ? index + 1 + singleDate : nextDate;
