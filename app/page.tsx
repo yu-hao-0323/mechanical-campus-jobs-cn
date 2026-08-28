@@ -86,6 +86,13 @@ const companies: Company[] = [
     ],
   },
   {
+    id: 'cxmt', name: '长鑫存储', short: 'CXMT', industry: '大型半导体制造 · DRAM与智能制造', batch: '2027届提前批校园招聘', verified: '2026-08-28 19:10', source: '长鑫存储中国招聘官网与2027届提前批公告', website: 'https://www.cxmt.com/join.html', status: 'announcement',
+    jobs: [
+      { id: 'cxmt-process', title: '工艺工程 / 工艺整合', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上', direction: '制造工程', majors: '微电子、机械工程、电气工程、化学工程、物理、材料、化学、数学、统计学等理工科相关专业', deadline: '2027届提前批 · 申请开放', responsibilities: ['参与 DRAM 量产技术方向的工艺工程或工艺整合工作', '服务于存储芯片制造工艺、质量控制与量产技术能力建设'], requirements: ['面向2027届海内外高校毕业生（毕业时间为2027年1月1日至12月31日）', '本科及以上，微电子、机械工程、电气工程、化学工程、物理、材料、化学、数学、统计学等理工科相关专业', '完成网申、AI初试及在线测评后进入简历筛选、专业复试、综合评估和录用流程'], note: '官方校招入口当前无法公开读取单岗完整JD；已确认届次、地点、岗位方向、学历与专业，后续补全独立JD。', url: 'http://jobs.cxmt.com/Campus' },
+      { id: 'cxmt-quality-reliability', title: '产品质量与可靠性工程 / 研发质量改善与检测量测', location: '安徽 · 合肥', areas: ['合肥'], degree: '本科及以上（部分方向硕士/博士优先）', direction: '质量测试', majors: '机械工程、自动化、电气工程、微电子、材料、物理、化学、力学、智能制造等理工科相关专业', deadline: '2027届提前批 · 申请开放', responsibilities: ['参与产品质量与可靠性、研发质量改善、检测量测等半导体研发技术方向', '支持产品质量、失效分析、检测量测与研发质量改进相关工作'], requirements: ['面向2027届海内外高校毕业生', '机械工程、自动化、电气工程、微电子、材料、物理、化学、力学、智能制造等理工科相关专业', '具体学历门槛与项目要求以官方职位系统实时信息为准'], note: '公告级信息：当前确认的是官方校招方向、届次与专业范围，独立岗位JD待官方系统恢复访问后补全。', url: 'http://jobs.cxmt.com/Campus' },
+    ],
+  },
+  {
     id: 'wayeal', name: '皖仪科技', short: 'WAYEAL', industry: '分析仪器与精密装备', batch: '2027届秋季校园招聘', verified: '2026-08-28 18:20', source: '皖仪科技中国校园招聘官网', website: 'https://wayeal.zhiye.com/campus/jobs', sourceOrigin: '企业官网发布',
     jobs: [
       { id: 'wayeal-mechanical', title: '机械工程师', location: '安徽 · 合肥 · 高新区', areas: ['合肥'], degree: '硕士及以上', direction: '研发设计', majors: '机械工程（真空方向）、机械设计制造及其自动化、机械电子工程、过程装备与控制工程、流体机械及工程等', deadline: '校招申请开放', responsibilities: ['承担项目方案设计与技术沟通，完成设计方案确认', '完成机械结构、气动图纸及材料清单编制，对项目节点负责', '为机械装配和售后现场提供机械结构技术支持', '开展机械改进设计、设计标准化工作，输出图纸和 BOM'], requirements: ['硕士及以上，机械工程（真空方向）、机械设计制造、机械电子、过程装备与控制、流体机械等相关专业', '具备扎实机械设计理论基础，掌握机械原理、机械设计、材料力学、公差配合与测量、机械制造工艺等知识', '具备机械问题分析思路，能判断故障可能原因；图纸和 BOM 条理清晰、版本可控，具备设计标准化和模块化改进基础'], url: 'https://wayeal.zhiye.com/campus/jobs' },
@@ -242,12 +249,12 @@ const areas = ['全部地区', '合肥', '江苏全域', '杭州', '宁波'];
 const directions = ['全部方向', '研发设计', '车辆研发', '仿真分析', '自动化', '制造工程', '设备工程', '质量测试'];
 const companyTypes = ['全部企业', '央国企', '外企', '上市公司', '大型公司'];
 const currentCompanyCategories: Record<string, string> = {
-  caterpillar: '外企', sany: '上市公司', geely: '上市公司', sungrow: '上市公司', nio: '上市公司', wayeal: '上市公司', sinoma: '央国企', amd: '大型公司', hengli: '上市公司', haitian: '上市公司', leoch: '上市公司', xinje: '上市公司', cetc8: '央国企', iflytek: '上市公司', cctech: '上市公司', cetc38: '央国企', shuanghuan: '上市公司', jingce: '上市公司', donghua: '央国企', cecii: '央国企', huaqin: '上市公司', sugon: '上市公司', asml: '外企', lead: '上市公司', firstack: '大型公司', uaes: '外企', boschbcsc: '外企', neolix: '大型公司',
+  caterpillar: '外企', sany: '上市公司', geely: '上市公司', sungrow: '上市公司', nio: '上市公司', cxmt: '大型公司', wayeal: '上市公司', sinoma: '央国企', amd: '大型公司', hengli: '上市公司', haitian: '上市公司', leoch: '上市公司', xinje: '上市公司', cetc8: '央国企', iflytek: '上市公司', cctech: '上市公司', cetc38: '央国企', shuanghuan: '上市公司', jingce: '上市公司', donghua: '央国企', cecii: '央国企', huaqin: '上市公司', sugon: '上市公司', asml: '外企', lead: '上市公司', firstack: '大型公司', uaes: '外企', boschbcsc: '外企', neolix: '大型公司',
 };
 const sourceOrigins: Record<string, '企业官网发布' | '官网招聘入口' | '高校/国家就业平台转发' | '第三方平台转发'> = {
   caterpillar: '企业官网发布', sany: '企业官网发布', geely: '企业官网发布', sungrow: '企业官网发布',
   nio: '企业官网发布',
-  hengli: '官网招聘入口', haitian: '官网招聘入口',
+  hengli: '官网招聘入口', haitian: '官网招聘入口', cxmt: '官网招聘入口',
   sinoma: '高校/国家就业平台转发', amd: '高校/国家就业平台转发', xinje: '高校/国家就业平台转发', cetc8: '高校/国家就业平台转发', iflytek: '高校/国家就业平台转发', cctech: '高校/国家就业平台转发', cetc38: '高校/国家就业平台转发', donghua: '高校/国家就业平台转发', sugon: '高校/国家就业平台转发', firstack: '高校/国家就业平台转发',
   leoch: '第三方平台转发', shuanghuan: '第三方平台转发', jingce: '第三方平台转发', cecii: '第三方平台转发', huaqin: '第三方平台转发', asml: '第三方平台转发', lead: '第三方平台转发', uaes: '第三方平台转发', boschbcsc: '第三方平台转发', neolix: '第三方平台转发',
 };
@@ -261,6 +268,7 @@ const publicationDates: Record<string, string> = {
   'nio-project-quality': '2026-08-28', 'nio-process-quality': '2026-08-28', 'nio-smart-equipment': '2026-08-28',
   'nio-stamping-equipment': '2026-08-28', 'nio-stamping-process': '2026-08-28',
   'wayeal-mechanical': '2026-08-24', 'wayeal-system-product': '2026-08-24', 'wayeal-process': '2026-08-24',
+  'cxmt-process': '2026-08-27', 'cxmt-quality-reliability': '2026-08-27',
   'sg-reliability': '2026-08-10', 'sg-equipment': '2026-08-10', 'sg-manufacturing': '2026-08-10', 'sg-tooling': '2026-08-10',
   'sinoma-rd-doctor': '2026-08-26', 'sinoma-rd': '2026-08-26', 'sinoma-smart': '2026-08-26',
   'amd-mechatronic': '2026-08-14', 'amd-mechatronic-research': '2026-08-14', 'amd-mechanical': '2026-08-14',
