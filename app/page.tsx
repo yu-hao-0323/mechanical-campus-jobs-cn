@@ -3324,25 +3324,50 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="top" className="border-b border-[#dce1da] bg-[#e8eee7]">
+      <section id="top" className="border-b border-[#244f39] bg-[#123b29] text-white">
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8 sm:py-16">
           <p className="mb-4 text-xs font-bold tracking-[0.18em] text-[#ce5a35]">
             2027 届校园招聘 · 持续更新
           </p>
           <div className="grid gap-7 lg:grid-cols-[1fr_330px] lg:items-end">
             <div>
-              <h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] sm:text-6xl">
+              <h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] text-white sm:text-6xl">
                 先选公司，再看清
                 <br className="hidden sm:block" />
                 <span className="text-[#1c6741]">岗位与招聘进度</span>
               </h1>
-              <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#59675e]">
+              <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#c6d9cb]">
                 所有企业优先以中国官网或中国区官方校招站核验；完整官方JD逐项展示职责和资格，第三方仅作为原始公告参考。
               </p>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <a
+                  href="#jobs"
+                  className="rounded-xl bg-[#f1a07d] px-5 py-3 text-sm font-bold text-[#173f2a] shadow-[0_8px_20px_rgba(0,0,0,.15)] transition hover:-translate-y-0.5 hover:bg-[#f5b08f]"
+                >
+                  立即查找岗位 ↓
+                </a>
+                <a
+                  href="#standards"
+                  className="rounded-xl border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  查看收录标准
+                </a>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2 text-xs text-[#d7e5da]">
+                {['合肥', '江苏全域', '杭州', '宁波'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => setArea(item === '江苏全域' ? '江苏全域' : item)}
+                    className="rounded-full border border-white/20 px-3 py-1.5 transition hover:border-[#f1a07d] hover:text-[#f1a07d]"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="rounded-2xl border border-[#ced8cf] bg-white/70 p-5">
+            <div className="rounded-2xl border border-white/15 bg-white/10 p-5 shadow-[0_18px_45px_rgba(0,0,0,0.14)] backdrop-blur-sm">
               <div className="flex items-end justify-between">
-                <span className="text-sm text-[#647168]">当前收录</span>
+                <span className="text-sm text-[#c6d9cb]">当前收录岗位</span>
                 <strong className="text-4xl font-semibold tracking-tight">
                   {companies.reduce(
                     (sum, company) => sum + company.jobs.length,
@@ -3350,24 +3375,24 @@ export default function Home() {
                   )}
                 </strong>
               </div>
-              <div className="mt-4 grid grid-cols-3 gap-2 border-t border-[#dce4dd] pt-4 text-center">
+              <div className="mt-4 grid grid-cols-3 gap-2 border-t border-white/15 pt-4 text-center">
                 <div>
-                  <strong className="block text-lg text-[#1c6741]">
+                  <strong className="block text-lg text-[#f1a07d]">
                     {companies.length}
                   </strong>
-                  <span className="text-[10px] text-[#748078]">招聘企业</span>
+                  <span className="text-[10px] text-[#c6d9cb]">招聘企业</span>
                 </div>
                 <div>
-                  <strong className="block text-lg text-[#1c6741]">
+                  <strong className="block text-lg text-[#f1a07d]">
                     {completeOfficialCount}
                   </strong>
-                  <span className="text-[10px] text-[#748078]">完整官方JD</span>
+                  <span className="text-[10px] text-[#c6d9cb]">完整官方JD</span>
                 </div>
                 <div>
                   <strong className="block text-lg text-[#a85b36]">
                     {announcementCount}
                   </strong>
-                  <span className="text-[10px] text-[#748078]">公告级方向</span>
+                  <span className="text-[10px] text-[#c6d9cb]">公告级方向</span>
                 </div>
               </div>
             </div>
@@ -3469,7 +3494,7 @@ export default function Home() {
           </select>
         </aside>
 
-        <div>
+        <div id="jobs">
           <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight">
@@ -3478,6 +3503,16 @@ export default function Home() {
               <p className="mt-1 text-sm text-[#6c786f]">
                 {filtered.length} 家公司 · {totalJobs} 个匹配岗位或招聘方向
               </p>
+              {(area !== "全部地区" || direction !== "全部方向" || companyType !== "全部企业" || informationLevel !== "全部信息" || query) && (
+                <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="font-semibold text-[#506057]">当前筛选：</span>
+                  {query && <span className="rounded-full bg-[#e8eee7] px-2.5 py-1 text-[#225d3d]">关键词「{query}」</span>}
+                  {area !== "全部地区" && <span className="rounded-full bg-[#e8eee7] px-2.5 py-1 text-[#225d3d]">{area}</span>}
+                  {direction !== "全部方向" && <span className="rounded-full bg-[#e8eee7] px-2.5 py-1 text-[#225d3d]">{direction}</span>}
+                  {companyType !== "全部企业" && <span className="rounded-full bg-[#e8eee7] px-2.5 py-1 text-[#225d3d]">{companyType}</span>}
+                  {informationLevel !== "全部信息" && <span className="rounded-full bg-[#e8eee7] px-2.5 py-1 text-[#225d3d]">{informationLevel}</span>}
+                </div>
+              )}
             </div>
             <div className="flex items-center gap-2">
               <label htmlFor="sort-mode" className="text-xs text-[#718078]">

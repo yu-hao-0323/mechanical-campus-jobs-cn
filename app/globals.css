@@ -13,6 +13,9 @@ body { margin: 0; background: radial-gradient(circle at 88% 4%, rgba(205, 225, 2
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
 header { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(16px); }
+#top { position: relative; overflow: hidden; }
+#top::after { content: ""; position: absolute; width: 28rem; height: 28rem; right: -10rem; top: -14rem; border: 1px solid rgba(241,160,125,.18); border-radius: 999px; box-shadow: 0 0 0 3rem rgba(241,160,125,.04), 0 0 0 7rem rgba(241,160,125,.025); pointer-events: none; }
+#top > div { position: relative; z-index: 1; }
 header a { transition: color 160ms ease, transform 160ms ease; }
 header a:hover { transform: translateY(-1px); }
 aside { box-shadow: 0 12px 32px rgba(31, 61, 42, 0.05); }
