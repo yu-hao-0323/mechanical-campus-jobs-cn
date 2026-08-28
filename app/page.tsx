@@ -2757,6 +2757,7 @@ export default function Home() {
   });
   const [resumeText, setResumeText] = useState("");
   const [resumeRecords, setResumeRecords] = useState<ResumeRecord[]>([]);
+  const [resumeLoading, setResumeLoading] = useState(false);
   const [selectedResumeId, setSelectedResumeId] = useState<string | null>(null);
   const [resumeBusy, setResumeBusy] = useState(false);
   const [resumeMessage, setResumeMessage] = useState("");
@@ -2795,7 +2796,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!supabase) return;
-    supabase.auth.getUser().then(({ data }) => setResumeUser(data.user));
+    supabase.auth.getSession().then(({ data }) => setResumeUser(data.session?.user ?? null));
     const { data } = supabase.auth.onAuthStateChange((_event, session) =>
       setResumeUser(session?.user ?? null),
     );
@@ -2805,11 +2806,13 @@ export default function Home() {
   useEffect(() => {
     if (!supabase || !resumeUser) {
       setResumeRecords([]);
+      setResumeLoading(false);
       return;
     }
+    setResumeLoading(true);
     supabase
       .from("resume_profiles")
-      .select("*")
+      .select("id,file_path,file_name,mime_type,file_size,fields,created_at")
       .order("created_at", { ascending: false })
       .then(({ data, error }) => {
         if (error) setResumeMessage(`读取简历库失败：${error.message}`);
@@ -2821,6 +2824,7 @@ export default function Home() {
             setResumeFields({ ...emptyResumeFields, ...records[0].fields });
           }
         }
+        setResumeLoading(false);
       });
   }, [resumeUser, selectedResumeId]);
 
@@ -3040,12 +3044,14 @@ export default function Home() {
   };
   const loadResumeRecords = async () => {
     if (!supabase || !resumeUser) return;
+    setResumeLoading(true);
     const { data, error } = await supabase
       .from("resume_profiles")
-      .select("*")
+      .select("id,file_path,file_name,mime_type,file_size,fields,created_at")
       .order("created_at", { ascending: false });
     if (error) setResumeMessage(`读取简历库失败：${error.message}`);
     else setResumeRecords((data ?? []) as ResumeRecord[]);
+    setResumeLoading(false);
   };
   const uploadResume = async () => {
     if (!supabase || !resumeUser || !resumeFile) {
@@ -3868,7 +3874,9 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="mt-4 space-y-3">
-                  {resumeRecords.length ? (
+                  {resumeLoading ? (
+                    <p className="rounded-xl border border-dashed border-[#4d6c57] p-5 text-sm text-[#9fb5a5]">正在读取云端简历，请稍候…</p>
+                  ) : resumeRecords.length ? (
                     resumeRecords.map((record) => (
                       <article
                         key={record.id}
