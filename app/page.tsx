@@ -508,9 +508,13 @@ export default function Home() {
     if (!supabase || !resumeUser) { setResumeRecords([]); return; }
     supabase.from('resume_profiles').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
       if (error) setResumeMessage(`读取简历库失败：${error.message}`);
-      else setResumeRecords((data ?? []) as ResumeRecord[]);
+      else {
+        const records = (data ?? []) as ResumeRecord[];
+        setResumeRecords(records);
+        if (!selectedResumeId && records[0]) { setSelectedResumeId(records[0].id); setResumeFields({ ...emptyResumeFields, ...records[0].fields }); }
+      }
     });
-  }, [resumeUser]);
+  }, [resumeUser, selectedResumeId]);
 
   const currentCategory = (company: Company) => currentCompanyCategories[company.id] ?? '大型公司';
   const radarCategory = (company: typeof watchlist[number]) => /(外资|合资)/.test(company.tag) ? '外企' : /(央企|国企)/.test(company.tag) ? '央国企' : /上市/.test(company.tag) ? '上市公司' : '大型公司';
@@ -601,12 +605,12 @@ export default function Home() {
     const filePath = `${resumeUser.id}/${crypto.randomUUID()}-${safeName}`;
     const uploaded = await supabase.storage.from('resumes').upload(filePath, resumeFile, { contentType: resumeFile.type || 'application/octet-stream' });
     if (uploaded.error) { setResumeMessage(`上传失败：${uploaded.error.message}`); setResumeBusy(false); return; }
-    const inserted = await supabase.from('resume_profiles').insert({ user_id: resumeUser.id, file_path: filePath, file_name: resumeFile.name, mime_type: resumeFile.type || 'application/octet-stream', file_size: resumeFile.size, fields: resumeFields });
+    const inserted = await supabase.from('resume_profiles').insert({ user_id: resumeUser.id, file_path: filePath, file_name: resumeFile.name, mime_type: resumeFile.type || 'application/octet-stream', file_size: resumeFile.size, fields: resumeFields }).select().single();
     if (inserted.error) {
       await supabase.storage.from('resumes').remove([filePath]);
       setResumeMessage(`保存字段失败：${inserted.error.message}`);
     } else {
-      setResumeMessage('简历已保存到私有云端。'); setResumeFile(null); setResumeText(''); setResumeFields({ ...emptyResumeFields }); await loadResumeRecords();
+      setResumeMessage('简历已保存到私有云端，当前字段会继续保留；选择新文件后才会替换。'); setResumeFile(null); setSelectedResumeId(inserted.data?.id ?? null); await loadResumeRecords();
     }
     setResumeBusy(false);
   };
