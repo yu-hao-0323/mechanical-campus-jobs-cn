@@ -1923,11 +1923,11 @@ type ResumeFields = {
   politicalStatus: string;
   englishLevel: string;
   skills: string;
-  projectName: string;
-  projectTime: string;
-  projectContent: string;
   selfEvaluation: string;
+  projects: ResumeProject[];
 };
+
+type ResumeProject = { name: string; time: string; content: string };
 
 type ResumeRecord = {
   id: string;
@@ -1957,12 +1957,10 @@ const emptyResumeFields: ResumeFields = {
   politicalStatus: "",
   englishLevel: "",
   skills: "",
-  projectName: "",
-  projectTime: "",
-  projectContent: "",
   selfEvaluation: "",
+  projects: [],
 };
-const resumeFieldLabels: Record<keyof ResumeFields, string> = {
+const resumeFieldLabels: Record<Exclude<keyof ResumeFields, "projects">, string> = {
   name: "姓名",
   phone: "手机号",
   email: "邮箱",
@@ -1973,9 +1971,6 @@ const resumeFieldLabels: Record<keyof ResumeFields, string> = {
   politicalStatus: "政治面貌",
   englishLevel: "英语水平",
   skills: "技能关键词",
-  projectName: "项目名称（全部）",
-  projectTime: "项目时间（全部）",
-  projectContent: "项目内容（完整）",
   selfEvaluation: "自我评价（完整）",
 };
 
@@ -2179,15 +2174,8 @@ function extractResumeFields(text: string): ResumeFields {
       /(CET[- ]?6|CET[- ]?4|英语六级|英语四级|雅思\s*\d(?:\.\d)?|托福\s*\d{2,3})/i,
     ),
     skills: [...new Set(skills)].join("、"),
-    projectName: projectBlocks.map((project) => project.name).join("；"),
-    projectTime: projectBlocks.map((project) => project.time).join("；"),
-    projectContent: projectBlocks
-      .map(
-        (project, index) =>
-          `项目${index + 1}：${project.name}\n时间：${project.time}\n${project.content}`,
-      )
-      .join("\n\n"),
     selfEvaluation: evaluation,
+    projects: projectBlocks,
   };
 }
 
@@ -3798,9 +3786,11 @@ export default function Home() {
                     <div className="mt-5 grid gap-3 sm:grid-cols-2">
                       {(
                         Object.keys(resumeFieldLabels) as Array<
-                          keyof ResumeFields
+                          keyof typeof resumeFieldLabels
                         >
-                      ).filter((key) => key !== "projectContent" && key !== "selfEvaluation").map((key) => (
+                      )
+                        .filter((key) => key !== "selfEvaluation")
+                        .map((key) => (
                         <label
                           key={key}
                           className={`text-xs text-[#b7cabd] ${key === "skills" ? "sm:col-span-2" : ""}`}
@@ -3831,21 +3821,17 @@ export default function Home() {
                         </label>
                       ))}
                     </div>
-                    {(resumeFields.projectContent || resumeFields.selfEvaluation) && (
-                      <div className="mt-4 grid gap-4">
-                        {(["projectContent", "selfEvaluation"] as Array<keyof ResumeFields>).map((key) => (
-                          <label key={key} className="block text-xs text-[#b7cabd]">
-                            {resumeFieldLabels[key]}
-                            <textarea
-                              value={resumeFields[key]}
-                              onChange={(event) => setResumeFields((current) => ({ ...current, [key]: event.target.value }))}
-                              className="mt-1.5 min-h-40 w-full rounded-lg border border-[#53735d] bg-[#102d20] px-3 py-2 text-sm leading-6 text-white outline-none focus:border-[#91b49a]"
-                            />
-                            <button type="button" onClick={() => navigator.clipboard.writeText(resumeFields[key])} disabled={!resumeFields[key]} className="mt-1.5 rounded-lg border border-[#53735d] px-2 py-1 text-xs disabled:opacity-40">复制完整内容</button>
-                          </label>
-                        ))}
+                    <section className="mt-5 rounded-xl border border-[#426650] bg-[#102d20] p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <div><h4 className="font-semibold">项目经历</h4><p className="mt-1 text-xs text-[#a9bdae]">识别到 {resumeFields.projects.length} 个项目，分别保存和编辑。</p></div>
+                        <button type="button" onClick={() => setResumeFields((current) => ({ ...current, projects: [...current.projects, { name: "", time: "", content: "" }] }))} className="rounded-lg border border-[#53735d] px-3 py-1.5 text-xs">新增项目</button>
                       </div>
-                    )}
+                      <div className="mt-4 space-y-4">
+                        {resumeFields.projects.map((project, index) => <article key={`${index}-${project.name}`} className="rounded-xl border border-[#456952] bg-[#173f2a] p-4"><div className="flex items-center justify-between"><strong className="text-sm">项目 {index + 1}</strong><button type="button" onClick={() => setResumeFields((current) => ({ ...current, projects: current.projects.filter((_, projectIndex) => projectIndex !== index) }))} className="text-xs text-[#ffc5b4]">移除</button></div><div className="mt-3 grid gap-3 sm:grid-cols-2"><label className="text-xs text-[#b7cabd]">项目名称<input value={project.name} onChange={(event) => setResumeFields((current) => ({ ...current, projects: current.projects.map((item, projectIndex) => projectIndex === index ? { ...item, name: event.target.value } : item) }))} className="mt-1.5 w-full rounded-lg border border-[#53735d] bg-[#102d20] px-3 py-2 text-sm text-white" /></label><label className="text-xs text-[#b7cabd]">项目时间<input value={project.time} onChange={(event) => setResumeFields((current) => ({ ...current, projects: current.projects.map((item, projectIndex) => projectIndex === index ? { ...item, time: event.target.value } : item) }))} className="mt-1.5 w-full rounded-lg border border-[#53735d] bg-[#102d20] px-3 py-2 text-sm text-white" /></label></div><label className="mt-3 block text-xs text-[#b7cabd]">项目内容<textarea value={project.content} onChange={(event) => setResumeFields((current) => ({ ...current, projects: current.projects.map((item, projectIndex) => projectIndex === index ? { ...item, content: event.target.value } : item) }))} className="mt-1.5 min-h-40 w-full rounded-lg border border-[#53735d] bg-[#102d20] px-3 py-2 text-sm leading-6 text-white" /></label><button type="button" onClick={() => navigator.clipboard.writeText(`项目名称：${project.name}\n项目时间：${project.time}\n项目内容：${project.content}`)} className="mt-2 rounded-lg border border-[#53735d] px-3 py-1.5 text-xs">复制该项目</button></article>)}
+                        {resumeFields.projects.length === 0 && <p className="rounded-lg border border-dashed border-[#4d6c57] p-3 text-xs text-[#a9bdae]">未自动识别到项目时，可点击“新增项目”手动补充。</p>}
+                      </div>
+                    </section>
+                    <label className="mt-5 block text-xs text-[#b7cabd]">{resumeFieldLabels.selfEvaluation}<textarea value={resumeFields.selfEvaluation} onChange={(event) => setResumeFields((current) => ({ ...current, selfEvaluation: event.target.value }))} className="mt-1.5 min-h-40 w-full rounded-lg border border-[#53735d] bg-[#102d20] px-3 py-2 text-sm leading-6 text-white" /></label>
                     {resumeText && (
                       <details className="mt-4 rounded-xl bg-[#102d20] p-3">
                         <summary className="cursor-pointer text-xs text-[#b7cabd]">
