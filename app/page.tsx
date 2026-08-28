@@ -519,7 +519,7 @@ export default function Home() {
   const handleAuth = async () => {
     if (!supabase || !authEmail || authPassword.length < 8) { setResumeMessage('请输入邮箱，密码至少 8 位。'); return; }
     setResumeBusy(true); setResumeMessage('');
-    const result = authMode === 'register' ? await supabase.auth.signUp({ email: authEmail, password: authPassword }) : await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
+    const result = authMode === 'register' ? await supabase.auth.signUp({ email: authEmail, password: authPassword, options: { emailRedirectTo: `${window.location.origin}${window.location.pathname}` } }) : await supabase.auth.signInWithPassword({ email: authEmail, password: authPassword });
     setResumeBusy(false);
     if (result.error) setResumeMessage(result.error.message);
     else setResumeMessage(authMode === 'register' && !result.data.session ? '注册成功，请打开邮箱完成验证后登录。' : '登录成功。');
