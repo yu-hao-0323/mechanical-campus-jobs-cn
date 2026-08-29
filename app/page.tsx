@@ -2120,6 +2120,42 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "positec",
+    name: "宝时得科技",
+    short: "POS",
+    industry: "大型企业 · 园林机器人与智能工具",
+    batch: "2027届校园招聘",
+    verified: "2026-08-29 11:10",
+    source: "宝时得官方校园招聘职位页",
+    website: "https://www.hotjob.cn/wt/Positec/web/index/campus",
+    sourceOrigin: "企业官网发布",
+    jobs: [
+      {
+        id: "positec-robot-structure",
+        title: "机器人结构设计工程师",
+        location: "江苏 · 苏州",
+        areas: ["江苏全域"],
+        degree: "硕士及以上",
+        direction: "研发设计",
+        majors: "机械设计、机械工程、机器人、车辆工程等相关专业",
+        deadline: "截止 2026-10-30",
+        responsibilities: [
+          "参与割草机器人整机结构开发，完成需求分析和结构方案设计",
+          "负责底盘、行走系统、切割机构、外壳等核心零部件三维建模和工程图输出",
+          "参与结构评审、样机试制、装配调试和可靠性验证，持续优化防水防尘、强度与装配工艺",
+          "跟进量产过程结构问题，推动注塑件、钣金件和传动机构改善",
+        ],
+        requirements: [
+          "面向2027届应届毕业生，硕士研究生及以上学历",
+          "机械设计、机械工程、机器人、车辆工程等相关专业",
+          "具备扎实的机械结构设计基础和工程分析能力",
+          "有机械设计、机器人、移动底盘课程设计、科研项目或竞赛经历者优先",
+        ],
+        url: "https://www.hotjob.cn/wt/Positec/web/index/webPositionN300!getOnePosition?brandCode=1&columnId=1&importPost=0&lanType=1&postIdEnc=00df7045a727aff6&recruitType=1",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -2176,6 +2212,7 @@ const currentCompanyCategories: Record<string, string> = {
   giansun: "大型公司",
   jiexun: "大型公司",
   shining3d: "上市公司",
+  positec: "大型公司",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
