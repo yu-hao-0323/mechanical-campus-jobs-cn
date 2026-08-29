@@ -2290,6 +2290,47 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "syntegon",
+    name: "星德科包装技术",
+    short: "SYN",
+    industry: "外企 · 制药与食品包装装备",
+    batch: "2027届校园招聘",
+    verified: "2026-08-29 19:35",
+    source: "国家大学生就业服务平台岗位详情；星德科中国官网",
+    website: "https://www.syntegon.com.cn/contact",
+    jobs: [
+      {
+        id: "syntegon-mechanical-2027",
+        title: "机械工程师",
+        location: "浙江 · 杭州",
+        areas: ["杭州"],
+        degree: "本科及以上",
+        direction: "研发设计",
+        majors: "机械及相关专业",
+        deadline: "招聘平台投递开放（未公示截止日）",
+        responsibilities: [
+          "负责工艺流程图设计，包括准备技术文件、物料选型、绘图、安装和调试",
+          "参与制药设备从海外工厂向国内转移以及设备本土化工作",
+          "负责设备布局方案设计，包括设备上下游管道设计与布局",
+          "负责压力容器等设备的系统集成",
+          "为本地制造和降低成本提供机械技术支持",
+          "执行岗位安排的其他交付任务",
+        ],
+        requirements: [
+          "本科及以上学历，机械等相关专业",
+          "具备良好的英语口语和书面表达能力，英语六级及以上优先",
+          "熟悉 SolidWorks、AutoCAD 和 Microsoft Office",
+          "具备良好的沟通表达能力、工作灵活性和问题解决能力",
+          "自我驱动力强，具有创新思维",
+          "组织协调能力较强，关注细节并具备团队合作精神",
+          "责任心强、工作积极主动，能够合理安排时间",
+        ],
+        note: "完整字段来自国家大学生就业服务平台当前职位页；企业中国官网用于核验在华主体。该职位并非企业中国官网直接发布，已明确标记为第三方平台来源。",
+        url: "https://job.ncss.cn/student/jobs/21aAUn7ZQxg7gA1VdKesdc/detail.html",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -2347,6 +2388,7 @@ const currentCompanyCategories: Record<string, string> = {
   jiexun: "大型公司",
   shining3d: "上市公司",
   positec: "大型公司",
+  syntegon: "外企",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
