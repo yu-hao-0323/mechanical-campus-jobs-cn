@@ -2842,6 +2842,7 @@ const watchlist = [
 ];
 
 export default function Home() {
+  const [activeView, setActiveView] = useState<"jobs" | "saved" | "resume" | "radar" | "standards">("jobs");
   const [query, setQuery] = useState("");
   const [area, setArea] = useState("全部地区");
   const [direction, setDirection] = useState("全部方向");
@@ -3287,6 +3288,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-5 sm:px-8">
           <a
             href="#top"
+            onClick={() => setActiveView("jobs")}
             className="flex items-center gap-3"
             aria-label="机遇引擎首页"
           >
@@ -3302,29 +3304,23 @@ export default function Home() {
           </a>
           <nav className="hidden items-center gap-4 text-sm text-[#536159] sm:flex">
             <span>岗位无需登录</span>
-            <a
-              href="#resume-vault"
-              className="font-medium text-[#1c6741] hover:underline"
-            >
+            <button onClick={() => setActiveView("resume")} className="font-medium text-[#1c6741] hover:underline">
               {resumeUser ? "我的简历库" : "简历库登录"}
-            </a>
-            <a
-              href="#my-list"
-              className="font-medium text-[#1c6741] hover:underline"
-            >
+            </button>
+            <button onClick={() => setActiveView("saved")} className="font-medium text-[#1c6741] hover:underline">
               投递清单 {favorites.size}
-            </a>
-            <a
-              href="#standards"
-              className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white"
-            >
+            </button>
+            <button onClick={() => setActiveView("radar")} className="font-medium text-[#1c6741] hover:underline">
+              企业雷达
+            </button>
+            <button onClick={() => setActiveView("standards")} className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">
               收录标准
-            </a>
+            </button>
           </nav>
         </div>
       </header>
 
-      <section id="top" className="border-b border-[#244f39] bg-[#123b29] text-white">
+      <section id="top" className={`${activeView === "jobs" ? "" : "hidden"} border-b border-[#244f39] bg-[#123b29] text-white`}>
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8 sm:py-16">
           <p className="mb-4 text-xs font-bold tracking-[0.18em] text-[#ce5a35]">
             2027 届校园招聘 · 持续更新
@@ -3346,12 +3342,12 @@ export default function Home() {
                 >
                   立即查找岗位 ↓
                 </a>
-                <a
-                  href="#standards"
+                <button
+                  onClick={() => setActiveView("standards")}
                   className="rounded-xl border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   查看收录标准
-                </a>
+                </button>
               </div>
               <div className="mt-5 flex flex-wrap gap-2 text-xs text-[#d7e5da]">
                 {['合肥', '江苏全域', '杭州', '宁波'].map((item) => (
@@ -3400,7 +3396,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-[1180px] gap-6 px-5 py-8 sm:px-8 lg:grid-cols-[250px_1fr]">
+      <section id="jobs" className={`${activeView === "jobs" ? "" : "hidden"} mx-auto grid max-w-[1180px] gap-6 px-5 py-8 sm:px-8 lg:grid-cols-[250px_1fr]`}>
         <aside className="h-fit rounded-2xl border border-[#dce1da] bg-white p-5 lg:sticky lg:top-5">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-semibold">筛选岗位</h2>
@@ -3839,7 +3835,7 @@ export default function Home() {
 
       <section
         id="resume-vault"
-        className="border-t border-[#dce1da] bg-[#102d20] text-white"
+        className={`${activeView === "resume" ? "" : "hidden"} border-t border-[#dce1da] bg-[#102d20] text-white`}
       >
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
           <div className="flex flex-wrap items-start justify-between gap-4">
@@ -4108,7 +4104,7 @@ export default function Home() {
       </section>
 
       {comparisonJobs.length > 0 && (
-        <section id="compare" className="border-t border-[#dce1da] bg-white">
+        <section id="compare" className={`${activeView === "jobs" ? "" : "hidden"} border-t border-[#dce1da] bg-white`}>
           <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
@@ -4173,7 +4169,7 @@ export default function Home() {
         </section>
       )}
 
-      <section id="my-list" className="border-t border-[#dce1da] bg-[#edf3ed]">
+      <section id="my-list" className={`${activeView === "saved" ? "" : "hidden"} border-t border-[#dce1da] bg-[#edf3ed]`}>
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
@@ -4266,7 +4262,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-[#dce1da] bg-white">
+      <section className={`${activeView === "radar" ? "" : "hidden"} border-t border-[#dce1da] bg-white`}>
         <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
@@ -4314,7 +4310,7 @@ export default function Home() {
 
       <section
         id="standards"
-        className="border-t border-[#dce1da] bg-[#173f2a] text-white"
+        className={`${activeView === "standards" ? "" : "hidden"} border-t border-[#dce1da] bg-[#173f2a] text-white`}
       >
         <div className="mx-auto grid max-w-[1180px] gap-8 px-5 py-12 sm:px-8 md:grid-cols-[1fr_1.25fr]">
           <div>
