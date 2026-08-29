@@ -3134,6 +3134,37 @@ const currentCompanyCategories: Record<string, string> = {
   pengli: "央国企",
 };
 
+const companyIntroductions: Record<string, string> = {
+  syntegon:
+    "星德科（Syntegon）是面向制药、生物技术和食品行业的工艺及包装设备企业，在杭州设有中国公司，业务涵盖制药设备、食品包装、自动化产线和设备本土化工程。",
+  wika:
+    "威卡（WIKA）是德国工业测量与传感解决方案企业，在苏州设有中国总部及生产基地，产品覆盖压力、温度、液位、流量和力等工业测量领域。",
+  dahua:
+    "大华股份是总部位于杭州的上市科技企业，主营智慧物联、视频感知、智能硬件及行业数字化解决方案，拥有从硬件结构、嵌入式系统到算法平台的研发体系。",
+  babycare:
+    "Babycare是总部位于杭州的母婴消费产品企业，产品覆盖出行、家居、喂养、玩具等品类，结构工程岗位主要参与产品技术企划、结构方案和产品体验改进。",
+  joyson:
+    "均胜电子是总部位于宁波的上市汽车科技企业，业务涵盖汽车安全、智能座舱、智能网联、新能源管理和具身智能机器人，在全球设有研发与制造基地。",
+  picea:
+    "杉川机器人是一家移动机器人技术与产品企业，业务覆盖机器人整机、核心部件、智能清洁产品及相关制造体系，在苏州、合肥等地布局结构、电机和噪声研发岗位。",
+  ikingtec:
+    "云圣智能专注工业无人机、全自动机场、地面机器人和低空智能体系统，为电力、新能源、消防应急等行业提供机、网、云一体化解决方案。",
+  hfpress:
+    "合锻智能是位于合肥的上市高端装备企业，主营液压机、机械压力机、智能分选设备和自动化成套系统，产品应用于汽车、航空航天、军工及新材料领域。",
+  xynova:
+    "曦诺未来（Xynova）是杭州具身智能核心部件企业，专注高自由度灵巧手、关节模组和微型电缸，具备电机、电控、减速器、丝杠及算法的协同研发能力。",
+  lexy:
+    "莱克电气是总部位于苏州的上市制造企业，以高速电机技术为核心，研发和生产智能清洁家电、环境健康产品、园林工具及电机核心部件。",
+  itek:
+    "埃科光电是总部位于合肥的上市工业视觉企业，主要研发工业相机、图像采集卡和智能光学单元，产品应用于半导体、新型显示、锂电和光伏制造。",
+  "mettler-toledo":
+    "梅特勒托利多是全球精密仪器与工业称重企业，在常州设有中国研发制造基地，业务涵盖实验室仪器、工业衡器、动态计量和自动化应用解决方案。",
+  kangni:
+    "康尼机电是南京上市机电装备企业，核心业务包括轨道交通门系统、汽车零部件、智能健康设备和机床教仪产品，并参与国内外轨道交通项目研发。",
+  pengli:
+    "中船鹏力科技集团是中国船舶集团第八研究院发起成立的产业化平台，业务覆盖工业机器人、智能制造装备、智慧海洋、超低温系统及新材料应用。",
+};
+
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
 const applicationStages: ApplicationStage[] = [
   "未投递",
@@ -4757,6 +4788,14 @@ export default function Home() {
                           中国官网招聘入口 ↗
                         </a>
                       </div>
+                      {companyIntroductions[company.id] && (
+                        <div className="mb-4 rounded-xl border border-[#cfe0d5] bg-[#edf7f1] px-4 py-3.5 text-sm leading-6 text-[#355746]">
+                          <span className="mb-1 block text-[11px] font-bold tracking-[0.14em] text-[#1c6741]">
+                            企业介绍
+                          </span>
+                          {companyIntroductions[company.id]}
+                        </div>
+                      )}
                       <div className="space-y-2">
                         {company.jobs.map((job) => {
                           const jobOpen = openJob === job.id;
