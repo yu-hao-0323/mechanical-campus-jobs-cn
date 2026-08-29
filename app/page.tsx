@@ -2458,6 +2458,78 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "babycare",
+    name: "Babycare",
+    short: "BC",
+    industry: "大型企业 · 消费产品与结构研发",
+    batch: "2027届校园招聘",
+    verified: "2026-08-29 22:05",
+    source: "Babycare 2027校招官方页面；岗位详情转载",
+    website: "https://babycare.zhiye.com/",
+    jobs: [
+      {
+        id: "babycare-structure-trainee-2027",
+        title: "结构工程管培生",
+        location: "浙江 · 杭州",
+        areas: ["杭州"],
+        degree: "本科及以上",
+        direction: "研发设计",
+        majors: "机械工程、电气工程等专业优先",
+        deadline: "官网投递开放（未公示截止日）",
+        responsibilities: [
+          "开展产品技术企划：洞察用户需求，持续跟进市场产品技术动态，协助输出技术企划路线图，保障技术创新和产品力",
+          "开展产品结构设计：根据产品或项目需求协助输出产品实现方案，制定技术开发计划并完成产品测试，保障技术实现与成本控制",
+          "提供技术支持及改进：针对已有产品协助开展技术改进和体验升级，并推动方案落地",
+        ],
+        requirements: [
+          "本科及以上学历，机械工程、电气工程专业优先",
+          "具备较强的机械实操能力、沟通表达能力和创新思维",
+          "具备应变能力与抗压能力，乐观、自信、有责任心",
+          "熟练使用 Office 等办公软件",
+        ],
+        note: "岗位职责与要求来自当前职位转载页；2027届范围、网申启动时间和官方投递入口由Babycare官方校招页面交叉核验。岗位详情已标记为第三方来源。",
+        url: "https://www.shushuqiuzhi.com/position/462000",
+      },
+    ],
+  },
+  {
+    id: "joyson",
+    name: "均胜电子",
+    short: "JOYSON",
+    industry: "上市公司 · 汽车智能与具身机器人",
+    batch: "2027届秋季校园招聘",
+    verified: "2026-08-29 22:10",
+    source: "均胜27届秋招岗位转载；均胜电子中国官网",
+    website: "https://www.joyson.com/index.php/join/",
+    jobs: [
+      {
+        id: "joyson-agentic-robotics-2027",
+        title: "Agentic Robotics 研究员",
+        location: "浙江 · 宁波",
+        areas: ["宁波"],
+        degree: "硕士及以上",
+        direction: "自动化",
+        majors: "计算机、人工智能、自动化、机器人工程、认知科学等相关专业",
+        deadline: "截止 2026-10-23",
+        responsibilities: [
+          "负责面向具身智能的 Agentic Robotics 研究与开发，构建机器人智能体系统",
+          "研究情景记忆、语义记忆、技能记忆和环境记忆等长期记忆机制",
+          "探索机器人智能体自我进化能力，形成“执行—反馈—反思—学习—再执行”闭环",
+          "开展任务规划、技能调用、工具使用、异常检测和自主恢复等技术方向研究",
+        ],
+        requirements: [
+          "面向2027届毕业生，硕士及以上学历",
+          "计算机、人工智能、自动化、机器人工程、认知科学等相关专业",
+          "具备扎实的编程能力，能够使用 Python、PyTorch 等工具",
+          "具备具身智能、机器人智能体、任务规划或相关方向研究经验",
+          "能够将研究方法转化为机器人系统中的工程实现",
+        ],
+        note: "同一招聘页面包含4个社招岗位，本站仅收录明确标注“27届校招”的Agentic Robotics研究员，其他社招岗位未录入。完整信息来自岗位转载页，企业主体与校园招聘入口由均胜中国官网核验。",
+        url: "https://www.wondercv.com/xiaozhao/joyson-2027-fall-embodied-intelligence-campus-13005-d135ec/",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -2518,6 +2590,8 @@ const currentCompanyCategories: Record<string, string> = {
   syntegon: "外企",
   wika: "外企",
   dahua: "上市公司",
+  babycare: "大型公司",
+  joyson: "上市公司",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
@@ -3084,13 +3158,6 @@ const watchlist = [
     tag: "上市公司",
     focus: "汽车零部件、机器人",
     url: "https://www.tuopu.com/",
-  },
-  {
-    name: "均胜电子",
-    area: "宁波",
-    tag: "上市公司",
-    focus: "汽车安全、智能驾驶",
-    url: "https://www.joyson.com/",
   },
   {
     name: "均普智能",
