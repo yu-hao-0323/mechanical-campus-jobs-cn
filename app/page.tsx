@@ -2609,6 +2609,64 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "hfpress",
+    name: "合锻智能",
+    short: "HFP",
+    industry: "上市公司 · 高端成形机床与智能装备",
+    batch: "2027届校园招聘",
+    verified: "2026-08-29 23:40",
+    source: "合锻智能2027届校招简章；企业中国官网",
+    website: "http://www.hfpress.com/",
+    jobs: [
+      {
+        id: "hfpress-mechanical-rd-2027",
+        title: "机械研发工程师",
+        location: "安徽 · 合肥",
+        areas: ["合肥"],
+        degree: "本科及以上",
+        direction: "研发设计",
+        majors: "机械设计、机械工程类相关专业",
+        deadline: "校招申请开放（未公示截止日）",
+        responsibilities: [
+          "从事机械压力机、液压机系统及自动化系统的设计与研发",
+          "开展机构动力学分析和结构优化",
+          "参与研发项目管理",
+        ],
+        requirements: [
+          "211及以上院校本科及以上学历",
+          "机械设计、机械工程类相关专业",
+          "专业知识扎实、基础技能熟练",
+          "熟练使用相关办公软件以及机械设计、制图软件",
+        ],
+        note: "企业公开简章的岗位职责和要求较精炼，本站已逐项完整录入，没有额外扩写。投递邮箱及联系方式以企业最新公告为准。",
+        url: "https://m.yingjiesheng.com/xuanjianghui/xjh_6229796",
+      },
+      {
+        id: "hfpress-process-rd-2027",
+        title: "工艺研发工程师",
+        location: "安徽 · 合肥",
+        areas: ["合肥"],
+        degree: "本科及以上",
+        direction: "制造工程",
+        majors: "机械、材料类相关专业",
+        deadline: "校招申请开放（未公示截止日）",
+        responsibilities: [
+          "开展机械压力机、液压机及自动化设备的加工工艺设计",
+          "编写工艺技术文件",
+          "依据机械产品工艺技术和标准推进工艺实施",
+        ],
+        requirements: [
+          "第一批次院校本科及以上学历",
+          "机械、材料类相关专业",
+          "专业知识扎实、基础技能熟练",
+          "熟练使用相关办公软件以及设计、制图软件",
+        ],
+        note: "企业公开简章的岗位职责和要求较精炼，本站已逐项完整录入，没有额外扩写。",
+        url: "https://m.yingjiesheng.com/xuanjianghui/xjh_6229796",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -2673,6 +2731,7 @@ const currentCompanyCategories: Record<string, string> = {
   joyson: "上市公司",
   picea: "大型公司",
   ikingtec: "大型公司",
+  hfpress: "上市公司",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
