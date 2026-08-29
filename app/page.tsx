@@ -2331,6 +2331,45 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "wika",
+    name: "威卡自动化仪表",
+    short: "WIKA",
+    industry: "外企 · 工业测量与智能传感",
+    batch: "2027届校园招聘",
+    verified: "2026-08-29 20:10",
+    source: "威卡2027校招公告转载；威卡中文招聘官网与官方校招系统",
+    website: "https://jobs.wika.com/zh/career_portal.WIKA",
+    jobs: [
+      {
+        id: "wika-mechanical-design-assistant",
+        title: "机械设计助理工程师",
+        location: "江苏 · 苏州",
+        areas: ["江苏全域"],
+        degree: "本科 / 硕士 / 博士",
+        direction: "研发设计",
+        majors: "机械类、仪器类、自动化等相关专业",
+        deadline: "截止 2027-06-30（招满可能提前关闭）",
+        responsibilities: [
+          "负责工业自动化仪表的机械结构设计",
+          "完成产品三维建模和工程图纸输出",
+          "负责产品工程变更管理",
+          "协同相关团队推进零部件国产化",
+          "协同推进研发项目落地",
+        ],
+        requirements: [
+          "面向2027届全日制本科、硕士、博士应届毕业生",
+          "机械类、仪器类、自动化等相关专业",
+          "熟练使用 CAD、Creo 等设计软件",
+          "具备扎实的机械专业基础",
+          "主动好学，善于团队协作",
+          "能够无障碍阅读英文技术资料",
+        ],
+        note: "完整职责与要求来自当前校招公告转载；企业主体、苏州基地及招聘入口由威卡中文招聘官网核验。该岗位详情不是威卡中文官网直接呈现，因此标记为第三方平台来源。",
+        url: "https://www.wondercv.com/xiaozhao/wika-suzhou-2027-graduate-recruitment-12744-8e5b36/",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -2389,6 +2428,7 @@ const currentCompanyCategories: Record<string, string> = {
   shining3d: "上市公司",
   positec: "大型公司",
   syntegon: "外企",
+  wika: "外企",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
