@@ -11,7 +11,7 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; background: #07110e; color: var(--foreground); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Microsoft YaHei", sans-serif; }
 .tech-shell { position: relative; background: radial-gradient(circle at 82% 4%, rgba(28, 118, 91, .28), transparent 30rem), radial-gradient(circle at 5% 72%, rgba(21, 81, 69, .22), transparent 28rem), #07110e; }
-.tech-shell::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .28; background-image: linear-gradient(rgba(89, 226, 184, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(89, 226, 184, .06) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent 88%); }
+.tech-shell::before { content: ""; position: fixed; inset: -48px; pointer-events: none; opacity: .28; background-image: linear-gradient(rgba(89, 226, 184, .06) 1px, transparent 1px), linear-gradient(90deg, rgba(89, 226, 184, .06) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, black, transparent 88%); animation: grid-drift 18s linear infinite; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
 header { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(18px); box-shadow: 0 1px 0 rgba(50, 122, 109, .12), 0 8px 24px rgba(18, 59, 41, .04); }
@@ -19,6 +19,7 @@ header { position: sticky; top: 0; z-index: 30; backdrop-filter: blur(18px); box
 #top { background: linear-gradient(135deg, rgba(8, 31, 24, .98), rgba(10, 56, 43, .94)) !important; }
 #top::after { content: ""; position: absolute; width: 34rem; height: 34rem; right: -8rem; top: -19rem; border: 1px solid rgba(105,240,197,.22); border-radius: 999px; box-shadow: 0 0 0 4rem rgba(105,240,197,.035), 0 0 0 9rem rgba(105,240,197,.02), 0 0 90px rgba(105,240,197,.12); pointer-events: none; }
 #top > div { position: relative; z-index: 1; }
+#top::before { content: ""; position: absolute; z-index: 1; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(105,240,197,.7), transparent); box-shadow: 0 0 18px rgba(105,240,197,.5); animation: scan-line 5.5s ease-in-out infinite; pointer-events: none; }
 header a { transition: color 160ms ease, transform 160ms ease; }
 header a:hover { transform: translateY(-1px); }
 .brand-orb { background: linear-gradient(135deg, #8dffe0, #36b98f); box-shadow: 0 0 26px rgba(105,240,197,.35); }
@@ -30,6 +31,7 @@ header a:hover { transform: translateY(-1px); }
 .filter-console label, .filter-console legend { color: #83ac9d !important; }
 .filter-console input:not([type="radio"]), .filter-console select { border-color: #245442 !important; background: #081812 !important; color: #dff8ee !important; }
 .company-card { border: 1px solid #d9e4df; background: rgba(249,252,250,.97) !important; color: #14231c; box-shadow: 0 14px 36px rgba(0,0,0,.22), inset 0 1px 0 white; transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease; }
+.company-card { animation: card-rise 420ms cubic-bezier(.22,.8,.22,1) both; }
 .company-card:hover { border-color: #69d7b5; transform: translateY(-2px); box-shadow: 0 18px 44px rgba(0,0,0,.28), 0 0 0 1px rgba(105,240,197,.22); }
 .company-card > button:first-child { min-height: 126px; }
 .company-card > button:first-child:hover { background: linear-gradient(110deg, rgba(231,249,242,.85), rgba(255,255,255,.96)); }
@@ -45,6 +47,11 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 }
 
 @keyframes tech-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(104, 210, 184, .16); } 50% { box-shadow: 0 0 0 6px rgba(104, 210, 184, 0); } }
+@keyframes grid-drift { to { transform: translate3d(48px, 48px, 0); } }
+@keyframes scan-line { 0%, 12% { top: 8%; opacity: 0; } 22% { opacity: .8; } 72% { opacity: .35; } 88%, 100% { top: 92%; opacity: 0; } }
+@keyframes card-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.live-dot { width: 8px; height: 8px; border-radius: 999px; background: #69f0c5; box-shadow: 0 0 0 0 rgba(105,240,197,.45); animation: signal-pulse 1.8s ease-out infinite; }
+@keyframes signal-pulse { 70% { box-shadow: 0 0 0 8px rgba(105,240,197,0); } 100% { box-shadow: 0 0 0 0 rgba(105,240,197,0); } }
 #top a[href="#jobs"] { animation: tech-pulse 2.8s ease-in-out infinite; }
 #top strong { text-shadow: 0 0 24px rgba(174, 255, 220, .16); }
 ::selection { background: #c8dccd; }
@@ -62,5 +69,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-
 
 @media (prefers-reduced-motion: reduce) {
   .drawer-in { animation: none; }
+  .tech-shell::before, #top::before, .company-card, .live-dot, #top a[href="#jobs"] { animation: none !important; }
   * { scroll-behavior: auto !important; }
 }

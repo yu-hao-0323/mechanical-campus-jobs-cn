@@ -3669,9 +3669,10 @@ export default function Home() {
 
       <section id="top" className={`${activeView === "jobs" ? "" : "hidden"} border-b border-[#244f39] bg-[#123b29] text-white`}>
         <div className="mx-auto max-w-[1380px] px-5 py-10 sm:px-8 sm:py-12">
-          <p className="mb-4 text-xs font-bold tracking-[0.18em] text-[#ce5a35]">
-            2027 届校园招聘 · 持续更新
-          </p>
+          <div className="mb-4 flex items-center gap-2 text-xs font-bold tracking-[0.18em] text-[#f29b7b]">
+            <span className="live-dot" />
+            2027 届校园招聘 · 情报持续同步
+          </div>
           <div className="grid gap-7 lg:grid-cols-[1fr_390px] lg:items-end">
             <div>
               <h1 className="max-w-4xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-[62px]">
