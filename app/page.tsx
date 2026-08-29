@@ -2063,6 +2063,63 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "shining3d",
+    name: "先临三维",
+    short: "S3D",
+    industry: "上市公司 · 三维视觉与智能制造",
+    batch: "2027届校园招聘提前批",
+    verified: "2026-08-29 10:05",
+    source: "先临三维中国校招公告及官方网申",
+    website: "https://shining3d.zhiye.com/campus",
+    sourceOrigin: "企业官网发布",
+    jobs: [
+      {
+        id: "shining3d-mechanical",
+        title: "机械结构设计工程师",
+        location: "浙江 · 杭州",
+        areas: ["杭州"],
+        degree: "本科 / 硕士 / 博士",
+        direction: "研发设计",
+        majors: "机械、机械设计制造及其自动化、机电一体化等相关专业",
+        deadline: "提前批申请开放",
+        responsibilities: [
+          "参与高精度三维扫描设备及3D打印系统的机械结构设计开发",
+          "完成结构方案、三维建模、工程图纸输出及样机装配验证",
+          "协同电子、算法、软件和制造团队推进产品测试、改进与定型",
+        ],
+        requirements: [
+          "面向2026、2027届海内外应届毕业生",
+          "机械、机械设计制造及其自动化、机电一体化等相关专业",
+          "具备机械结构设计、工程制图和样机验证基础",
+          "有三维视觉、精密仪器或智能制造项目经历者优先",
+        ],
+        note: "提前批目前开放杭州，申请入口为先临三维官方校招系统。",
+        url: "https://shining3d.zhiye.com/campus",
+      },
+      {
+        id: "shining3d-print-system",
+        title: "3D打印系统工程师",
+        location: "浙江 · 杭州",
+        areas: ["杭州"],
+        degree: "本科 / 硕士 / 博士",
+        direction: "设备工程",
+        majors: "机械、机电、自动化、材料等相关专业",
+        deadline: "提前批申请开放",
+        responsibilities: [
+          "参与3D打印设备系统集成、机械模块设计和整机调试",
+          "协同研发团队完成系统测试、问题定位和产品迭代",
+        ],
+        requirements: [
+          "面向2026、2027届海内外应届毕业生",
+          "机械、机电、自动化、材料等相关专业",
+          "具备设备系统或精密机械项目实践经历者优先",
+        ],
+        note: "提前批目前开放杭州，具体职位状态以官方网申系统实时页面为准。",
+        url: "https://shining3d.zhiye.com/campus",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -2118,6 +2175,7 @@ const currentCompanyCategories: Record<string, string> = {
   ziir: "大型公司",
   giansun: "大型公司",
   jiexun: "大型公司",
+  shining3d: "上市公司",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
