@@ -2422,6 +2422,42 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "dahua",
+    name: "大华股份",
+    short: "DAHUA",
+    industry: "上市公司 · 智慧物联与智能硬件",
+    batch: "2027届校园招聘",
+    verified: "2026-08-29 21:20",
+    source: "大华2027校招岗位转载；大华股份招聘官网",
+    website: "https://job.dahuatech.com/",
+    jobs: [
+      {
+        id: "dahua-structure-2027",
+        title: "研发中心 · 结构工程师",
+        location: "浙江 · 杭州",
+        areas: ["杭州"],
+        degree: "本科及以上",
+        direction: "研发设计",
+        majors: "机械及相关专业",
+        deadline: "招满即止",
+        responsibilities: [
+          "负责产品结构设计以及打样、开模工作的进度跟踪，保证设计顺利实现产品化",
+          "开展样机试制和装配验证，制定结构测试方案并协助完成测试与认证",
+          "分析并定位试制和生产阶段出现的结构问题，提出解决方案；协同品管完成结构件来料异常分析与处理",
+        ],
+        requirements: [
+          "本科及以上学历，机械相关专业",
+          "熟练使用 Pro/E（Creo）、AutoCAD 等设计软件",
+          "熟练掌握机械设计基础理论，了解注塑件、压铸件、钣金件的设计要点、材料选型、制造工艺及模具基础知识",
+          "具备良好的沟通表达、动手实践和分析能力",
+          "具备创新思维与问题解决能力",
+        ],
+        note: "完整职责与要求来自当前岗位转载页；2027校招批次和官方投递入口由大华招聘官网及校招公告交叉核验。岗位详情并非大华官网直接展示，已标记为第三方来源。",
+        url: "https://watchjobs.net/zh/explore/job/c498-e3489a1d-0163-46ac-bb10-df6aad6faa40/%E7%A0%94%E5%8F%91%E4%B8%AD%E5%BF%83-2027%E5%B1%8A%E7%BB%93%E6%9E%84%E5%B7%A5%E7%A8%8B%E5%B8%88-J24502-%E5%A4%A7%E5%8D%8E%E8%82%A1%E4%BB%BD",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -2481,6 +2517,7 @@ const currentCompanyCategories: Record<string, string> = {
   positec: "大型公司",
   syntegon: "外企",
   wika: "外企",
+  dahua: "上市公司",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
