@@ -2935,6 +2935,41 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "kangni",
+    name: "康尼机电",
+    short: "KANGNI",
+    industry: "上市公司 · 轨道交通门系统与机电装备",
+    batch: "2027届校园招聘",
+    verified: "2026-08-30 01:35",
+    source: "康尼机电2027岗位转载；康尼中国官网校园招聘",
+    website: "https://www.kn-nanjing.com/invite/0",
+    jobs: [
+      {
+        id: "kangni-overseas-structure-2027",
+        title: "机械结构设计师（海外项目）",
+        location: "江苏 · 南京",
+        areas: ["江苏全域"],
+        degree: "硕士",
+        direction: "研发设计",
+        majors: "机械、机电等相关专业",
+        deadline: "官网投递开放（未公示截止日）",
+        responsibilities: [
+          "学习并掌握轨道交通门系统产品的结构原理、性能参数和核心特点",
+          "协助完成海外轨道车门产品的结构设计、方案优化和产品迭代改进",
+          "使用机电设计软件和办公软件完成研发设计相关工作",
+        ],
+        requirements: [
+          "2027届应届毕业生，211院校机械、机电等相关专业硕士学历",
+          "通过英语CET-6，具备良好的英文读写能力者优先",
+          "熟悉机械结构设计基础，会使用主流机电设计软件，了解轨道交通产品基础知识",
+          "学习能力强、积极进取，具备抗压能力和海外业务适配能力，愿意深耕轨道交通研发",
+        ],
+        note: "岗位完整职责与要求来自当前2027校招职位页；企业主体、校园招聘栏目和官方招聘门户由康尼中国官网交叉核验。",
+        url: "https://www.shushuqiuzhi.com/position/424626",
+      },
+    ],
+  },
 ]; 
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -3004,6 +3039,7 @@ const currentCompanyCategories: Record<string, string> = {
   lexy: "上市公司",
   itek: "上市公司",
   "mettler-toledo": "外企",
+  kangni: "上市公司",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
