@@ -1808,7 +1808,7 @@ const companies: Company[] = [
     short: "LEAD",
     industry: "上市公司 · 锂电智能装备",
     batch: "2027届校园招聘",
-    verified: "2026-08-30 01:15",
+    verified: "2026-08-30 02:05",
     source: "先导智能2027届秋招职位转载；企业中国官网",
     website: "https://www.leadintelligent.com/",
     jobs: [
@@ -1838,6 +1838,32 @@ const companies: Company[] = [
         ],
         note: "原公告级精益工程师条目因字段不完整已移除。本岗位完整职责与要求来自当前2027届职位转载页，企业主体与官网入口已核验。",
         url: "https://www.shushuqiuzhi.com/article/242639",
+      },
+      {
+        id: "lead-structural-simulation-nanjing-2027",
+        title: "结构仿真设计工程师（博士）",
+        location: "江苏 · 南京",
+        areas: ["江苏全域"],
+        degree: "博士",
+        direction: "仿真分析",
+        majors: "机械工程、动力工程及工程热物理、力学等相关专业",
+        deadline: "官网投递开放（未公示截止日）",
+        responsibilities: [
+          "负责设备开发中的静力学、动力学、疲劳和热应力仿真，识别设计风险并提出优化建议",
+          "参与结构仿真新技术开发，满足产品需求并解决结构力学问题",
+          "负责仿真方案和对标实验设计，开展验证并提升仿真准确度",
+          "参与结构仿真知识工程系统建设，积累仿真场景并建设、迭代规范",
+          "搭建非标自动化设备多体动力学模型，开展静载和动载工况力学分析",
+        ],
+        requirements: [
+          "博士学历，机械工程、动力工程及工程热物理、力学等相关专业",
+          "力学基础扎实，掌握机械设计理论、材料学基础和有限元数值计算理论",
+          "具备CAE仿真软件经验，掌握有限元分析基本流程",
+          "结果导向、自我驱动，具备高效执行力、表达能力和规范思维",
+          "英语CET-6及以上者优先",
+        ],
+        note: "职责和要求逐条来自当前2027届校招职位页。",
+        url: "https://www.shushuqiuzhi.com/position/492657",
       },
     ],
   },
@@ -4395,7 +4421,7 @@ export default function Home() {
                 <span className="mt-2 block text-[#69f0c5]">发现、核验、追踪每个机会</span>
               </h1>
               <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#c6d9cb]">
-                所有企业优先以中国官网或中国区官方校招站核验；完整官方JD逐项展示职责和资格，第三方仅作为原始公告参考。
+                所有企业优先以中国官网或中国区官方校招站核验；企业已公开的职责和资格逐项完整展示，未公开的字段明确标注，第三方仅作为原始公告参考。
               </p>
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <a
@@ -5398,8 +5424,8 @@ export default function Home() {
               操作、普工、流水线操作员等生产技能岗位；不因岗位在制造现场而排除工程师岗位。
             </p>
             <p>
-              <strong className="block text-white">完整职责与资格</strong>
-              逐项展示企业公布的职责和任职要求；公告级信息明确标为待补全。
+              <strong className="block text-white">公开内容完整保留</strong>
+              企业公布的职责和任职要求必须逐项完整展示；只公布职责的岗位可以收录，但会明确标注“任职要求未公示”。
             </p>
           </div>
         </div>
