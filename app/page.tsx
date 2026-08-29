@@ -3630,37 +3630,37 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f6f2] text-[#14211a]">
-      <header className="border-b border-[#dce1da] bg-[#f5f6f2]/95">
-        <div className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-5 sm:px-8">
+    <main className="tech-shell min-h-screen text-[#dff8ee]">
+      <header className="border-b border-[#1d4539] bg-[#07140f]/92">
+        <div className="mx-auto flex max-w-[1380px] items-center justify-between px-5 py-4 sm:px-8">
           <a
             href="#top"
             onClick={() => setActiveView("jobs")}
             className="flex items-center gap-3"
             aria-label="机遇引擎首页"
           >
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#173f2a] text-sm font-bold text-white">
+            <span className="brand-orb grid h-11 w-11 place-items-center rounded-xl text-sm font-bold text-[#06110d]">
               ME
             </span>
             <span>
-              <strong className="block text-[15px] tracking-[0.08em]">
+              <strong className="block text-[15px] tracking-[0.12em] text-white">
                 机遇引擎
               </strong>
-              <small className="text-xs text-[#68746c]">机械校招聚合</small>
+              <small className="text-xs text-[#74a896]">MECH CAREER OS</small>
             </span>
           </a>
-          <nav className="hidden items-center gap-4 text-sm text-[#536159] sm:flex">
-            <span>岗位无需登录</span>
-            <button onClick={() => setActiveView("resume")} className="font-medium text-[#1c6741] hover:underline">
+          <nav className="hidden items-center gap-1 rounded-2xl border border-[#1e4438] bg-[#0c2019]/80 p-1 text-sm sm:flex">
+            <button onClick={() => setActiveView("jobs")} className={`nav-chip ${activeView === "jobs" ? "nav-chip-active" : ""}`}>岗位情报</button>
+            <button onClick={() => setActiveView("resume")} className={`nav-chip ${activeView === "resume" ? "nav-chip-active" : ""}`}>
               {resumeUser ? "我的简历库" : "简历库登录"}
             </button>
-            <button onClick={() => setActiveView("saved")} className="font-medium text-[#1c6741] hover:underline">
+            <button onClick={() => setActiveView("saved")} className={`nav-chip ${activeView === "saved" ? "nav-chip-active" : ""}`}>
               投递清单 {favorites.size}
             </button>
-            <button onClick={() => setActiveView("radar")} className="font-medium text-[#1c6741] hover:underline">
+            <button onClick={() => setActiveView("radar")} className={`nav-chip ${activeView === "radar" ? "nav-chip-active" : ""}`}>
               企业雷达
             </button>
-            <button onClick={() => setActiveView("standards")} className="rounded-full border border-[#aeb8b0] px-4 py-2 font-medium text-[#173f2a] hover:bg-white">
+            <button onClick={() => setActiveView("standards")} className={`nav-chip ${activeView === "standards" ? "nav-chip-active" : ""}`}>
               收录标准
             </button>
           </nav>
@@ -3668,16 +3668,15 @@ export default function Home() {
       </header>
 
       <section id="top" className={`${activeView === "jobs" ? "" : "hidden"} border-b border-[#244f39] bg-[#123b29] text-white`}>
-        <div className="mx-auto max-w-[1180px] px-5 py-12 sm:px-8 sm:py-16">
+        <div className="mx-auto max-w-[1380px] px-5 py-10 sm:px-8 sm:py-12">
           <p className="mb-4 text-xs font-bold tracking-[0.18em] text-[#ce5a35]">
             2027 届校园招聘 · 持续更新
           </p>
-          <div className="grid gap-7 lg:grid-cols-[1fr_330px] lg:items-end">
+          <div className="grid gap-7 lg:grid-cols-[1fr_390px] lg:items-end">
             <div>
-              <h1 className="max-w-3xl text-4xl font-semibold leading-[1.13] tracking-[-0.035em] text-white sm:text-6xl">
-                先选公司，再看清
-                <br className="hidden sm:block" />
-                <span className="text-[#8de1c6]">岗位与招聘进度</span>
+              <h1 className="max-w-4xl text-4xl font-semibold leading-[1.08] tracking-[-0.04em] text-white sm:text-[62px]">
+                机械校招情报中枢
+                <span className="mt-2 block text-[#69f0c5]">发现、核验、追踪每个机会</span>
               </h1>
               <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#c6d9cb]">
                 所有企业优先以中国官网或中国区官方校招站核验；完整官方JD逐项展示职责和资格，第三方仅作为原始公告参考。
@@ -3743,8 +3742,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="jobs" className={`${activeView === "jobs" ? "" : "hidden"} mx-auto grid max-w-[1180px] gap-6 px-5 py-8 sm:px-8 lg:grid-cols-[250px_1fr]`}>
-        <aside className="h-fit rounded-2xl border border-[#dce1da] bg-white p-5 lg:sticky lg:top-5">
+      <section id="jobs" className={`${activeView === "jobs" ? "" : "hidden"} mx-auto grid max-w-[1380px] gap-6 px-5 py-8 sm:px-8 lg:grid-cols-[280px_1fr]`}>
+        <aside className="filter-console h-fit rounded-2xl p-5 lg:sticky lg:top-24">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-semibold">筛选岗位</h2>
             <button
@@ -3876,7 +3875,7 @@ export default function Home() {
               </span>
             </div>
           </div>
-          <div className="space-y-4" aria-live="polite">
+          <div className="grid gap-4 xl:grid-cols-2" aria-live="polite">
             {filtered.map((company) => {
               const isOpen = openCompanies.has(company.id);
               const sourceOrigin =
@@ -3892,7 +3891,7 @@ export default function Home() {
               return (
                 <article
                   key={company.id}
-                  className="overflow-hidden rounded-2xl border border-[#d8dfd9] bg-white shadow-[0_7px_22px_rgba(31,61,42,0.04)]"
+                  className={`company-card overflow-hidden rounded-2xl ${isOpen ? "xl:col-span-2" : ""}`}
                 >
                   <button
                     onClick={() => toggleCompany(company.id)}
