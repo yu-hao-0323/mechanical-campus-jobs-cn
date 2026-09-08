@@ -7807,6 +7807,42 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "sunye",
+    name: "无锡双益精密机械",
+    short: "SUNYE",
+    industry: "大型公司 · 高端自动化设备与智能制造",
+    batch: "2027届校园招聘",
+    verified: "2026-09-08 17:00",
+    source: "南开大学就业网2026-09-08当前完整JD；企业官网",
+    website: "http://www.wx-syjm.com/",
+    jobs: [
+      {
+        id: "sunye-reserve-engineer-wuxi-2027",
+        title: "储备工程师",
+        location: "江苏 · 无锡 · 锡山",
+        areas: ["江苏全域"],
+        degree: "本科及以上，硕士优先",
+        direction: "自动化",
+        majors: "机械、电气、自动化、测控、计算机等相关专业",
+        deadline: "当前公告未公示截止日",
+        responsibilities: [
+          "在机械设计、电气控制、LabVIEW软件测试、装配调试等工程岗位轮岗，学习非标自动化设备开发全流程",
+          "协助资深工程师完成图纸与三维建模、PLC编程调试、软件测试和样机装配调试等工作",
+          "参与TR技术评审和项目会议，学习公司IPD/CBB开发体系",
+          "完成轮岗考核任务并输出轮岗总结，按考核结果确定最终岗位",
+        ],
+        requirements: [
+          "2027届本科及以上学历，硕士优先，机械、电气、自动化、测控、计算机相关专业",
+          "愿意在非标自动化设备行业长期发展并接受轮岗安排",
+          "学习能力与动手能力强，具备团队协作意识",
+          "有相关实习、竞赛或项目经历者优先",
+        ],
+        note: "岗位于2026-09-08发布，完整职责与要求来自高校就业网；投递邮箱为lushen@wx-syjm.com。",
+        url: "https://career.nankai.edu.cn/correcruit/content/id/118144.html",
+      },
+    ],
+  },
 ];
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -7953,6 +7989,7 @@ const currentCompanyCategories: Record<string, string> = {
   neway: "上市公司",
   gongniu: "上市公司",
   imsineva: "大型公司",
+  sunye: "大型公司",
 };
 
 const companyIntroductions: Record<string, string> = {
@@ -8134,6 +8171,8 @@ const companyIntroductions: Record<string, string> = {
     "公牛集团（603195.SH）专注民用电工、智能照明和新能源产品，在宁波慈溪设有重要研发制造基地。",
   imsineva:
     "合肥欣奕华智能机器成立于2013年，是泛半导体高端装备企业，研发制造真空镀膜、洁净移载和高速高精密设备。",
+  sunye:
+    "无锡双益精密机械成立于2003年，专注轴承、汽车零部件、电器和电机自动化设备的研发、制造与自动化解决方案。",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
@@ -8578,8 +8617,10 @@ const sourceOrigins: Record<
   neway: "高校/国家就业平台转发",
   gongniu: "第三方平台转发",
   imsineva: "企业官网发布",
+  sunye: "高校/国家就业平台转发",
 };
 const publicationDates: Record<string, string> = {
+  "sunye-reserve-engineer-wuxi-2027": "2026-09-08",
   "imsineva-mechanical-hefei-2027": "2026-09-08核验",
   "imsineva-perovskite-process-hefei-2027": "2026-09-08核验",
   "zhlx-equipment-jiangsu-2027": "2026-09-07核验",
