@@ -7866,6 +7866,108 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "qsys",
+    name: "中车戚墅堰所",
+    short: "CRRC QSY",
+    industry: "央国企 · 轨道交通与高端装备",
+    batch: "2027届校园招聘",
+    verified: "2026-09-08 18:00",
+    source: "高校就业网审核发布的当前2027届JD；中国中车官网",
+    website: "https://www.crrcgc.cc/qsys/",
+    jobs: [
+      {
+        id: "qsys-mechanical-changzhou-2027",
+        title: "机械类岗位（2027届）",
+        location: "江苏 · 常州",
+        areas: ["江苏全域"],
+        degree: "本科及以上",
+        direction: "研发设计",
+        majors: "机械工程、机械设计、机械制造、机电一体化、车辆工程、载运工具运用工程等相关专业",
+        deadline: "公告未公示截止日，当前页面仍可申请",
+        responsibilities: [
+          "参与产品研发设计",
+          "主导或参与科研项目",
+          "开展工艺开发、工艺改进和工艺管理",
+          "处理产品技术问题及其他相关工作",
+        ],
+        requirements: [
+          "本科及以上学历，机械工程、机械设计、机械制造、机电一体化、车辆工程、载运工具运用工程等相关专业",
+        ],
+        note: "当前页面公开的职责与要求已完整保留；岗位详情来自高校审核发布，官方中国中车入口另列。",
+        url: "https://m.yingjiesheng.com/job-008-053-060.html",
+      },
+    ],
+  },
+  {
+    id: "jspdi",
+    name: "能建江苏电力设计院",
+    short: "JSPDI",
+    industry: "央国企 · 电力工程设计与综合能源",
+    batch: "2027届校园招聘",
+    verified: "2026-09-08 18:15",
+    source: "高校就业网当前2027届公告及完整职位页；中国能建江苏院官网",
+    website: "https://www.jspdi.ceec.net.cn/",
+    jobs: [
+      {
+        id: "jspdi-thermal-nanjing-2027",
+        title: "热机工程师",
+        location: "江苏 · 南京",
+        areas: ["江苏全域"],
+        degree: "硕士及以上",
+        direction: "研发设计",
+        majors: "热能工程、动力工程等相关专业",
+        deadline: "第三方口径至 2027-06-28，以国聘实时状态为准",
+        responsibilities: [
+          "开展热机系统方案设计，协助设备选型、热力计算和图纸绘制",
+          "编制热力平衡、设备清册和技术规范书",
+          "配合设计交底并处理现场基础技术问题",
+          "学习行业规范和新标准，整理归档技术资料",
+        ],
+        requirements: [
+          "硕士及以上学历，热能工程、动力工程等相关专业",
+          "硕士原则上不超过28岁、博士不超过32岁（截至2027-06-30）",
+          "掌握工程热力学、传热学并会使用专业软件",
+          "学习能力、责任心和沟通能力良好",
+        ],
+        note: "岗位详情来自第三方职位页，2027届身份与官方国聘投递入口由江苏院公告交叉核验。",
+        url: "https://www.gaoxiaojob.com/job/detail/2324129.html",
+      },
+    ],
+  },
+  {
+    id: "weifu",
+    name: "威孚高科",
+    short: "WEIFU",
+    industry: "上市公司 · 汽车核心零部件与氢能",
+    batch: "2027届校园招聘",
+    verified: "2026-09-08 18:30",
+    source: "高校就业网审核发布的当前2027届JD；威孚中国官网",
+    website: "https://www.weifu.com.cn/",
+    jobs: [
+      {
+        id: "weifu-motor-design-wuxi-2027",
+        title: "电机设计工程师",
+        location: "江苏 · 无锡",
+        areas: ["江苏全域"],
+        degree: "硕士及以上",
+        direction: "研发设计",
+        majors: "机械工程、电气工程、电机学等相关专业",
+        deadline: "公告未公示截止日，以企业校招状态为准",
+        responsibilities: [
+          "负责汽车用永磁同步、空心杯、轴向磁通、无框力矩电机的结构和电磁设计",
+          "跟踪样机试制和试验验证并推动设计优化",
+          "根据客户需求开展工程变更并编制体系文件",
+        ],
+        requirements: [
+          "硕士及以上学历，机械工程、电气工程、电机学等相关专业",
+          "当前公告未公开其他独立能力要求",
+        ],
+        note: "岗位职责和学历专业要求来自当前2027届高校就业网；其他独立要求未公开，本站不补写。",
+        url: "https://career.hebut.edu.cn/correcruit/content/id/79804.html",
+      },
+    ],
+  },
 ];
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -8013,6 +8115,9 @@ const currentCompanyCategories: Record<string, string> = {
   gongniu: "上市公司",
   imsineva: "大型公司",
   sunye: "大型公司",
+  qsys: "央国企",
+  jspdi: "央国企",
+  weifu: "上市公司",
 };
 
 const companyIntroductions: Record<string, string> = {
@@ -8196,6 +8301,12 @@ const companyIntroductions: Record<string, string> = {
     "合肥欣奕华智能机器成立于2013年，是泛半导体高端装备企业，研发制造真空镀膜、洁净移载和高速高精密设备。",
   sunye:
     "无锡双益精密机械成立于2003年，专注轴承、汽车零部件、电器和电机自动化设备的研发、制造与自动化解决方案。",
+  qsys:
+    "中车戚墅堰所隶属中国中车，围绕轨道交通关键零部件、风电矿山装备、汽车零部件与智能装备系统开展研发制造。",
+  jspdi:
+    "中国能建江苏电力设计院创建于1958年，面向电力、综合能源等领域提供工程设计、勘察和咨询服务。",
+  weifu:
+    "威孚高科是无锡A、B股上市汽车零部件企业，业务由燃油喷射拓展至节能减排、绿色氢能和智能电动领域。",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
@@ -8641,8 +8752,14 @@ const sourceOrigins: Record<
   gongniu: "第三方平台转发",
   imsineva: "企业官网发布",
   sunye: "高校/国家就业平台转发",
+  qsys: "高校/国家就业平台转发",
+  jspdi: "第三方平台转发",
+  weifu: "高校/国家就业平台转发",
 };
 const publicationDates: Record<string, string> = {
+  "qsys-mechanical-changzhou-2027": "2026-09-03",
+  "jspdi-thermal-nanjing-2027": "2026-09-01",
+  "weifu-motor-design-wuxi-2027": "2026-09-08核验",
   "sunye-reserve-engineer-wuxi-2027": "2026-09-08",
   "imsineva-mechanical-hefei-2027": "2026-09-08核验",
   "imsineva-perovskite-process-hefei-2027": "2026-09-08核验",
