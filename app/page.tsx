@@ -7750,6 +7750,63 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "imsineva",
+    name: "合肥欣奕华智能机器",
+    short: "SINEVA",
+    industry: "大型公司 · 泛半导体高端装备",
+    batch: "2027届校园招聘",
+    verified: "2026-09-08 16:30",
+    source: "欣奕华中国官网当前岗位；企业认证2027届职位页交叉核验",
+    website: "https://www.imsineva.com/job.php?type=campus",
+    jobs: [
+      {
+        id: "imsineva-mechanical-hefei-2027",
+        title: "机械工程师",
+        location: "安徽 · 合肥（岗位同时开放北京）",
+        areas: ["合肥"],
+        degree: "本科及以上",
+        direction: "研发设计",
+        majors: "机械等相关专业",
+        deadline: "官方截止 2026-09-30",
+        responsibilities: [
+          "负责机械设备及有关零部件的图纸设计、安装和试运行",
+          "对机械设备缺陷及时开展技术改造或调整，确保设备处于良好运行状态",
+          "参与泛半导体类非标自动化设备研发",
+        ],
+        requirements: [
+          "本科及以上学历，机械等相关专业",
+          "具备扎实机械理论知识，熟悉常用机械制图软件",
+          "具备良好学习能力和较强抗压能力",
+        ],
+        note: "职责、要求、地点和截止日均来自欣奕华中国官网当前校园招聘页；2027届批次与企业认证岗位交叉核验。",
+        url: "https://www.imsineva.com/job.php?type=campus",
+      },
+      {
+        id: "imsineva-perovskite-process-hefei-2027",
+        title: "钙钛矿工艺工程师（2027届）",
+        location: "安徽 · 合肥（岗位同时开放北京）",
+        areas: ["合肥"],
+        degree: "硕士及以上",
+        direction: "制造工程",
+        majors: "材料、物理、真空、机械、化工、电子、光学等相关专业",
+        deadline: "官方截止 2026-09-30",
+        responsibilities: [
+          "开展蒸镀系统设备操作、工艺参数调试、工艺开发和打样测试",
+          "编写订单或研发项目工艺调试计划，完成工艺验收测试及验收报告",
+          "处理分析工艺测试异常数据，编写问题报告并跟进改善闭环和总结报告",
+          "参与售前技术检讨，开展蒸镀系统、蒸发源问题改善和性能提升测试",
+          "整理技术文件，编写作业指导书、作业规范和问题履历",
+        ],
+        requirements: [
+          "硕士及以上学历，材料、物理、真空、机械、化工、电子、光学等相关专业",
+          "了解真空和薄膜基础知识，熟悉PVD、CVD、热蒸发设备结构组成并具备独立操作经验",
+        ],
+        note: "2027届身份和完整JD来自企业认证职位页，官方校园页确认该岗位在合肥开放且截止9月30日。",
+        url: "https://www.zhaopin.com/jobdetail/CCL1450876770J40935856812.htm",
+      },
+    ],
+  },
 ];
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -7895,6 +7952,7 @@ const currentCompanyCategories: Record<string, string> = {
   zhlx: "大型公司",
   neway: "上市公司",
   gongniu: "上市公司",
+  imsineva: "大型公司",
 };
 
 const companyIntroductions: Record<string, string> = {
@@ -8074,6 +8132,8 @@ const companyIntroductions: Record<string, string> = {
     "纽威阀门（603699.SH）位于苏州高新区，业务覆盖工业阀门、工业材料、石油设备和数控装备。",
   gongniu:
     "公牛集团（603195.SH）专注民用电工、智能照明和新能源产品，在宁波慈溪设有重要研发制造基地。",
+  imsineva:
+    "合肥欣奕华智能机器成立于2013年，是泛半导体高端装备企业，研发制造真空镀膜、洁净移载和高速高精密设备。",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
@@ -8517,8 +8577,11 @@ const sourceOrigins: Record<
   zhlx: "第三方平台转发",
   neway: "高校/国家就业平台转发",
   gongniu: "第三方平台转发",
+  imsineva: "企业官网发布",
 };
 const publicationDates: Record<string, string> = {
+  "imsineva-mechanical-hefei-2027": "2026-09-08核验",
+  "imsineva-perovskite-process-hefei-2027": "2026-09-08核验",
   "zhlx-equipment-jiangsu-2027": "2026-09-07核验",
   "neway-design-suzhou-2027": "2026-08-12",
   "gongniu-quality-ningbo-2027": "2026-09-04",
