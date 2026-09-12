@@ -9632,6 +9632,100 @@ const companies: Company[] = [
       },
     ],
   },
+  {
+    id: "cneec",
+    name: "中国联合工程",
+    short: "中国联合工程",
+    industry: "央国企 · 工程设计与高端装备工程",
+    batch: "2027届校园招聘",
+    verified: "2026-09-12 11:25",
+    source: "浙江大学就业平台当前2027届公告",
+    website: "https://www.chinacuc.com/",
+    jobs: [
+      {
+        id: "cneec-mechanical-hangzhou-2027",
+        title: "机械设计",
+        location: "浙江 · 杭州 · 滨江区",
+        areas: ["杭州"],
+        degree: "硕士及以上",
+        direction: "研发设计",
+        majors: "机械类相关专业",
+        deadline: "当前公告未公示截止日",
+        responsibilities: [],
+        requirements: ["2027届硕士及以上，机械类相关专业"],
+        note: "浙江大学就业平台当前职位列表明确岗位、杭州滨江地点、硕士及以上学历和机械类专业；逐岗职责未在公告原文公开。",
+        url: "https://www.career.zju.edu.cn/jyxt/sczp/zpztgl/ckZpgwXq.zf?zpxxbh=5A907AD8CA7C73B0E0653A68DD0E9B18",
+      },
+      {
+        id: "cneec-thermal-hangzhou-2027",
+        title: "电厂热力系统设计（汽机）",
+        location: "浙江 · 杭州 · 滨江区",
+        areas: ["杭州"],
+        degree: "硕士及以上",
+        direction: "研发设计",
+        majors: "热能与发电工程、动力工程及工程热物理等相关专业",
+        deadline: "当前公告未公示截止日",
+        responsibilities: [],
+        requirements: ["2027届硕士及以上，热能与发电工程、动力工程及工程热物理等相关专业"],
+        note: "浙江大学就业平台当前职位列表明确岗位、杭州滨江地点、硕士及以上学历和专业范围；逐岗职责未在公告原文公开。",
+        url: "https://www.career.zju.edu.cn/jyxt/sczp/zpztgl/ckZpgwXq.zf?zpxxbh=5A907AD8CA7C73B0E0653A68DD0E9B18",
+      },
+    ],
+  },
+  {
+    id: "forehope",
+    name: "甬矽电子",
+    short: "FOREHOPE",
+    industry: "上市公司 · 集成电路封装测试",
+    batch: "2027届校园招聘",
+    verified: "2026-09-12 11:30",
+    source: "当前2027届校招公告；甬矽电子中国官网校园招聘入口",
+    website: "https://www.forehope-elec.com/lists/28.html",
+    jobs: [
+      {
+        id: "forehope-equipment-ningbo-2027",
+        title: "设备工程师",
+        location: "浙江 · 宁波 · 余姚",
+        areas: ["宁波"],
+        degree: "以官方职位页为准",
+        direction: "设备工程",
+        majors: "机械、机电、自动化等相关专业可重点关注",
+        deadline: "当前公告未公示截止日",
+        responsibilities: [],
+        requirements: ["面向2027届应届毕业生；学历和逐岗专业以官方职位页为准"],
+        note: "当前2027届公告公开了设备工程师方向与宁波地点；企业官网提供校园招聘入口，但未公开可抓取的逐岗职责和完整资格。",
+        url: "https://www.forehope-elec.com/lists/28.html",
+      },
+      {
+        id: "forehope-process-ningbo-2027",
+        title: "工艺工程师/工艺整合工程师",
+        location: "浙江 · 宁波 · 余姚",
+        areas: ["宁波"],
+        degree: "以官方职位页为准",
+        direction: "制造工程",
+        majors: "机械、材料、自动化等相关专业可重点关注",
+        deadline: "当前公告未公示截止日",
+        responsibilities: [],
+        requirements: ["面向2027届应届毕业生；学历和逐岗专业以官方职位页为准"],
+        note: "当前2027届公告公开了工艺工程师、工艺整合工程师方向与宁波地点；官网未公开可抓取的逐岗职责和完整资格。",
+        url: "https://www.forehope-elec.com/lists/28.html",
+      },
+      {
+        id: "forehope-simulation-ningbo-2027",
+        title: "仿真设计工程师",
+        location: "浙江 · 宁波 · 余姚",
+        areas: ["宁波"],
+        degree: "以官方职位页为准",
+        direction: "仿真分析",
+        majors: "机械、力学、材料等相关专业可重点关注",
+        deadline: "当前公告未公示截止日",
+        responsibilities: [],
+        requirements: ["面向2027届应届毕业生；学历和逐岗专业以官方职位页为准"],
+        note: "当前2027届公告公开了仿真设计工程师方向与宁波地点；官网未公开可抓取的逐岗职责和完整资格。",
+        url: "https://www.forehope-elec.com/lists/28.html",
+      },
+    ],
+  },
 ];
 
 const areas = ["全部地区", "合肥", "江苏全域", "杭州", "宁波"];
@@ -9815,6 +9909,8 @@ const currentCompanyCategories: Record<string, string> = {
   "inks-intelligence": "大型公司",
   "changchuan-tech": "上市公司",
   naura: "上市公司",
+  cneec: "央国企",
+  forehope: "上市公司",
 };
 
 const companyIntroductions: Record<string, string> = {
@@ -10070,6 +10166,10 @@ const companyIntroductions: Record<string, string> = {
     "长川科技是总部位于杭州的半导体测试设备上市企业，产品覆盖测试机、分选机、探针台与自动化测试解决方案。",
   naura:
     "北方华创是半导体高端工艺装备上市企业，产品面向集成电路制造的薄膜沉积、刻蚀、清洗、炉管、快速热处理等关键环节。",
+  cneec:
+    "中国联合工程是国机集团旗下大型科技型工程公司，总部位于杭州，提供贯穿工程建设全生命周期的咨询、设计、工程总承包与技术服务。",
+  forehope:
+    "甬矽电子是宁波余姚的集成电路封装测试上市企业，面向智能终端、物联网、人工智能、通信与数据处理等应用提供高端封测服务。",
 };
 
 type ApplicationStage = "未投递" | "已投递" | "笔试/面试" | "已结束";
@@ -10551,8 +10651,15 @@ const sourceOrigins: Record<
   "inks-intelligence": "高校/国家就业平台转发",
   "changchuan-tech": "高校/国家就业平台转发",
   naura: "高校/国家就业平台转发",
+  cneec: "高校/国家就业平台转发",
+  forehope: "第三方平台转发",
 };
 const publicationDates: Record<string, string> = {
+  "cneec-mechanical-hangzhou-2027": "2026-09-03",
+  "cneec-thermal-hangzhou-2027": "2026-09-03",
+  "forehope-equipment-ningbo-2027": "2026-09（当前2027校招）",
+  "forehope-process-ningbo-2027": "2026-09（当前2027校招）",
+  "forehope-simulation-ningbo-2027": "2026-09（当前2027校招）",
   "inks-structure-nanjing-2027": "2026-09（当前2027校招）",
   "inks-hardware-nanjing-2027": "2026-09（当前2027校招）",
   "changchuan-mechanical-hangzhou-2027": "2026-08（当前2027校招）",
